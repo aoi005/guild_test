@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>P-guild</title>
+    	<!-- Bootstrap -->
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    	<style>
+    		body {
+    			padding-top: 50px;
+    			background-color: lightgray;
+    		}
+    		.starter-template {
+    			padding: 40px 15px;
+    			background-color: white;
+    		}
+    	</style>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">掲示板</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">TOP</a></li>
+                        <li><a href="">投稿</a></li>
+                        <li><a href="">検索</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="left-menu">
+                <button id="member">メンバー募集</button>
+                <button id="kanyuu">勧誘待ち</button><br>
+                <button id="kotei">固定募集</button><br>
+                <button id="situmon">質問</button><br>
+                <button id="help">HELP</button>
+            </div>
+            <div class="main-contents">
+                <div id="member2">
+                    <li>募集</li>
+                </div>
+                <div id="kanyuu2">
+                    <li>勧誘</li>
+                </div>
+                <div id="kotei2">
+                    <li>固定</li>
+                </div>
+                <div id="situmon2">
+                    <li>質問</li>
+                </div>
+                <div id="help2">
+                    <li>HELP</li>
+                </div>
+            </div>
+        </div>
+        <style>
+            .container {
+            width: 95%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+             }
+              
+            .main-contents {
+            width: 75%;
+            padding: 10px;
+            background-color: #ccc;
+             }
+
+            .left-menu { 
+            width: 15%;
+            padding: 10px;
+            background-color: #f0e68c;
+             }
+
+        </style>
+    </body>
+</html>
