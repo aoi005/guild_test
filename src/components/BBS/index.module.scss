@@ -1,0 +1,35 @@
+.bbs {
+    width: 100%;
+    margin: 10px auto;
+  }
+  
+  .bbs__heading {
+    display: block;
+    justify-content:center;
+    margin: 20px;
+  }
+  
+  .bbs__main {
+    display: block;
+    border: 1.2px solid rgba(232, 221, 221, 0.5);
+    margin: 0 20px 20px 20px;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  .bbs__title {
+    flex: 4;
+    margin-right: 1px;
+  }
+  
+  .bbs__tag {
+    opacity: 0.5;
+  }
+  
+  .bbs__img {
+    object-fit: contain;
+    width: 100%;
+    border-radius: 5px;
+    max-height: 100px;
+    margin-right: 10px;
+    flex: 1;
+  }
