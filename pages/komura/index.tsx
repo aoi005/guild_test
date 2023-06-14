@@ -1,4 +1,4 @@
-
+/*それぞれに色なり何なりを付けるのでそれぞれにclassNameつけて個別判断してます。*/
 export default function Home(){
   return(<>
   
