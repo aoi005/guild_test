@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Project Monodeza</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script>https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <style>
+        /*ポップアップの設定部分*/
+        .open {
+            cursor:pointer; 
+        }
+        #pop-up {
+            display: none; 
+        }
+        .overlay {
+            display: none; 
+        }
+        #pop-up:checked + .overlay {
+            display: block;
+            z-index: 9999;
+            background-color: #00000070;
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+        }
+        .window {
+            width: 120vw;
+            max-width: 450px;
+            height: 240px;
+            background-color: #ffffff;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .text {
+            font-size: 18px;
+            margin: 0;
+        }
+        .close {
+            cursor:pointer;
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            font-size: 20px;
+        }
+
+        /*メンバー募集の画面部分*/
+        body {
+            background-color: white;
+        }
+        .starter-template{
+            border: solid;
+            padding: 20px;
+            background-color: #d3d8a5;
+        }
+        h1{
+            font-family: serif;
+            color: blue;
+            padding: 20px;
+            background-color: lightgray;
+            text-align: center}
+        p{
+            padding: 10px;
+            text-align: center;
+        }
+        .textarea{
+            text-align: center;
+            border: solid;
+        }
+        a {
+            background-color: #ccc;
+            color: #000000;
+            border: solid;
+            padding: 10px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .example{
+            display: flex;
+        }
+        .example label{
+            display: block;
+            width: 150px;
+            background: blue;
+            color: #ffffff;
+            padding: 10px;
+            margin: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 30px;
+            border: solid;
+            cursor: pointer;
+        }
+        .example input:checked+label{
+            background: #ffffff;
+            color: #000000;
+            border: solid;
+        }
+        .example input{
+            display: none;
+        }
+    </style>
+    </style>
+</head>
+<body>
+    <label class="open" for="pop-up">メンバー募集(クリックしてください)</label>
+<input type="checkbox" id="pop-up">
+<div class="overlay">
+	<div class="window">
+		<label class="close" for="pop-up"></label>
+		<p class="text">
+            <div class="container">
+                <div class="starter-template">
+        
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <a class="btn btn-danger" href="#">✕</a>
+                        </div>
+        
+                        <div class="col-sm-11"></div>
+                    </div>
+
+                    <h1>メンバー募集</h1>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <p1 class="lead">ギルド名</p>
+                        </div>
+        
+                        <div class="col-sm-10">
+                            <p4 class="lead"><textarea placeholder="IDを記入してください" cols="50" rows="1"></textarea></p4>
+                        </div>
+                    </div>
+        
+        
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <p2 class="lead">詳細文</p>
+                        </div>
+        
+                        <div class="col-sm-10">
+                            <p5 class="lead"><textarea placeholder="詳細を記入してください
+                        記入例：～" cols="50" rows="5"></textarea></p5>
+                        </div>
+                    </div>
+        
+        
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <p3 class="lead">方針  </p>
+                        </div>
+        
+                        <div class="col-sm-10">
+                            <div class="example">
+                                <input type="checkbox" checked id="1" name="example"><label for="1">リアル優先</label>
+                                <input type="checkbox" checked id="2" name="example"><label for="2">初心者歓迎</label>
+                                <input type="checkbox" checked id="3" name="example"><label for="3">経験者募集</label>
+                                <input type="checkbox" checked id="4" name="example"><label for="4">攻略重視</label>
+                            </div>
+                        </div>
+                    </div>
+        
+        
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a class="btn btn-primary" href="#">投稿</a>
+                        </div>
+                            
+
+                        <div class="col-sm-0">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+        </p>
+	</div>
+</div>
+</body>
+</html>
