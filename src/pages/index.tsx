@@ -3,6 +3,7 @@ import MainLayout from '../layouts'
 import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
 import BBS from '../components/BBS'
+import GroupsIcon from '@mui/icons-material/Groups';
 
 
 export default function Home() {
@@ -10,7 +11,8 @@ export default function Home() {
   return (
     <MainLayout>
       <Head>
-        <h2>Gulid Borad</h2>
+        
+        
       </Head>
        <div className={styles.contents}>
         <div className={styles.nav}>

@@ -4,33 +4,33 @@ import React from "react";
 export const articleData = [
     {
         title:"探しています",
-        detail:"イン率高め",
-        tag:"リアル優先　初心者",
+        detail:"誰でもどうぞ！",
+        tag:"リアル優先・初心者歓迎",
         path:"",
     },
     {
-        title:"探しています",
-        detail:"イン率高め",
-        tag:"リアル優先　初心者",
+        title:"無言民求",
+        detail:"無言です",
+        tag:"無言",
         path:"",
 
     },
     {
-        title:"探しています",
-        detail:"イン率高め",
-        tag:"リアル優先　初心者",
+        title:"エンジョイ",
+        detail:"イン率高いです！　Discordあります！",
+        tag:"エンジョイ",
         path:"",
     },
     {
-        title:"探しています",
-        detail:"イン率高め",
-        tag:"リアル優先　初心者",
+        title:"ランキング取りたいです",
+        detail:"三日以内ログインなしはお引き取り願います",
+        tag:"ガチ",
         path:"",
     },
     {
-        title:"探しています",
+        title:"不定期ですが在籍のみ",
         detail:"イン率高め",
-        tag:"リアル優先　初心者",
+        tag:"リアル優先",
         path:"",
     },
 ]

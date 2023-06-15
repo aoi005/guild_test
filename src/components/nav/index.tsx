@@ -1,32 +1,36 @@
 import Link from "next/link";
 import styles from "./index.module.scss";
 import Image from "next/image";
+import React from "react";
+
+
+
 
 const TOPICS = [
   {
-    icon: "01",
+    icon: "/megaphone.png",
     path: "/",
-    title: "団員募集",
+    title: "　　　団員募集",
   },
   {
-    icon: "03",
+    icon: "/planning.png",
     path: "/topics/business",
-    title: "勧誘募集",
+    title: "　　　勧誘募集",
   },
   {
-    icon: "04",
+    icon: "/swords.png",
     path: "/topics/technology",
-    title: "固定募集",
+    title: "　　　固定募集",
   },
   {
-    icon: "05",
+    icon: "/question-mark.png",
     path: "/topics/entertainment",
-    title: "質問募集",
+    title: "　　　質問募集",
   },
   {
-    icon: "06",
+    icon: "/menu.png",
     path: "/topics/sports",
-    title: "使いかた",
+    title: "　　　使いかた",
   },
 ];
 
@@ -37,16 +41,22 @@ const Nav: React.FC = () => {
         {TOPICS.map((topic, index) => {
           return (
             <li key={index} >
-             
+              <div id="icon">
                 <a id ={`${topic.path}`}>
-                  <span>
-                   
-                  </span>
-                  <button>
-                  <span>{topic.title}</span>
+
+                <button>
+                  <Image
+                      src={topic.icon}
+                      alt=""
+                      loading="eager"
+                      width={33}
+                      height={33}
+                      priority
+                    />
+                    <span>{topic.title}</span>
                   </button>
                 </a>
-      
+              </div>
             </li>
           );
         })}

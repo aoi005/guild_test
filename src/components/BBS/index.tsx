@@ -12,15 +12,21 @@ const BBS: React.FC = () => {
           return (
             <article className={styles.bbs__main}>
           
-            <div key={index} >
+            <div key="{index}" >
              <div className={styles.bbs__title}>
                 <a id ={`${bbs.path}`}>
                   
-                  <h2>{bbs.title}</h2>
+                <h2>{bbs.title}</h2>
 
-                  <button>
-                  <span>{bbs.tag}</span>
+                  <p>{bbs.detail}</p>
+
+                 <button>
+                 
+                    <p>{bbs.tag}</p>
+                 
                   </button>
+
+
                 </a>
               </div>
             </div>
