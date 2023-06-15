@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
 import BBS from '../components/BBS'
 import GroupsIcon from '@mui/icons-material/Groups';
+import FORM from '@/components/FORM';
 
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
         <div className={styles.main} >
         
         <BBS />
+        <FORM/>
        
         </div>
       </div>

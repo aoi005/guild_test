@@ -9,7 +9,7 @@ import React from "react";
 const TOPICS = [
   {
     icon: "/megaphone.png",
-    path: "/",
+    path: "/form",
     title: "　　　団員募集",
   },
   {
