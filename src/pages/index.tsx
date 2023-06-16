@@ -25,7 +25,7 @@ export default function Home() {
         <div className={styles.main} >
         
         <BBS />
-        <FORM/>
+        {/* <FORM/> */}
        
         </div>
       </div>

@@ -4,7 +4,7 @@ import React from "react";
 
 function FORM(){
     return (
-        <p>form</p>
+        <div>form</div>
     );
   };
   

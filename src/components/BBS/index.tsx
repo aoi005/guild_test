@@ -2,6 +2,7 @@ import styles from "./index.module.scss";
 import moment from "moment";
 import Props from "../types";
 import { articleData } from "./articleData";
+import Detai from '@/components/detail';
 
 
 const BBS: React.FC = () => {
@@ -12,7 +13,7 @@ const BBS: React.FC = () => {
           return (
             <article className={styles.bbs__main}>
           
-            <div key="{index}" >
+            <div key={bbs.id} >
              <div className={styles.bbs__title}>
                 <a id ={`${bbs.path}`}>
                   
@@ -22,9 +23,11 @@ const BBS: React.FC = () => {
 
                  <button>
                  
-                    <p>{bbs.tag}</p>
+                    <div>{bbs.tag}</div>
                  
                   </button>
+                  <Detai   />
+                  
 
 
                 </a>

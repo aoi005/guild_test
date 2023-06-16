@@ -9,12 +9,12 @@ import React from "react";
 const TOPICS = [
   {
     icon: "/megaphone.png",
-    path: "/form",
+    path: "/",
     title: "　　　団員募集",
   },
   {
     icon: "/planning.png",
-    path: "/topics/business",
+    path: "/form",
     title: "　　　勧誘募集",
   },
   {
@@ -42,7 +42,13 @@ const Nav: React.FC = () => {
           return (
             <li key={index} >
               <div id="icon">
-                <a id ={`${topic.path}`}>
+                <a
+                 className="pointer-events-none flex place-items-center"
+                href={`${topic.path}`}
+                // target=""
+                rel="noopener noreferrer"
+          >
+                {/* <Link href ={`${topic.path}`}> */}
 
                 <button>
                   <Image
@@ -55,7 +61,8 @@ const Nav: React.FC = () => {
                     />
                     <span>{topic.title}</span>
                   </button>
-                </a>
+                  </a>
+                {/* </Link> */}
               </div>
             </li>
           );

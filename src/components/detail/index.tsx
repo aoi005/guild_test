@@ -14,7 +14,7 @@ import React from "react";
 //   },
 // };
 
-function Popup() {
+function Detail() {
   let subtitle ="";
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -33,7 +33,7 @@ function Popup() {
 
   return (
     <div>
-      <a onClick={openModal}>投稿</a>
+      <button style={{ letterSpacing: "20px", textAlign: "center" }}onClick={openModal}>詳細</button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -45,7 +45,7 @@ function Popup() {
         <button  style={{ letterSpacing: "20px", textAlign: "center" }}　onClick={closeModal}>×</button>
 
 
-        <div>I am a modal</div>
+        <div>詳細文</div>
 
 
         <form>
@@ -56,4 +56,4 @@ function Popup() {
   );
 }
 
-export default Popup;
+export default Detail;
