@@ -1,0 +1,16 @@
+.popup-menu-container {
+    position: relative;
+  }
+
+
+  .popup-menu {
+    position: absolute;
+    transform: scale(0);
+    transform-origin: top left;
+  
+    transition: transform 0.2s;
+  
+    &.shown {
+      transform: scale(1);
+    }
+  }

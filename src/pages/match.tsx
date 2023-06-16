@@ -9,7 +9,7 @@ import Link from "next/link";
 import dynamic from 'next/dynamic'
 
 
-export default function Home() {
+export default function Match() {
  
   return (
     <MainLayout>
@@ -33,8 +33,6 @@ export default function Home() {
         </div>
       </div>
       
-  
-    </MainLayout>
-  )
-}
-
+      </MainLayout>
+    )
+  }

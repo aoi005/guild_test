@@ -9,27 +9,27 @@ import React from "react";
 const TOPICS = [
   {
     icon: "/megaphone.png",
-    path: "/form",
+    path: "http://localhost:3000",
     title: "　　　団員募集",
   },
   {
     icon: "/planning.png",
-    path: "/topics/business",
+    path: "http://localhost:3000/match",
     title: "　　　勧誘募集",
   },
   {
     icon: "/swords.png",
-    path: "/topics/technology",
+    path: "http://localhost:3000",
     title: "　　　固定募集",
   },
   {
     icon: "/question-mark.png",
-    path: "/topics/entertainment",
+    path: "/form",
     title: "　　　質問募集",
   },
   {
     icon: "/menu.png",
-    path: "/topics/sports",
+    path: "http://localhost:3000",
     title: "　　　使いかた",
   },
 ];
@@ -42,9 +42,11 @@ const Nav: React.FC = () => {
           return (
             <li key={index} >
               <div id="icon">
-                <a id ={`${topic.path}`}>
+               
+                
 
                 <button>
+                <Link href={`${topic.path}`}>
                   <Image
                       src={topic.icon}
                       alt=""
@@ -54,8 +56,9 @@ const Nav: React.FC = () => {
                       priority
                     />
                     <span>{topic.title}</span>
+                  </Link>
                   </button>
-                </a>
+               
               </div>
             </li>
           );

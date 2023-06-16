@@ -1,11 +1,14 @@
-import styles from "./index.module.scss";
+
 import React from "react";
 
 
-function FORM(){
-    return (
-        <p>form</p>
-    );
-  };
-  
-  export default FORM;
+const FORM: React.FC = () => {
+    return(
+        <h1>aaa</h1>
+    )
+
+
+}
+
+
+export default FORM;

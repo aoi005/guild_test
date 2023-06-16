@@ -1,88 +1,21 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <main className={`min-h-screen  p-24 ${inter.className}`}>
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-base lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:fixed left-0 top-0 lg:static  lg:border lg:bg-gray-200 lg:dark:bg-zinc-800/30">
-          メンバー募集&nbsp;
-        </p>
-      </div>
 
-      <div className="mx-auto max-w-2xl px-4 my-10 ">
-        <form>
-          <div className="flex-col">
-            <label htmlFor="name">ギルド名</label>
-            <input
-              className="w-full"
-              type="text"
-              autoComplete="off"
-              id="neme"
-            />
-          </div>
-          <div className="flex-col">
-            <label htmlFor="detail">詳細</label>
-            <textarea
-              rows={6}
-              className="w-full"
-              required
-              name="detail"
-            ></textarea>
-          </div>
-          <div className="grid grid-cols-4 md:grid-cols-8">
-            <div className="flex-row">
-              <label>aa</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>bb</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>cc</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>dd</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>ee</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>ff</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>gg</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>hh</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>ii</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>jj</label>
-              <input type="checkbox"></input>
-            </div>
-          </div>
-        </form>
-        <button
-          className="my-2 border-2 border-blue-400 rounded-md bg-blue-200
-                           hover:bg-blue-400"
-        >
-          投稿
-        </button>
-      </div>
-    </main>
-  );
+    <div style={{textAlign: "center"}}>
+    < h1>遷移元</h1>
+     {/* ②Linkコンポーネントでaタグを包む */}
+      <Link href="/NextPage">
+      <a>次のページへ進む</a>
+     </Link>
+   </div>
+
+
+  )
 }

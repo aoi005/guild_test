@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import WidgetsIcon from '@mui/icons-material/Widgets';
+import Popupmenu from '@/components/Popupmenu';
 
 function Header() {
   return (
@@ -20,8 +21,26 @@ function Header() {
             </a>
            }
         </h1>
-      <button style={{ letterSpacing: "20px", textAlign: "center" }}>投稿</button>
-      <button style={{ letterSpacing: "20px", textAlign: "center"}}>検索</button>
+     
+        <button style={{ letterSpacing: "20px", textAlign: "center" }} >
+             <Link href="http://localhost:3000">
+               表題
+              </Link>
+        </button>
+        <button style={{ letterSpacing: "20px", textAlign: "center" }} >
+            <Popupmenu />
+             {/* <Link href="http://localhost:3000/form">
+              
+              </Link> */}
+        </button>
+       
+      <button style={{ letterSpacing: "20px", textAlign: "center"}}> 
+              {/* <Link href="http://localhost:3000/search"> */}
+              検索
+
+              {/* </Link> */}
+      </button> 
+       
       </header>
     </section>
   );
