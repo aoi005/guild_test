@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>P-guild</title>
+    </head>
+
+    <header>
+        <h2>掲示板</h2>
+        <nav class="gnav">
+            <ul class="menu">
+              <li>TOP</li>
+              <li><label class="open" for="pop-up">投稿</label></li>
+              <li>検索</li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <body>
+
+        <div class="container">
+            <div class="left-menu">
+                <button id="b_member">メンバー募集</button>
+                <button id="b_kanyuu">勧誘待ち</button><br>
+                <button id="b_kotei">固定募集</button><br>
+                <button id="b_situmon">質問</button><br>
+                <button id="b_help">HELP</button>
+            </div>
+            <div class="main-contents">
+                <div id="c_member">
+                    <li>募集</li>
+                </div>
+                <div id="c_kanyuu">
+                    <li>勧誘</li>
+                </div>
+                <div id="c_kotei">
+                    <li>固定</li>
+                </div>
+                <div id="c_situmon">
+                    <li>質問</li>
+                </div>
+                <div id="c_help">
+                    <li>HELP</li>
+                </div>
+            </div>
+        </div>
+
+        <input type="checkbox" id="pop-up">
+    <div class="overlay">
+	    <div class="window">
+		    <label class="close" for="pop-up"></label>
+		    <p class="text">
+                <div class="container">
+                    <div class="starter-template">
+            
+                        <div class="row">
+                            <div class="col-sm-1">
+                                <a class="btn btn-danger" href="#">✕</a>
+                            </div>
+            
+                            <div class="col-sm-11"></div>
+                        </div>
+
+                        <h1>メンバー募集</h1>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <p1 class="lead">ギルド名</p>
+                            </div>
+            
+                            <div class="col-sm-10">
+                                <p4 class="lead"><textarea placeholder="IDを記入してください" cols="50" rows="1"></textarea></p4>
+                            </div>
+                        </div>
+            
+            
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <p2 class="lead">詳細文</p>
+                            </div>
+            
+                            <div class="col-sm-10">
+                                <p5 class="lead"><textarea placeholder="詳細を記入してください
+                            記入例：～" cols="50" rows="5"></textarea></p5>
+                            </div>
+                        </div>
+            
+            
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <p3 class="lead">方針  </p>
+                            </div>
+            
+                            <div class="col-sm-10">
+                                <div class="example">
+                                    <input type="checkbox" checked id="1" name="example"><label for="1">リアル優先</label>
+                                    <input type="checkbox" checked id="2" name="example"><label for="2">初心者歓迎</label>
+                                    <input type="checkbox" checked id="3" name="example"><label for="3">経験者募集</label>
+                                    <input type="checkbox" checked id="4" name="example"><label for="4">攻略重視</label>
+                                </div>
+                            </div>
+                        </div>
+            
+            
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <a class="btn btn-primary" href="#">投稿</a>
+                            </div>
+                                
+
+                            <div class="col-sm-0">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </p>
+    	</div>
+    </div>
+        <style>
+            body {
+                background-color: #6495ed;
+                /*hederの後ろにbodyが隠れないようにする*/
+                padding-top: 90px;
+            }
+
+            .container {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+             }
+              
+             /*メインコンテンツ*/
+            .main-contents {
+            width: 70%;
+            padding: 10px;
+            background-color: #ccc;
+             }
+
+             /*左メニュー*/
+            .left-menu { 
+            width: 20%;
+            padding: 10px;
+            background-color: #f0e68c;
+            margin: auto;
+            text-align: center;
+             }
+
+            button {
+            width: 200px;
+            padding: 10px 20px;
+            font-size: 20px;
+            border-radius: 10px;
+            }
+
+            li {
+            font-size: 23px;
+            }
+
+            #c_member, #c_kanyuu, #c_kotei, #c_situmon, #c_help {
+            display: none;
+            }
+
+            #b_member.active, #b_kanyuu.active, #b_kotei.active, #b_situmon.active, #b_help.active {
+            color: blue;
+            background-color: orange;
+            }
+
+            #c_member.active, #c_kanyuu.active, #c_kotei.active, #c_situmon.active, #c_help.active {
+            display: block;
+            }
+
+            /*上部メニュー*/
+            header {
+            width: 100%; /* 幅いっぱいを指定 */
+            height: 50px; /* 高さを50pxに指定 */
+            background: #CCC; /* 背景色にグレーを指定 */
+            padding: 20px 50px; /* ヘッダーに上下左右それぞれ余白を指定 */
+            box-sizing: border-box; /* padding分を含んで幅を100%にするため */
+            position: fixed; /* ウィンドウを基準に画面に固定 */
+            top: 0; /* 上下の固定位置を上から0pxにする */
+            left: 0; /* 左右の固定位置を左から0pxにする */
+            display: flex; /* 中の要素を横並びにする */
+            align-items: center; /* 中の要素を上下中央に並べる */
+            }
+
+            header .gnav .menu {
+                display: flex; /* 中の要素を横並びにする */
+            }
+
+            header .gnav .menu li {
+                list-style: none; /* リストの[・]を消す */
+            }
+
+            header .gnav .menu li + li {
+                margin-left: 40px; /* メニューそれぞれに間隔をあけるため */
+            }
+
+            /*ポップアップの設定部分*/
+            .open {
+                cursor:pointer; 
+            }
+            #pop-up {
+                display: none; 
+            }
+            .overlay {
+                display: none; 
+            }
+            #pop-up:checked + .overlay {
+                display: block;
+                z-index: 9999;
+                background-color: #00000070;
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                top: 0;
+                left: 0;
+            }
+            .window {
+                width: 120vw;
+                max-width: 450px;
+                height: 240px;
+                background-color: #ffffff;
+                border-radius: 6px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .text {
+                font-size: 18px;
+                margin: 0;
+            }
+            .close {
+                cursor:pointer;
+                position: absolute;
+                top: 4px;
+                right: 4px;
+                font-size: 20px;
+            }
+
+            /*投稿ポップアップの設定*/
+            .starter-template{
+                border: solid;
+                padding: 20px;
+                background-color: #d3d8a5;
+            }
+            h1{
+                font-family: serif;
+                color: blue;
+                padding: 20px;
+                background-color: lightgray;
+                text-align: center
+            }
+            p{
+                padding: 10px;
+                text-align: center;
+            }
+            .textarea{
+                text-align: center;
+                border: solid;
+            }
+            a {
+                background-color: #ccc;
+                color: #000000;
+                border: solid;
+                padding: 10px 10px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            .example{
+                display: flex;
+            }
+            .example label{
+                display: block;
+                width: 150px;
+                background: blue;
+                color: #ffffff;
+                padding: 10px;
+                margin: 10px;
+                box-sizing: border-box;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 30px;
+                border: solid;
+                cursor: pointer;
+            }
+            .example input:checked+label{
+                background: #ffffff;
+                color: #000000;
+                border: solid;
+            }
+            .example input{
+                display: none;
+            }
+
+        </style>
+
+        <script>
+            let $b_member = document.getElementById("b_member");
+            let $b_kanyuu = document.getElementById("b_kanyuu");
+            let $b_kotei = document.getElementById("b_kotei");
+            let $b_situmon = document.getElementById("b_situmon");
+            let $b_help = document.getElementById("b_help");
+            let $c_member = document.getElementById("c_member");
+            let $c_kanyuu = document.getElementById("c_kanyuu");
+            let $c_kotei = document.getElementById("c_kotei");
+            let $c_situmon = document.getElementById("c_situmon");
+            let $c_help = document.getElementById("c_help");
+            
+            reset_styles = function() {
+            $b_member.style.color = "";
+            $b_kanyuu.style.color = "";
+            $b_kotei.style.color = "";
+            $b_situmon.style.color = "";
+            $b_help.style.color = "";
+            $c_member.style.display = "none";
+            $c_kanyuu.style.display = "none";
+            $c_kotei.style.display = "none";
+            $c_situmon.style.display = "none";
+            $c_help.style.display = "none";
+            };
+            
+            change_style = function(button, item) {
+            button.style.color = "blue";
+            item.style.display = "block";
+            };
+            
+            $b_member.addEventListener("click", function() {
+            reset_styles();
+            change_style(this, $c_member);
+            });
+            
+            $b_kanyuu.addEventListener("click", function() {
+            reset_styles();
+            change_style(this, $c_kanyuu);
+            });
+
+            $b_kotei.addEventListener("click", function() {
+            reset_styles();
+            change_style(this, $c_kotei);
+            });
+
+            $b_situmon.addEventListener("click", function() {
+            reset_styles();
+            change_style(this, $c_situmon);
+            });
+
+            $b_help.addEventListener("click", function() {
+            reset_styles();
+            change_style(this, $c_help);
+            });
+            
+            // デフォルトでメンバー勧誘のみ表示
+            change_style($b_member, $c_member);
+        </script>
+    </body>
+</html>
