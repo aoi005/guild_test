@@ -1,16 +1,23 @@
 .contents {
     display: flex;
     margin: 0 auto;
+    background-color: rgb(232, 238, 243);
   }
-  
+
+.nav{
+  background-color: rgb(232, 238, 243);
+  position: fixed;
+
+  // >button {
+  //   color: rgb(15, 51, 70);
+
+  // }
+}
   .main {
     flex: 6;
   }
   
-  .nav {
-    flex: 2;
-    position: fixed;
-  }
+
   
   .blank {
     flex: 2;

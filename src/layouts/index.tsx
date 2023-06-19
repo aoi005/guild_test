@@ -11,6 +11,9 @@ function MainLayout({ children }: LayoutProps): JSX.Element {
     <>
       <Header />
       <main className={styles.main}>{children}</main>
+     
+      
+
     </>
   );
 }

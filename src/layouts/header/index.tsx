@@ -31,20 +31,23 @@ function Header() {
               </div>
            }
         </h1>
-      {/* <button style={{ letterSpacing: "20px", textAlign: "center" }}> */}
+      <button >
         <Popup />
-        {/* </button> */}
+         </button>
 
 
       <div>
+        <button>
         <a  className="btn-square-so-pop"
             href="http://localhost:3000/search"
             // target=""
-            rel="noopener noreferrer">
+            // rel="noopener noreferrer"
+            >
              
               検索
-
+              
         </a>
+        </button>
       </div>
       </header>
     </section>

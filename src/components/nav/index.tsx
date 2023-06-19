@@ -10,27 +10,27 @@ const TOPICS = [
   {
     icon: "/megaphone.png",
     path: "/",
-    title: "　　　団員募集",
+    title: "団員募集",
   },
   {
     icon: "/planning.png",
     path: "/form",
-    title: "　　　勧誘募集",
+    title: "勧誘募集",
   },
   {
     icon: "/swords.png",
     path: "/topics/technology",
-    title: "　　　固定募集",
+    title: "固定募集",
   },
   {
     icon: "/question-mark.png",
     path: "/topics/entertainment",
-    title: "　　　質問募集",
+    title: "質問募集",
   },
   {
     icon: "/menu.png",
     path: "/topics/sports",
-    title: "　　　使いかた",
+    title: "使いかた",
   },
 ];
 
