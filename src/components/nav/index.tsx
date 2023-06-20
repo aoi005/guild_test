@@ -59,7 +59,7 @@ const Nav: React.FC = () => {
                       height={33}
                       priority
                     />
-                    <span>{topic.title}</span>
+                    <span style={{fontWeight: "bold"}}>{topic.title}</span>
                   </button>
                   </a>
                 {/* </Link> */}

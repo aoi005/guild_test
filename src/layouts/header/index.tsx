@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import Link from "next/link";
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import Popup from '../../components/Popupmenu';
+import Popupsearch from "@/components/Popupserach";
 
 
 
@@ -31,24 +32,12 @@ function Header() {
               </div>
            }
         </h1>
-      <button >
+  
         <Popup />
-         </button>
+       
 
 
-      <div>
-        <button>
-        <a  className="btn-square-so-pop"
-            href="http://localhost:3000/search"
-            // target=""
-            // rel="noopener noreferrer"
-            >
-             
-              検索
-              
-        </a>
-        </button>
-      </div>
+        <Popupsearch/>
       </header>
     </section>
   );

@@ -1,8 +1,12 @@
-.a{
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    color: #5989cf;
-    background: #c6e4ff;
-    border-bottom: solid 6px #aac5de;
-    border-radius: 9px;
+.formbtn{
+    color: #fff;
+    background-color: #e5f1f6;
+    border-bottom: 5px solid #858483;
+    font-weight: bold;
+}
+.formbtn:hover{
+    margin-top: 3px;
+    color: #fff;
+    background: #f56500;
+    border-bottom: 2px solid #b84c00;
 }

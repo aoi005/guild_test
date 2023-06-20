@@ -1,4 +1,4 @@
-// import styles from "./index.module.scss";
+import styles from "./index.module.scss";
 import Modal from 'react-modal';
 import { useState } from 'react';
 import React from "react";
@@ -32,8 +32,10 @@ function Popup() {
   }
 
   return (
-    <div>
+  <div>
+    <button className={styles.formbtn}>
       <a onClick={openModal}>投稿</a>
+    </button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -81,38 +83,7 @@ function Popup() {
               <label>bb</label>
               <input type="checkbox"></input>
             </div>
-            <div className="flex-row">
-              <label>cc</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>dd</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>ee</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>ff</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>gg</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>hh</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>ii</label>
-              <input type="checkbox"></input>
-            </div>
-            <div className="flex-row">
-              <label>jj</label>
-              <input type="checkbox"></input>
-            </div>
+           
           </div>
         </form>
         <button

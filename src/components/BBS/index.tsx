@@ -3,6 +3,14 @@ import moment from "moment";
 import Props from "../types";
 import { articleData } from "./articleData";
 import Detai from '@/components/detail';
+const mongoose = require("mongoose");
+
+
+
+// mongoose.connect(
+//   "mongodb+srv://walabimoti0628:oit.guild@cluster0.r0ggqrq.mongodb.net/conpas?retryWrites=true&w=majority"
+//   ).then(()=>console.log("running"));
+
 
 
 const BBS: React.FC = () => {
@@ -14,24 +22,26 @@ const BBS: React.FC = () => {
             <article className={styles.bbs__main}>
           
             <div key={bbs.id} >
-             <div className={styles.bbs__title}>
+             
                 <a id ={`${bbs.path}`}>
                   
-                <h2>{bbs.title}</h2>
+                <div className={styles.titlebox}>  
+                  <h2 >{bbs.title}</h2>
+                </div>
 
+                <div className={styles.detailbox}>
                   <p>{bbs.detail}</p>
-
-                 <button>
+                </div>
                  
-                    <div>{bbs.tag}</div>
+                    <div className={styles.tagbox}>{bbs.tag}</div>
                  
-                  </button>
+                  
                   <Detai   />
                   
 
 
                 </a>
-              </div>
+              
             </div>
      
             </article>

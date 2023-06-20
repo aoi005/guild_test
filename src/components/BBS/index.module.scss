@@ -15,10 +15,14 @@
     margin: 0 20px 20px 20px;
     padding: 15px;
     border-radius: 10px;
+    background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+    background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+
   }
   .bbs__title {
     flex: 4;
     margin-right: 1px;
+   
   }
   
   .bbs__tag {
@@ -42,4 +46,22 @@
 
     margin: 0; 
     padding: 0;
+}
+
+
+.tagbox {
+    padding: 0em 0em;
+    width: 80px;
+    margin: 1em 0em;
+    color: #080000;//文字色
+    background: #fff8e8;//タグ背景（右側の部分）
+    border-left: solid 5px #ffc06e;//タグのボーダー線
+}
+
+.titlebox{
+  border-bottom: 1px solid #190909;
+}
+
+.detailbox{
+
 }
