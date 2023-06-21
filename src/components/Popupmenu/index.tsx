@@ -2,6 +2,7 @@ import styles from "./index.module.scss";
 import Modal from 'react-modal';
 import { useState } from 'react';
 import React from "react";
+import Select from 'react-select'
 
 // const customStyles = {
 //   content: {
@@ -13,6 +14,14 @@ import React from "react";
 //     transform: 'translate(-50%, -50%)',
 //   },
 // };
+
+const options = [
+  {value: 1, label: "初心者"},
+  {value: 2, label: "中級者"},
+  {value: 3, label: "上級者"},
+  {value: 4, label: "エンジョイ"},
+  {value: 5, label: "ガチ"}
+]
 
 function Popup() {
   let subtitle ="";
@@ -33,8 +42,9 @@ function Popup() {
 
   return (
   <div>
-    
+       <div className={styles.formbox}>
       <button onClick={openModal} className={styles.formbtn}>投稿</button>
+    
     
         <Modal
           isOpen={modalIsOpen}
@@ -47,22 +57,28 @@ function Popup() {
  
         <button onClick={closeModal}>×</button>
 
-
+     
       
         <h4>メンバー募集</h4>
-      
+        <div>
+          ギルド名<input></input>
+        </div>
+        <div>
+          詳細<input></input>
+        </div>
+
+        <div style={{width: "500px", marginTop: "20px"}}>
+          タグ
+        <Select options={options} isMulti={true} />
+         </div>
 
 
-        
-        
-        <form>
-          <input />
-        </form>
       </Modal>
+      </div>
 
+    </div>
 
-
-  </div>
+ 
   );
 }
 

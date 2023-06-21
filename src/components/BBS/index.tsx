@@ -2,8 +2,12 @@ import styles from "./index.module.scss";
 import moment from "moment";
 import Props from "../types";
 import { articleData } from "./articleData";
+import { tagData } from "./tagdata";
 import Detai from '@/components/detail';
+import { Value } from "sass";
 const mongoose = require("mongoose");
+
+
 
 
 
@@ -11,6 +15,7 @@ const mongoose = require("mongoose");
 //   "mongodb+srv://walabimoti0628:oit.guild@cluster0.r0ggqrq.mongodb.net/conpas?retryWrites=true&w=majority"
 //   ).then(()=>console.log("running"));
 
+const picked = articleData.map(item => articleData[5]);
 
 
 const BBS: React.FC = () => {
@@ -34,9 +39,15 @@ const BBS: React.FC = () => {
                   <p>{bbs.detail}</p>
                 </div>
                  
+                {/* {picked.map((t:string, index:number) => {
+                  return (
+                    <div key={bbs.id} > */}
                     <div className={styles.tagbox}>{bbs.tag}</div>
-                 
-                  
+                    {/* </div>
+                        )
+                  })}
+                       */
+                       }
                   <Detai />
                   
 
@@ -46,12 +57,11 @@ const BBS: React.FC = () => {
             </div>
      
             </article>
-          );
-        })}
-      </ul>
+          );{/* return*/}
+        })};{/* articledata*/}      </ul>
      
     </section>
-  );
-};
+  );//return
+};//1
 
 export default BBS;
