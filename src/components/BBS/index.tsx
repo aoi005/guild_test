@@ -23,7 +23,7 @@ const BBS: React.FC = () => {
           
             <div key={bbs.id} >
              
-                <a id ={`${bbs.path}`}>
+                <a  className={`${bbs.path}`}>
                   
                 <div className={styles.titlebox}>  
                   <h3 >{bbs.title}</h3>

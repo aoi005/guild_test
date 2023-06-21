@@ -15,25 +15,25 @@ const TOPICS = [
   },
   {
     icon: "/planning.png",
-    path: "/form",
+    path: "/solicit",
     title: "誘",
     name: "勧誘募集",
   },
   {
     icon: "/swords.png",
-    path: "/topics/technology",
+    path: "/fight",
     title: "共",
     name: "固定募集",
   },
   {
     icon: "/question-mark.png",
-    path: "/topics/entertainment",
+    path: "/question",
     title: "疑",
     name: "質問募集",
   },
   {
     icon: "/menu.png",
-    path: "/topics/sports",
+    path: "/menu",
     title: "使",
     name: "使い方",
   },
@@ -66,7 +66,7 @@ const Nav: React.FC = () => {
                 
                 {/* </Link> */}
        
-              <p>{topic.name}</p>
+              <p className={styles.namelogo}>{topic.name}</p>
               </a>
             </li>
           );

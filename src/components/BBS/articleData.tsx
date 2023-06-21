@@ -21,9 +21,9 @@ import React from "react";
 export const articleData = [
     {
         id: 1,
-        title:"各自作業お願いします。この画面はしばらくしたら消します",
-        detail:"詳細文",
-        tag:"タグ",
+        title:"しばらくしたら画面は消します",
+        detail:"各自作業お願います",
+        tag:"pm1~4",
         path:"",
     },
     {
