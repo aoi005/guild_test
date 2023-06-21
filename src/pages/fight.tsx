@@ -2,14 +2,12 @@ import Head from 'next/head'/* header で動いてる　よく分からん*/
 import MainLayout from '../layouts'
 import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
-import BBS from '../components/BBS'
+import BBSfight from '../components/BBSfight';
 import GroupsIcon from '@mui/icons-material/Groups';
-// import Popupmenu from '@/components/Popupmenu';
-import Link from "next/link";
-import dynamic from 'next/dynamic'
 import React from 'react';
 
-export default function Match() {
+
+export default function Home() {
  
   return (
     <MainLayout>
@@ -26,8 +24,8 @@ export default function Match() {
         <div className={styles.blank} />
         <div className={styles.main} >
         
-        <BBS />
-        {/* <Popupmenu/> */}
+        <BBSfight />
+ 
        
         
         </div>

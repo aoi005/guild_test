@@ -1,13 +1,15 @@
-import Head from 'next/head'/* header で動いてる　よく分からん*/
+import Image from "next/image";
+import { Inter } from "next/font/google";
 import MainLayout from '../layouts'
+import Head from "next/head";
 import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
-import BBS from '../components/BBS';
-import GroupsIcon from '@mui/icons-material/Groups';
+import BBSsolicit from '../components/BBSsolicit';
 
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
- 
   return (
     <MainLayout>
       <Head>
@@ -23,9 +25,9 @@ export default function Home() {
         <div className={styles.blank} />
         <div className={styles.main} >
         
-                 
-        <BBS />
+        <BBSsolicit />
       
+       
         </div>
       </div>
       
@@ -33,4 +35,3 @@ export default function Home() {
     </MainLayout>
   )
 }
-

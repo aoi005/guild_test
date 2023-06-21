@@ -13,7 +13,7 @@ const mongoose = require("mongoose");
 
 
 
-const BBS: React.FC = () => {
+const BBSfight: React.FC = () => {
   return (
     <section className={styles.bbs}>
       <ul className={styles.bbs__heading}>
@@ -30,7 +30,7 @@ const BBS: React.FC = () => {
                 </div>
 
                 <div className={styles.detailbox}>
-                  <h5>{bbs.guildname}</h5>
+                  <h5>{bbs.roomid}</h5>
                   <p>{bbs.detail}</p>
                 </div>
                  
@@ -54,4 +54,4 @@ const BBS: React.FC = () => {
   );
 };
 
-export default BBS;
+export default BBSfight;

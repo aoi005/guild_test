@@ -21,15 +21,13 @@ import React from "react";
 export const articleData = [
     {
         id: 1,
-        guildname:"ギルド名：xxx",
-        title:"しばらくしたら画面は消します",
-        detail:"各自作業お願います",
-        tag:"pm1~4",
+        title:"使い方",
+        detail:"難しい",
+        tag:"初心者",
         path:"",
     },
     {
         id: 2,
-        guildname:"ギルド名：xxx",
         title:"タイトル",
         detail:"詳細文",
         tag:"タグ",
@@ -38,7 +36,6 @@ export const articleData = [
     },
     {
         id: 3,
-        guildname:"ギルド名：xxx",
         title:"タイトル",
         detail:"詳細文",
         tag:"タグ",
@@ -46,7 +43,6 @@ export const articleData = [
     },
     {
         id: 4,
-        guildname:"ギルド名：xxx",
         title:"タイトル",
         detail:"詳細文",
         tag:"タグ",
@@ -54,7 +50,6 @@ export const articleData = [
     },
     {
         id: 5,
-        guildname:"ギルドギ：xxx",
         title:"タイトル",
         detail:"詳細文",
         tag:"タグ",

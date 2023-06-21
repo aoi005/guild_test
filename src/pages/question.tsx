@@ -2,8 +2,9 @@ import Head from 'next/head'/* header で動いてる　よく分からん*/
 import MainLayout from '../layouts'
 import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
-import BBS from '../components/BBS';
+import BBSquestion from '../components/BBSquestion';
 import GroupsIcon from '@mui/icons-material/Groups';
+import React from 'react';
 
 
 export default function Home() {
@@ -23,9 +24,7 @@ export default function Home() {
         <div className={styles.blank} />
         <div className={styles.main} >
         
-                 
-        <BBS />
-      
+        <BBSquestion />
         </div>
       </div>
       
@@ -33,4 +32,3 @@ export default function Home() {
     </MainLayout>
   )
 }
-

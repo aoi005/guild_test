@@ -51,7 +51,7 @@ function Popupsearch() {
 
       <div>
         <p>
-          投稿検索&nbsp;
+          投稿検索
         </p>
       </div>
         
