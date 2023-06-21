@@ -26,7 +26,7 @@ const BBS: React.FC = () => {
                 <a id ={`${bbs.path}`}>
                   
                 <div className={styles.titlebox}>  
-                  <h2 >{bbs.title}</h2>
+                  <h3 >{bbs.title}</h3>
                 </div>
 
                 <div className={styles.detailbox}>
@@ -36,7 +36,7 @@ const BBS: React.FC = () => {
                     <div className={styles.tagbox}>{bbs.tag}</div>
                  
                   
-                  <Detai   />
+                  <Detai  />
                   
 
 

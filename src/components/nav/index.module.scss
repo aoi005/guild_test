@@ -1,6 +1,7 @@
 .container {
     margin-top: 20px;/*文字の下s幅*/
     width: 100%;
+    display: block;
 
     
   }
@@ -12,26 +13,40 @@
     >li {
       margin-bottom: 10px;/*文字の下s幅*/
       opacity: 0.7;
-      color: rgb(54, 45, 45);
-      >a {
-        display: block;
-        >span {
-          margin-left: 30px;
-          line-height: 20px;
-          font-weight: bold;
-        }
-      }
-      &:hover {
-        opacity: 2.0;
-      }
-    }
+      color: rgb(173, 49, 49);
+      
+      
   }
-
+  }
   .button{
-    width: 100px;
-    color: rgb(36, 42, 42);
+    width: 50px;
+    color: rgb(15, 36, 36);
     justify-content: center;
     font-weight: bold;
        
-  
   }
+
+
+.titlesize{
+  font-size: 35px;
+}
+
+ 
+
+
+
+.navbtn{
+    color: #fff;
+    background-color: #bdcdd4;
+    border-bottom: 5px solid #37332e;
+    font-weight: bold;
+}
+.navbtn:hover{
+    margin-top: 3px;
+    color: #fff;
+    background: #f56500;
+    border-bottom: 2px solid #b84c00;
+    opacity: 1.0;
+}
+
+  

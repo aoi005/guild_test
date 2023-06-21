@@ -1,4 +1,4 @@
-// import styles from "./index.module.scss";
+import styles from "./index.module.scss";
 import Modal from 'react-modal';
 import { useState } from 'react';
 import React from "react";
@@ -33,7 +33,9 @@ function Detail() {
 
   return (
     <div>
-      <button style={{ letterSpacing: "20px", textAlign: "center" }}onClick={openModal}>詳細</button>
+      
+      <button onClick={openModal} className={styles.detailbtn}>詳細を見る</button>
+      
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}

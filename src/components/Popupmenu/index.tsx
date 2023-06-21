@@ -33,9 +33,9 @@ function Popup() {
 
   return (
   <div>
-    <button className={styles.formbtn}>
-      <a onClick={openModal}>投稿</a>
-    </button>
+    
+      <button onClick={openModal} className={styles.formbtn}>投稿</button>
+    
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}

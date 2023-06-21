@@ -10,27 +10,32 @@ const TOPICS = [
   {
     icon: "/megaphone.png",
     path: "/",
-    title: "団員募集",
+    title: "募",
+    name: "メンバー募集",
   },
   {
     icon: "/planning.png",
     path: "/form",
-    title: "勧誘募集",
+    title: "誘",
+    name: "勧誘募集",
   },
   {
     icon: "/swords.png",
     path: "/topics/technology",
-    title: "固定募集",
+    title: "共",
+    name: "固定募集",
   },
   {
     icon: "/question-mark.png",
     path: "/topics/entertainment",
-    title: "質問募集",
+    title: "疑",
+    name: "質問募集",
   },
   {
     icon: "/menu.png",
     path: "/topics/sports",
-    title: "使いかた",
+    title: "使",
+    name: "使い方",
   },
 ];
 
@@ -40,17 +45,14 @@ const Nav: React.FC = () => {
       <ul className={styles.contents}>
         {TOPICS.map((topic, index) => {
           return (
-            <li key={index} >
-              <div id="icon">
+            <li key={index} className={styles.navbtn}>
+            
                 <a
-                 className="pointer-events-none flex place-items-center"
-                href={`${topic.path}`}
-                // target=""
-                rel="noopener noreferrer"
-          >
-                {/* <Link href ={`${topic.path}`}> */}
+                 href={`${topic.path}`}
+                rel="noopener noreferrer">
 
-                <button>
+                {/* <Link href ={`${topic.path}`}> */}
+               
                   <Image
                       src={topic.icon}
                       alt=""
@@ -59,11 +61,13 @@ const Nav: React.FC = () => {
                       height={33}
                       priority
                     />
-                    <span style={{fontWeight: "bold"}}>{topic.title}</span>
-                  </button>
-                  </a>
+                    <span className={styles.titlesize}>{topic.title}</span>
+                  
+                
                 {/* </Link> */}
-              </div>
+       
+              <p>{topic.name}</p>
+              </a>
             </li>
           );
         })}

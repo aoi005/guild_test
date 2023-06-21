@@ -33,11 +33,11 @@ function Popupsearch() {
 
   return (
   <div>
-    <button className={styles.searchbtn}>
-      <a onClick={openModal}>
+    
+      <button onClick={openModal} className={styles.searchbtn}>
         検索
-        </a>
-    </button>
+      </button>
+    
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
