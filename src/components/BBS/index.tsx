@@ -15,7 +15,7 @@ const mongoose = require("mongoose");
 //   "mongodb+srv://walabimoti0628:oit.guild@cluster0.r0ggqrq.mongodb.net/conpas?retryWrites=true&w=majority"
 //   ).then(()=>console.log("running"));
 
-const picked = articleData.map(item => articleData[5]);
+const picked = articleData.map(item => articleData[0]);
 
 
 const BBS: React.FC = () => {
@@ -39,15 +39,15 @@ const BBS: React.FC = () => {
                   <p>{bbs.detail}</p>
                 </div>
                  
-                {/* {picked.map((t:string, index:number) => {
+                {/* { {picked.map((t:string, index:number) => {
                   return (
-                    <div key={bbs.id} > */}
+                    <div key={bbs.id} > } */}
                     <div className={styles.tagbox}>{bbs.tag}</div>
-                    {/* </div>
+                     {/* </div>
                         )
                   })}
-                       */
-                       }
+                       
+                       }  */}
                   <Detai />
                   
 

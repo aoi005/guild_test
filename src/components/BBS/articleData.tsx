@@ -22,8 +22,8 @@ export const articleData = [
     {
         id: 1,
         guildname:"ギルド名：xxx",
-        title:"しばらくしたら画面は消します",
-        detail:"各自作業お願います",
+        title:"タイトル",
+        detail:"詳細文",
         tag:["初心者","エンジョイ","夜"],
         path:"",
     },
@@ -49,7 +49,7 @@ export const articleData = [
         guildname:"ギルド名：xxx",
         title:"タイトル",
         detail:"詳細文",
-        tag:"タグ・タグ・タグ・タグ・タグ・タグ・タグ・タグ・タグ・タグ・タグ・タグ・タグ・タグ・タグ",
+        tag:"タグ",
         path:"",
     },
     {

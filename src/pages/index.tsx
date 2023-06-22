@@ -2,7 +2,7 @@ import Head from 'next/head'/* header で動いてる　よく分からん*/
 import MainLayout from '../layouts'
 import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
-import BBS from '../components/BBS';
+import BBS from '../components/BBS copy';
 import GroupsIcon from '@mui/icons-material/Groups';
 import FORM from '@/components/FORM';
 
