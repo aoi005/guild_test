@@ -6,7 +6,7 @@
   .bbs__heading {
     display: block;
     justify-content:center;
-    margin: 20px;
+    margin: 0px;
   }
   
   .bbs__main {
@@ -51,14 +51,22 @@
 
 .tagbox {
     padding: 0em 0em;
-    width: auto;
-    margin: 1em 0em;
+    width: fit-content;
+    margin-right: 8px;
+    margin-bottom: 8px;
     color: #080000;//文字色
     background: #fff8e8;//タグ背景（右側の部分）
     border-left: solid 5px #ffc06e;//タグのボーダー線
+    font-weight: bold;
 }
 
 .titlebox{
   border-bottom: 1px solid #190909;
+}
+
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
 }
 

@@ -19,47 +19,46 @@ import React from "react";
 
 
 export const articleData = [
-    {
-        id: 1,
-        title:"居心地いいとこ",
-        playerid:"プレイヤーID：xxx",
-        detail:"あああ",
-        tag:"pm1~4",
-        path:"",
-    },
-    {
-        id: 2,
-        title:"タイトル",
-        playerid:"プレイヤーID：xxx",
-        detail:"詳細文",
-        tag:"タグ",
-        path:"",
-
-    },
-    {
-        id: 3,
-        title:"タイトル",
-        playerid:"プレイヤーID：xxx",
-        detail:"詳細文",
-        tag:"タグ",
-        path:"",
-    },
-    {
-        id: 4,
-        title:"タイトル",
-        playerid:"プレイヤーID：xxx",
-        detail:"詳細文",
-        tag:"タグ",
-        path:"",
-    },
-    {
-        id: 5,
-        title:"タイトル",
-        playerid:"プレイヤーID：xxx",
-        detail:"詳細文",
-        tag:"タグ",
-        path:"",
-    },
+    [
+        1,
+        "xxx",
+        "タイトル",
+        "詳細文",
+        ["初心者","無言"],
+        "",
+    ],
+    [
+        2,
+        "xxx",
+        "タイトル",
+        "詳細文",
+        ["初心者"],
+        "",
+    ],
+    [
+        3,
+        "xxx",
+        "タイトル",
+        "詳細文",
+        ["初心者"],
+        "",
+    ],
+    [
+        4,
+        "xx",
+        "タイトル",
+        "詳細文",
+        "エンジョイ",
+        [""],
+    ],
+    [
+        5,
+        "xxx",
+        "タイトル",
+        "詳細文",
+        ["初心者","エンジョイ","夜"],
+        "",
+    ],
 ]
 
 

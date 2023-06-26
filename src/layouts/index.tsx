@@ -9,8 +9,14 @@ type LayoutProps = {
 function MainLayout({ children }: LayoutProps): JSX.Element {
   return (
     <>
+    
       <Header />
-      <main className={styles.main}>{children}</main>
+      
+      <div className={styles.background}>
+ 
+       <main className={styles.main}>{children}</main>
+
+      </div>
      
       
 

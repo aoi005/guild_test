@@ -50,9 +50,7 @@ function Detail() {
         <div>詳細文</div>
 
 
-        <form>
-          <input />
-        </form>
+        
       </Modal>
     </div>
   );
