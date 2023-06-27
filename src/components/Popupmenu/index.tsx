@@ -3,6 +3,8 @@ import Modal from 'react-modal';
 import { useState } from 'react';
 import React from "react";
 import Select from 'react-select'
+import UploadForm from "../Firebase/returnup";
+
 
 // const customStyles = {
 //   content: {
@@ -15,13 +17,7 @@ import Select from 'react-select'
 //   },
 // };
 
-const options = [
-  {value: 1, label: "初心者"},
-  {value: 2, label: "中級者"},
-  {value: 3, label: "上級者"},
-  {value: 4, label: "エンジョイ"},
-  {value: 5, label: "ガチ"}
-]
+
 
 function Popup() {
   let subtitle ="";
@@ -50,6 +46,7 @@ function Popup() {
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
+          // ariaHideApp={false}
           // style={{ letterSpacing: "20px", textAlign: "center" }}
           contentLabel="Example Modal"
         >
@@ -60,17 +57,9 @@ function Popup() {
      
       
         <h4>メンバー募集</h4>
-        <div>
-          ギルド名<input></input>
-        </div>
-        <div>
-          詳細<input></input>
-        </div>
 
-        <div style={{width: "500px", marginTop: "20px"}}>
-          タグ
-        <Select options={options} isMulti={true} />
-         </div>
+        <UploadForm />
+        
 
 
       </Modal>

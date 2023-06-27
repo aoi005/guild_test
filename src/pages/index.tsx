@@ -28,10 +28,12 @@ export default function Home() {
         <div className={styles.blank} />
         <div className={styles.main} >
 
+        
+
         <AppData />
         
         <BBS />
-        {/* <FORM/> */}
+   
        
         </div>
       </div>

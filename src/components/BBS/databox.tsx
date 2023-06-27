@@ -5,9 +5,7 @@ import  React, { useEffect, useState } from 'react';
 import { collection,getDocs } from 'firebase/firestore';
 import { DocumentData } from 'firebase/firestore';
 import Detai from '@/components/detail';
-
-
-
+import Description from '../detail/description';
 
 function AppData(){
     const [posts, setPosts] = useState<DocumentData[]>([]);
@@ -38,7 +36,7 @@ function SomeComponent({ posts }: { posts: DocumentData[] }) {
     <section className={styles.bbs}>
       <ul className={styles.bbs__heading}>
       {posts.map((post) => (
-        <article className={styles.bbs__main}>
+        <article className={styles.bbs__main} key={post.id}>
           <div>
             <div className={styles.titlebox}>
                     <h3>{post.title}</h3>
@@ -46,7 +44,9 @@ function SomeComponent({ posts }: { posts: DocumentData[] }) {
 
             <div className={styles.detailbox}>
                     <h5>ギルド名：{post.name}</h5>
-                    <p>{post.detail}</p>
+                    <br></br>
+                    <p>詳細文：{post.detail}</p>
+                    <br></br>
             </div>
 
             <div className={styles.tagContainer}>
@@ -61,7 +61,7 @@ function SomeComponent({ posts }: { posts: DocumentData[] }) {
                     )}
             </div>
                       
-            <Detai/>
+            <Description  detail={post.detail}/>
 
           </div>
         </article>

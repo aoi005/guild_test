@@ -1,7 +1,7 @@
 import styles from "./index.module.scss";
 import moment from "moment";
 import Props from "../types";
-// import { AppData } from "../data/databox";
+import AppData from "./databox";
 import { articleData } from "./articleData";
 import Detai from '@/components/detail';
 import { Value } from "sass";
@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 //   "mongodb+srv://walabimoti0628:oit.guild@cluster0.r0ggqrq.mongodb.net/conpas?retryWrites=true&w=majority"
 //   ).then(()=>console.log("running"));
 
-// const post = AppData();
+
 
 
 const BBS: React.FC = () => {
