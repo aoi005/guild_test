@@ -38,7 +38,7 @@ function Popup() {
 
   return (
   <div>
-       <div className={styles.formbox}>
+       <div style={{  overflowY: 'auto' }} className={styles.formbox}>
       <button onClick={openModal} className={styles.formbtn}>投稿</button>
     
     
@@ -49,6 +49,7 @@ function Popup() {
           // ariaHideApp={false}
           // style={{ letterSpacing: "20px", textAlign: "center" }}
           contentLabel="Example Modal"
+          className={styles.formarea}
         >
        
  
@@ -57,8 +58,11 @@ function Popup() {
      
       
         <h4>メンバー募集</h4>
+        <div className={styles.modalContent}> 
 
         <UploadForm />
+
+        </div>
         
 
 

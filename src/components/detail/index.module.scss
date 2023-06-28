@@ -10,3 +10,23 @@
     background: #f56500;
     border-bottom: 2px solid #b84c00;
 }
+
+
+
+.detailbox {
+    display: block;
+    border: 3px solid rgba(62, 46, 46, 0.5);
+    margin: 0 20px 20px 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+    background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+
+  }
+
+  .modalback{
+    margin-top: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: rgb(156, 207, 249);
+  }
