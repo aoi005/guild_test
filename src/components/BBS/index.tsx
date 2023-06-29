@@ -1,0 +1,1 @@
+import { articleData } from "./articleData";
