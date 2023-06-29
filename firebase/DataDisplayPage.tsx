@@ -1,11 +1,5 @@
 // DataDisplayPage.tsx
 
-/* import React from 'react';  //コンポーネント分割後
-import { useFirestoreData } from './useFirestoreData';
-import { initializeApp } from "firebase/app";
-import { useEffect, useState } from 'react';
-import { getFirestore, collection, getDocs } from 'firebase/firestore'; */
-
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
