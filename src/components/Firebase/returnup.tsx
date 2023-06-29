@@ -41,6 +41,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       time: currentTime,
     }));
     uploadData(formData);
+
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
