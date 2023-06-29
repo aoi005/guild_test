@@ -2,6 +2,7 @@ import styles from "./index.module.scss";
 import Modal from 'react-modal';
 import { useState } from 'react';
 import React from "react";
+import NewPost from "../firedetabox/NewPost";
 
 // const customStyles = {
 //   content: {
@@ -56,9 +57,7 @@ function Popupsearch() {
       </div>
         
         
-        <form>
-          <input />
-        </form>
+        <NewPost/>
       </Modal>
     </div>
   );

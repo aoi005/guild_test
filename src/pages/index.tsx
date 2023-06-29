@@ -5,10 +5,11 @@ import Nav from "../components/nav";
 import BBS from '../components/BBS';
 import GroupsIcon from '@mui/icons-material/Groups';
 import FORM from '@/components/FORM';
-import db from '@/firebase';
 import { useEffect, useState } from 'react';
 import AppData from '@/components/BBS/databox';
-import App from 'next/app';
+import AllPosts from '@/components/firedetabox/AllPost';
+
+
 
 
 export default function Home() {
@@ -29,10 +30,11 @@ export default function Home() {
         <div className={styles.main} >
 
         
-
+        {/* <AllPosts/> */}
         <AppData />
         
-        <BBS />
+        
+        {/* <BBS /> */}
    
        
         </div>

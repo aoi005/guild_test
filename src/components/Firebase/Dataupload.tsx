@@ -2,14 +2,20 @@ import { initializeApp } from "firebase/app";
 import { useState } from 'react';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
-// Firebaseの設定と型定義
+
+interface TagFields {
+    Able: boolean;
+    Bravo: boolean;
+    Charley: boolean;
+  }
 
 interface FirestoreData {
   id: string;
   title: string;
   name: string;
   detail: string;
-  tag: string;
+  tag: TagFields;
+  time:string;
 }
 
 const firebaseConfig = {
@@ -25,6 +31,15 @@ const firebaseConfig = {
 
 export function useFirestoreUpload() {
     const [uploadStatus, setUploadStatus] = useState<string>('');
+
+    const [formData, setFormData] = useState<FirestoreData>({
+        id: '',
+        title: '',
+        name: '',
+        detail: '',
+        time:'',
+        tag: { Able: false, Bravo: false, Charley: false }
+      });
   
     const uploadData = async (formData: FirestoreData) => {
       try {
@@ -36,14 +51,25 @@ export function useFirestoreUpload() {
             name: formData.name,
             detail: formData.detail,
             tag: formData.tag,
+            time:formData.time
           });
   
         setUploadStatus('Success');
+
+        setFormData((prevData) => ({
+            ...prevData,
+            id: '',
+            title: '',
+            name: '',
+            detail: '',
+            tag: { Able: false, Bravo: false, Charley: false }
+          }));
+
       } catch (error) {
         setUploadStatus('Error');
         console.error('Error uploading document:', error);
       }
     };
   
-    return { uploadData, uploadStatus };
+    return { formData, setFormData, uploadData, uploadStatus };
   }
