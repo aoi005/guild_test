@@ -29,19 +29,18 @@ export default function UploadForm() {
     name: '',
     tag:  { Able: false, Bravo: false, Charley: false },
     detail: '',
-    time:'',
+    time:new Date().toLocaleString(),
     // time: new Date(),
   });
 
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const currentTime = new Date().toLocaleDateString();
+    const currentTime = new Date().toLocaleString();
     setFormData((prevFormData) => ({
       ...prevFormData,
       time: currentTime,
     }));
     uploadData(formData);
-    console.log(formData.time)
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {

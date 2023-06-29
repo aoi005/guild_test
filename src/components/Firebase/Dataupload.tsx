@@ -62,6 +62,7 @@ export function useFirestoreUpload() {
             title: '',
             name: '',
             detail: '',
+            time:'',
             tag: { Able: false, Bravo: false, Charley: false }
           }));
 
@@ -70,6 +71,6 @@ export function useFirestoreUpload() {
         console.error('Error uploading document:', error);
       }
     };
-  
-    return { formData, setFormData, uploadData, uploadStatus };
+      return { formData, setFormData, uploadData, uploadStatus };
+   
   }
