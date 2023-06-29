@@ -19,7 +19,6 @@ interface FirestoreData {
   tag: TagFields;
   detail: string;
   time:string;
-//   time: Date;
 }
 
 const getStrTime = (time: string | number | Date) => {
