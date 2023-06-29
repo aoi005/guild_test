@@ -2,7 +2,6 @@ import styles from "./index.module.scss";
 import Image from "next/image";
 import React, { Component } from "react";
 import Link from "next/link";
-import WidgetsIcon from '@mui/icons-material/Widgets';
 import Popup from '../../components/Popupmenu';
 import Popupsearch from "@/components/Popupserach";
 

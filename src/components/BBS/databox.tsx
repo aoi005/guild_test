@@ -1,9 +1,9 @@
 import styles from './index.module.scss'
-import FORM from '@/components/FORM';
+
 import db from '@/firebase';
 import  React, { useEffect, useState } from 'react';
 import { DocumentData } from 'firebase/firestore';
-import Detai from '@/components/detail';
+
 import Description from '../detail/description';
 import { query, orderBy, limit,collection,getDocs  } from "firebase/firestore"; 
 import { TagDisplay } from '../Firebase/tagsort';

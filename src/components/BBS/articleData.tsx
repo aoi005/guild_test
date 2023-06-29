@@ -1,5 +1,3 @@
-import React from "react";
-// import { AppData } from "../data/databox";
 
 
 export const articleData = [
