@@ -1,14 +1,6 @@
 import styles from "./index.module.scss";
-import moment from "moment";
-import Props from "../types";
 import { articleData } from "./articleData";
 import Detai from '@/components/detail';
-import { Value } from "sass";
-const mongoose = require("mongoose");
-
-// mongoose.connect(
-//   "mongodb+srv://walabimoti0628:oit.guild@cluster0.r0ggqrq.mongodb.net/conpas?retryWrites=true&w=majority"
-//   ).then(()=>console.log("running"));
 
 const picked = articleData[0][4];
 
