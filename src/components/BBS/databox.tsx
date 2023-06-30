@@ -55,10 +55,36 @@ function AppData(){
 
 // SomeComponentコンポーネント　実際の表示を行う
 function SomeComponent({ posts }: { posts: DocumentData[] }) {
+  const [filter, setFilter] = useState('');
+
+  const FilterChange = (selectedFilter: string) => {
+    setFilter(selectedFilter);
+  };
+
+  const filteredPosts = posts.filter((post) => {
+   
+    if (filter === 'Able') {
+      return post.tag.Able === true;
+    } else if (filter === 'Bravo') {
+      return post.tag.Bravo === true;
+    } else if (filter === 'Charley') {
+      return post.tag.Charley === true;
+    } else {
+      return true; // 絞り込み条件がない場合はすべての投稿を表示
+    }
+  });
+
+
   return (
     <section className={styles.bbs}>
+      <div>
+        <button onClick={() => FilterChange('Able')}>Able</button>
+        <button onClick={() => FilterChange('Bravo')}>Bravo</button>
+        <button onClick={() => FilterChange('Charley')}>Charley</button>
+        <button onClick={() => FilterChange('')}>All</button>
+      </div>
       <ul className={styles.bbs__heading}>
-      {posts.map((post) => (
+      {filteredPosts.map((post) => (
         <article className={styles.bbs__main} key={post.id}>
           <div>
             <div className={styles.titlebox}>
