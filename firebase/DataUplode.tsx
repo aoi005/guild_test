@@ -7,9 +7,7 @@ import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
 
 interface TagFields {
-  Able: boolean;
-  Bravo: boolean;
-  Charley: boolean;
+  [tagName: string]: boolean;
 }
 
 interface FirestoreData {
@@ -31,6 +29,18 @@ interface FirestoreData {
 };
 
 
+const tags: string[] = ["Able", "Bravo", "Charlie", "Delta"]; 
+  // タグ名のリスト。ここを編集するだけで数、名前を変更可能。
+
+const initialTags: TagFields = {
+  Able: false,
+  Bravo: false,
+  Charley: false,
+  Delta: false,
+  // 追加したタグにも初期値を設定してください。
+};
+
+
   export function useFirestoreUpload() { //データ投稿側関数
     const [uploadStatus, setUploadStatus] = useState<string>('');
     const [formData, setFormData] = useState<FirestoreData>({
@@ -38,7 +48,7 @@ interface FirestoreData {
       title: '',
       author: '',
       price: 0,
-      tag: { Able: false, Bravo: false, Charley: false }
+      tag:initialTags,
     });
 
     const uploadData = async (formData: FirestoreData) => {
@@ -61,7 +71,7 @@ interface FirestoreData {
       title: '',
       author: '',
       price: 0,
-      tag: { Able: false, Bravo: false, Charley: false }
+      tag: initialTags,
     }));
       } catch (error) {
         setUploadStatus('Error');
@@ -81,20 +91,21 @@ export default function UploadForm() {  //フォーム入力側関数(onsubmit�
     title: '',
     author: '',
     price: 0,
-    tag: { Able: false, Bravo: false, Charley: false },
+    tag: initialTags,
   });
+
+  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     uploadData(formData);
-    setFormData((prevData) => ({
-      ...prevData,
+    setFormData({
       id: '',
       title: '',
       author: '',
       price: 0,
-      tag: { Able: false, Bravo: false, Charley: false }
-    }));
+      tag: {},
+    });
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -113,62 +124,39 @@ export default function UploadForm() {  //フォーム入力側関数(onsubmit�
     <div>
       <h2>Data Upload</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={formData.id}
-          onChange={(e) => setFormData({ ...formData, id: e.target.value })}
-          placeholder="Document ID"
-        />
-        <input
-          type="text"
-          value={formData.title}
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          placeholder="Title"
-        />
-        <input
-          type="text"
-          value={formData.author}
-          onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-          placeholder="Author"
-        />
-        <input
-          type="number"
-          value={formData.price}
-          onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) })}
-          placeholder="Price"
-        />
+        {Object.entries(formData).map(([key, value]) => {
+          if (key === "tag") {
+            return (
+              <div key={key}>
+                {tags.map((tagName) => (
+                  <label key={tagName}>
+                    {tagName}:
+                    <input
+                      type="checkbox"
+                      name={tagName}
+                      checked={formData.tag[tagName] || false}
+                      onChange={handleCheckboxChange}
+                    />
+                  </label>
+                ))}
+              </div>
+            );
+          }
 
-      <label>
-          Able:
-          <input
-            type="checkbox"
-            name="Able"
-            checked={formData.tag.Able}
-            onChange={handleCheckboxChange}
-          />
-        </label>
-        <label>
-          Bravo:
-          <input
-            type="checkbox"
-            name="Bravo"
-            checked={formData.tag.Bravo}
-            onChange={handleCheckboxChange}
-          />
-        </label>
-        <label>
-          Charley:
-          <input
-            type="checkbox"
-            name="Charley"
-            checked={formData.tag.Charley}
-            onChange={handleCheckboxChange}
-          />
-        </label>
+          return (
+            <input
+              key={key}
+              type={typeof value === "number" ? "number" : "text"}
+              value={value}
+              onChange={(e) => setFormData({ ...formData, [key]: e.target.value })}
+              placeholder={key}
+            />
+          );
+        })}
 
         <button type="submit">データを追加/更新</button>
       </form>
-      <br></br>
+      <br />
       {uploadStatus === 'Success' && <p>Upload successful!</p>}
       {uploadStatus === 'Error' && <p>Upload failed!</p>}
     </div>
