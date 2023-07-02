@@ -1,9 +1,9 @@
 // DataDisplayPage.tsx
 
-import React, { useEffect, useSt
-import { initializeApp } from 'f
-import { getFirestore, collectio
-//import { TagDisplay } from './
+import React, { useEffect, useState } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+//import { TagDisplay } from './tagsort'
 
 // Firebaseの設定と型定義
 
@@ -20,37 +20,37 @@ interface FirestoreData {
 }
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDeT3DgOkSe0Ps
-    authDomain: "predate-032.fir
+    apiKey: "AIzaSyDeT3DgOkSe0PsJm8xu9lueT4CQz_EGirE",
+    authDomain: "predate-032.firebaseapp.com",
     projectId: "predate-032",
-    storageBucket: "predate-032.
-    messagingSenderId: "59039270
-    appId: "1:590392707099:web:9
-    measurementId: "G-FTVDCJRC4X
+    storageBucket: "predate-032.appspot.com",
+    messagingSenderId: "590392707099",
+    appId: "1:590392707099:web:906574ccb256290add10be",
+    measurementId: "G-FTVDCJRC4X"
 };
 
 
 
-// タグ名のリスト。ここを編集す
-const tagList: string[] = ['Able
+// タグ名のリスト。ここを編集するだけで数、名前を変更可能。
+const tagList: string[] = ['Able', 'Bravo', 'Charley','Delta','Echo']; 
 
 
 
 
-export function useFirestoreData
-  const [data, setData] = useSta
+export function useFirestoreData() {
+  const [data, setData] = useState<FirestoreData[]>([]);
 
   useEffect(() => {
-    const app = initializeApp(fi
-    const db = getFirestore(app)
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-    const fetchData = async () =
+    const fetchData = async () => {
       try {
-        const querySnapshot = aw
-        const fetchedData: Fires
+        const querySnapshot = await getDocs(collection(db, 'books'));
+        const fetchedData: FirestoreData[] = [];
 
-        querySnapshot.forEach((d
-          const { title, author,
+        querySnapshot.forEach((doc) => {
+          const { title, author, price, tag } = doc.data();
           fetchedData.push({
             id: doc.id,
             title,
@@ -62,7 +62,7 @@ export function useFirestoreData
 
         setData(fetchedData);
       } catch (error) {
-        console.error('Error fet
+        console.error('Error fetching Firestore data:', error);
       }
     };
 
@@ -72,43 +72,43 @@ export function useFirestoreData
   return data;
 }
 
-const sortPriority: { [key: stri
+const sortPriority: { [key: string]: number } = {
   Able: 1,
   Bravo: 2,
   Charley: 3,
 };
 
-const customSort = ([a]: [string
-  const priorityA = sortPriority
-  const priorityB = sortPriority
+const customSort = ([a]: [string, boolean], [b]: [string, boolean]) => {
+  const priorityA = sortPriority[a] || Infinity;
+  const priorityB = sortPriority[b] || Infinity;
 
   return priorityA - priorityB;
 };
 
-export default function DataDisp
-  const data = useFirestoreData(
-  const [selectedTags, setSelect
+export default function DataDisplayPage() {
+  const data = useFirestoreData();
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
-  const handleTagSelect = (tagNa
-    setSelectedTags((prevSelecte
-      if (prevSelectedTags.inclu
-        // タグが既に選択されて
-        return prevSelectedTags.
+  const handleTagSelect = (tagName: string) => {
+    setSelectedTags((prevSelectedTags) => {
+      if (prevSelectedTags.includes(tagName)) {
+        // タグが既に選択されている場合は削除
+        return prevSelectedTags.filter((tag) => tag !== tagName);
       } else {
-        // タグが選択されていな
-        return [...prevSelectedT
+        // タグが選択されていない場合は追加
+        return [...prevSelectedTags, tagName];
       }
     });
   };
 
-  const filteredData = data.filt
-    if (selectedTags.length === 
-      // 選択されたタグがない場
+  const filteredData = data.filter((item) => {
+    if (selectedTags.length === 0) {
+      // 選択されたタグがない場合はすべてのデータを表示
       return true;
     }
 
-    // 選択されたタグに一致する
-    return selectedTags.every((t
+    // 選択されたタグに一致するデータのみ表示
+    return selectedTags.every((tag) => item.tag[tag]);
   });
 
   
@@ -117,34 +117,34 @@ export default function DataDisp
     <div>
       <h1>Data Display</h1>
 
-      <div className='Tagsellect
-        Selected Tags: {selected
+      <div className='Tagsellect'>
+        Selected Tags: {selectedTags.join(', ')}
       </div>
 
       <div>
         {tagList.map((tag) => (
-          <button key={tag} onCl
+          <button key={tag} onClick={() => handleTagSelect(tag)}  className='Tagsellect'>
             Toggle {tag}
           </button>
         ))}
       </div>
 
-      {filteredData.map((item) =
-        <ul className="itemflex"
+      {filteredData.map((item) => (
+        <ul className="itemflex" key={item.id}>
           <li>
             {item.id}
             <div>
               <a>
-                Title: {item.tit
+                Title: {item.title} / Author: {item.author} / Price: {item.price}
               </a>
             </div>
             <div>
               Tags:
-              {Object.entries(it
-                .sort(customSort
-                .map(([tagName, 
-                  if (tagValue) 
-                    return <span
+              {Object.entries(item.tag)
+                .sort(customSort)
+                .map(([tagName, tagValue]) => {
+                  if (tagValue) {
+                    return <span key={tagName}>{tagName} </span>;
                   }
                   return null;
                 })}
@@ -155,3 +155,4 @@ export default function DataDisp
     </div>
   );
 }
+
