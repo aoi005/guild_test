@@ -4,9 +4,7 @@ import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
 
 interface TagFields {
-    Able: boolean;
-    Bravo: boolean;
-    Charley: boolean;
+  [tagName: string]: boolean;
   }
 
 interface FirestoreData {
@@ -28,6 +26,15 @@ const firebaseConfig = {
     measurementId: "G-5JSSYVBJR0"
 };
 
+const initialTags: TagFields = {
+  Able: false,
+  Bravo: false,
+  Charley: false,
+  Delta: false,
+  // 追加したタグにも初期値を設定してください。
+};
+
+
 
 export function useFirestoreUpload() {
     const [uploadStatus, setUploadStatus] = useState<string>('');
@@ -38,7 +45,7 @@ export function useFirestoreUpload() {
         name: '',
         detail: '',
         time:'',
-        tag: { Able: false, Bravo: false, Charley: false }
+        tag: initialTags,
       });
   
     const uploadData = async (formData: FirestoreData) => {
@@ -63,7 +70,7 @@ export function useFirestoreUpload() {
             name: '',
             detail: '',
             time:'',
-            tag: { Able: false, Bravo: false, Charley: false }
+            tag: initialTags,
           }));
 
       } catch (error) {

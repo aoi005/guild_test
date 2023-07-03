@@ -33,7 +33,7 @@ function Popupsearch() {
   }
 
   return (
-  <div>
+  <div >
     
       <button onClick={openModal} className={styles.searchbtn}>
         検索
@@ -45,6 +45,7 @@ function Popupsearch() {
         onRequestClose={closeModal}
         // style={{ letterSpacing: "20px", textAlign: "center" }}
         contentLabel="Example Modal"
+        className={styles.formarea}
       >
         {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
         <button  style={{ letterSpacing: "20px", textAlign: "center" }}　onClick={closeModal}>×</button>

@@ -18,3 +18,22 @@
 //         onChange={(e) => setFormData({ ...formData, detail: e.target.value })}
 //         placeholder="詳細文"
 //         /><br></br>
+
+.formtext {
+        height: 2.4em;
+        width: 100%;
+        padding: 1em 2em;
+        margin-left: 30%;
+        margin-right: 30%;
+        border-radius: 4px;
+        border: none;
+        box-shadow: 0 0 0 1px #ccc inset;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+    
+    .formtext:focus {
+        outline: 0;
+        box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+    }

@@ -18,13 +18,13 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const ap = initializeApp(firebaseConfig);
+const db = getFirestore(ap);
 let analytics;
 
 if (typeof window !== "undefined") {
   // クライアントサイドのみで実行されるコード
-  analytics = getAnalytics(app);
+  analytics = getAnalytics(ap);
 }
 
 export default db;

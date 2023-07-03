@@ -11,16 +11,11 @@ function MainLayout({ children }: LayoutProps): JSX.Element {
     <>
     
       <Header />
+
+      
       
       <div className={styles.background}>
- 
-       <main className={styles.main}>
-        {children}
-        </main>
-
-
-
-        {/* <div className={styles.area}>
+      {/* <div className={styles.area}>
           <ul className={styles.circles}>
             <li></li>
             <li></li>
@@ -32,8 +27,11 @@ function MainLayout({ children }: LayoutProps): JSX.Element {
             <li></li>
             <li></li>
           </ul>
-        </div>
- */}
+        </div> */}
+       
+        <main className={styles.main}>{children}</main>
+        
+        
 
       </div>
      

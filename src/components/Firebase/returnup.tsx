@@ -6,9 +6,7 @@ import 'firebase/firestore';
 
 
 interface TagFields {
-    Able: boolean;
-    Bravo: boolean;
-    Charley: boolean;
+  [tagName: string]: boolean;
   }
 
 interface FirestoreData {
@@ -21,13 +19,23 @@ interface FirestoreData {
 //   time: Date;
 }
 
+const tags: string[] = ["Able", "Bravo", "Charlie", "Delta"]; 
+
+const initialTags: TagFields = {
+  Able: false,
+  Bravo: false,
+  Charley: false,
+  Delta: false,
+  // 追加したタグにも初期値を設定してください。
+};
+
 export default function UploadForm() {
   const { uploadData, uploadStatus } = useFirestoreUpload();
   const [formData, setFormData] = useState<FirestoreData>({
     id: '',
     title: '',
     name: '',
-    tag:  { Able: false, Bravo: false, Charley: false },
+    tag:  initialTags,
     detail: '',
     time:new Date().toLocaleString(),
     // time: new Date(),
@@ -35,12 +43,18 @@ export default function UploadForm() {
 
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    uploadData(formData);
     const currentTime = new Date().toLocaleString();
     setFormData((prevFormData) => ({
       ...prevFormData,
+      id: '',
+      title: '',
+      name: '',
+      tag: {},
+      detail: '',
       time: currentTime,
     }));
-    uploadData(formData);
+    
 
   };
 
@@ -60,64 +74,111 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     <div>
       <h1>Data Upload</h1>
       <form onSubmit={handleSubmit} className={styles.formlayout}>
-        <input 
-          type="text"
-          value={formData.id}
-          onChange={(e) => setFormData({ ...formData, id: e.target.value })}
-          placeholder="プレイヤーID"
-        /><br></br>
+      {Object.entries(formData).map(([key, value]) => {
+          if (key === "tag") {
+            return (
+              <div key={key}>
+                {tags.map((tagName) => (
+                  <label key={tagName}>
+                    {tagName}:
+                    <input
+                      type="checkbox"
+                      name={tagName}
+                      checked={formData.tag[tagName] || false}
+                      onChange={handleCheckboxChange}
+                    />
+                  </label>
+                ))}
+              </div>
+            );
+          }
 
-        <input
-          type="text"
-          value={formData.title}
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          placeholder="タイトル"
-        /><br></br>
+
+          return (
+            <input
+              key={key}
+              type={typeof value === "number" ? "number" : "text"}
+              value={value}
+              onChange={(e) => setFormData({ ...formData, [key]: e.target.value })}
+              placeholder={key}
+            />
+          );
+        })}
+
+        
+
+        {/* {*/  
+        //   type="text"
+        //   value={formData.id}
+        //   onChange={(e) => setFormData({ ...formData, id: e.target.value })}
+        //   placeholder="プレイヤーID"
+        // /><br></br>
+
+      /*}
+
+        // <input *
+        //   type="text"
+        //   value={formData.title}
+        //   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+        //   placeholder="タイトル"
+        // /><br></br>
   
-        <input
-          type="text"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          placeholder="プレイヤー名"
-        /><br></br>
+        // <input
+        //   type="text"
+        //   value={formData.name}
+        //   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        //   placeholder="プレイヤー名"
+        // /><br></br>
 
-        <input
-          type="text"
-          value={formData.detail}
-          onChange={(e) => setFormData({ ...formData, detail: e.target.value })}
-          placeholder="詳細文"
-        /><br></br>
+        // {/* <input
+        //   type="text"
+        //   value={formData.detail}
+        //   onChange={(e) => setFormData({ ...formData, detail: e.target.value })}
+        //   placeholder="詳細文"
+        // /><br></br> *
+
+        // <textarea
+        //     style={{ width: '150%', height: '200x', resize: 'vertical' }}
+        //     wrap="hard"
+        //     //   type="text"
+        //     value={formData.detail}
+        //     onChange={(e) => setFormData({ ...formData, detail: e.target.value })}
+        //     placeholder="詳細文"
+        // /><br></br>
    
-        <label>
-          Able:
-          <input
-            type="checkbox"
-            name="Able"
-            checked={formData.tag.Able}
-            onChange={handleCheckboxChange}
-          />
-        </label>
+        // <label>
+        //   Able:
+        //   <input
+        //     type="checkbox"
+        //     name="Able"
+        //     checked={formData.tag.Able}
+        //     onChange={handleCheckboxChange}
+        //   />
+        // </label>
 
-        <label>
-          Bravo:
-          <input
-            type="checkbox"
-            name="Bravo"
-            checked={formData.tag.Bravo}
-            onChange={handleCheckboxChange}
-          />
-        </label>
+        // <label>
+        //   Bravo:
+        //   <input
+        //     type="checkbox"
+        //     name="Bravo"
+        //     checked={formData.tag.Bravo}
+        //     onChange={handleCheckboxChange}
+        //   />
+        // </label>
 
-        <label>
-          Charley:
-          <input
-            type="checkbox"
-            name="Charley"
-            checked={formData.tag.Charley}
-            onChange={handleCheckboxChange}
-          />
-        </label>
-        <br></br>
+        // <label>
+        //   Charley:
+        //   <input
+        //     type="checkbox"
+        //     name="Charley"
+        //     checked={formData.tag.Charley}
+        //     onChange={handleCheckboxChange}
+        //   />
+        // </label>
+        // <br></br>
+
+        // );
+     */}
        
         
         <button type="submit">データを追加/更新</button>

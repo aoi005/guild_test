@@ -48,10 +48,9 @@ function AppData(){
 
       fetchPosts();
     }, []);
-  
-
     return <SomeComponent posts={posts} />;
 }
+
 
 // SomeComponentコンポーネント　実際の表示を行う
 function SomeComponent({ posts }: { posts: DocumentData[] }) {

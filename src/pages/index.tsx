@@ -3,6 +3,7 @@ import MainLayout from '../layouts'
 import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
 import AppData from '@/components/BBS/databox';
+import DataDisplayPage from '@/components/Firebase/DataDisplayPage';
 
 
 
@@ -24,6 +25,8 @@ export default function Home() {
         </div>
         <div className={styles.blank} />
         <div className={styles.main} >
+
+        <DataDisplayPage/>
 
         
         {/* <AllPosts/> */}
