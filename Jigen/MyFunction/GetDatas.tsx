@@ -11,8 +11,8 @@ export type MyType = [{
     aaa: string;
     bbb: string;
     ccc: string;
-
 }];
+
 export async function GetDatas(collectionId: string): Promise<any[]> {
     const querySnapshot = await getDocs(collection(db, collectionId));
     const posts = querySnapshot.docs.map((doc) => doc.data());
