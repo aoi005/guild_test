@@ -24,13 +24,16 @@ export default function Home() {
           </nav>
         </div>
         <div className={styles.blank} />
+      
         <div className={styles.main} >
 
+
+       
         <DataDisplayPage/>
 
         
         {/* <AllPosts/> */}
-        <AppData />
+        {/* <AppData /> */}
         
         
         {/* <BBS /> */}

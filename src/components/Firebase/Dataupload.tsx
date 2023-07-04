@@ -13,7 +13,7 @@ interface FirestoreData {
   name: string;
   detail: string;
   tag: TagFields;
-  time:string;
+  time:number;
 }
 
 const firebaseConfig = {
@@ -35,6 +35,8 @@ const initialTags: TagFields = {
 };
 
 
+const currentTime = new Date().getTime();
+
 
 export function useFirestoreUpload() {
     const [uploadStatus, setUploadStatus] = useState<string>('');
@@ -44,7 +46,7 @@ export function useFirestoreUpload() {
         title: '',
         name: '',
         detail: '',
-        time:'',
+        time:currentTime,
         tag: initialTags,
       });
   
@@ -69,7 +71,7 @@ export function useFirestoreUpload() {
             title: '',
             name: '',
             detail: '',
-            time:'',
+            time:currentTime,
             tag: initialTags,
           }));
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import styles from './index.module.scss';
+import Description from '../detail/description';
 //import { TagDisplay } from './tagsort'
 
 // Firebaseの設定と型定義
@@ -12,8 +14,9 @@ interface TagFields {
 interface FirestoreData {
   id: string;
   title: string;
-  author: string;
-  price: number;
+  name: string;
+  detail: string;
+  time:number;
   tag: TagFields;
 }
 
@@ -27,10 +30,18 @@ const firebaseConfig = {
   measurementId: "G-5JSSYVBJR0"
 };
 
+const getStrTime = (time: string | number | Date) => {
+  let t = new Date(time);
+  return `${t.getFullYear()}/${
+    t.getMonth() + 1
+  }/${t.getDate()} ${t.getHours()}:${t.getMinutes()}:${t.getSeconds()}`;
+};
+
 
 
 // タグ名のリスト。ここを編集するだけで数、名前を変更可能。
 const tagList: string[] = ['Able', 'Bravo', 'Charley','Delta','Echo']; 
+
 
 
 
@@ -48,12 +59,13 @@ export function useFirestoreData() {
         const fetchedData: FirestoreData[] = [];
 
         querySnapshot.forEach((doc) => {
-          const { title, author, price, tag } = doc.data();
+          const { title, name,time,detail, tag } = doc.data();
           fetchedData.push({
             id: doc.id,
             title,
-            author,
-            price,
+            name,
+            time,
+            detail,
             tag,
           });
         });
@@ -99,7 +111,12 @@ export default function DataDisplayPage() {
     });
   };
 
-  const filteredData = data.filter((item) => {
+ 
+
+  const filteredData = data
+  .sort((a, b) => b.time - a.time) // timeプロパティで降順ソート
+  .filter((item) => {
+    
     if (selectedTags.length === 0) {
       // 選択されたタグがない場合はすべてのデータを表示
       return true;
@@ -129,12 +146,18 @@ export default function DataDisplayPage() {
 
       {filteredData.map((item) => (
         <ul className="itemflex" key={item.id}>
-          <li>
-            {item.id}
+          <article className={styles.bbs__main}>
+            {/* {item.id} */}
+            <div className={styles.titlebox}>
+              <h3>
+                Title: {item.title} 
+              </h3>
+            </div>
             <div>
-              <a>
-                Title: {item.title} / Author: {item.author} / Price: {item.price}
-              </a>
+              <h5>name: {item.name}</h5>
+              <br></br>
+               <p>{item.detail}</p>
+              <br></br>
             </div>
             <div>
               Tags:
@@ -147,7 +170,12 @@ export default function DataDisplayPage() {
                   return null;
                 })}
             </div>
-          </li>
+
+            <p>{getStrTime(item.time)}</p>
+
+            <Description  detail={item.detail}/>
+
+          </article>
         </ul>
       ))}
     </div>
