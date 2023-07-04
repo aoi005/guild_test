@@ -3,6 +3,8 @@ import { useFirestoreUpload } from './Dataupload';
 import styles from "./index.module.scss";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import { Timestamp } from 'firebase/firestore';
+
 
 
 interface TagFields {
@@ -16,11 +18,11 @@ interface FirestoreData {
   tag: TagFields;
   detail: string;
   // time:string;
-  time: number;
+  time: Timestamp;
 }
 
 
-const currentTime = new Date().getTime();
+const currentTime = Timestamp.now();
 
 const tags: string[] = ["Able", "Bravo", "Charlie", "Delta"]; 
 
@@ -43,6 +45,7 @@ export default function UploadForm() {
     time: currentTime,
     // time: new Date(),
   });
+  console.log(formData.time)
 
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -58,7 +61,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       time: currentTime,
     }));
     
-
+    console.log(formData.time)
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -187,7 +190,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         <button type="submit">データを追加/更新</button>
       </form>
       
-      {uploadStatus === 'Success' && <p>{formData.time} formed!</p>}
+      {uploadStatus === 'Success' && <p>{} formed!</p>}
       {uploadStatus === 'Error' && <p>Upload failed!</p>}
     </div>
   );

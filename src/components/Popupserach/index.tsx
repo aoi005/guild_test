@@ -58,7 +58,7 @@ function Popupsearch() {
       </div>
         
         
-        <NewPost/>
+        {/* <NewPost/> */}
       </Modal>
     </div>
   );

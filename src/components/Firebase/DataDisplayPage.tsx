@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, Timestamp } from 'firebase/firestore';
 import styles from './index.module.scss';
 import Description from '../detail/description';
 //import { TagDisplay } from './tagsort'
@@ -41,8 +41,6 @@ const getStrTime = (time: string | number | Date) => {
 
 // タグ名のリスト。ここを編集するだけで数、名前を変更可能。
 const tagList: string[] = ['Able', 'Bravo', 'Charley','Delta','Echo']; 
-
-
 
 
 
@@ -131,18 +129,32 @@ export default function DataDisplayPage() {
   return (
     <div>
       <h1>Data Display</h1>
+      
 
       <div className='Tagsellect'>
-        Selected Tags: {selectedTags.join(', ')}
+        タグ絞り込み: {selectedTags.join(', ')}
       </div>
 
       <div>
+        {tagList.map((tag) => (
+          <label key={tag} className='Tagsellect'>
+            <input
+              type="checkbox"
+              checked={selectedTags.includes(tag)}
+              onChange={() => handleTagSelect(tag)}
+            />
+            {tag}
+          </label>
+        ))}
+      </div>
+
+      {/* <div>
         {tagList.map((tag) => (
           <button key={tag} onClick={() => handleTagSelect(tag)}  className='Tagsellect'>
             Toggle {tag}
           </button>
         ))}
-      </div>
+      </div> */}
 
       {filteredData.map((item) => (
         <ul className="itemflex" key={item.id}>
@@ -150,22 +162,22 @@ export default function DataDisplayPage() {
             {/* {item.id} */}
             <div className={styles.titlebox}>
               <h3>
-                Title: {item.title} 
+                 {item.title} {/*タイトル*/}
               </h3>
             </div>
             <div>
-              <h5>name: {item.name}</h5>
+              <h5>Guildname: {item.name}</h5>
               <br></br>
                <p>{item.detail}</p>
               <br></br>
             </div>
-            <div>
-              Tags:
+            <div >
+              タグ:
               {Object.entries(item.tag)
                 .sort(customSort)
                 .map(([tagName, tagValue]) => {
                   if (tagValue) {
-                    return <span key={tagName}>{tagName} </span>;
+                    return <span key={tagName} className={styles.tagbox} >{tagName} </span>;
                   }
                   return null;
                 })}

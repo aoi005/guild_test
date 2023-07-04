@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { useState } from 'react';
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, setDoc, Timestamp } from 'firebase/firestore';
 
 
 interface TagFields {
@@ -13,7 +13,7 @@ interface FirestoreData {
   name: string;
   detail: string;
   tag: TagFields;
-  time:number;
+  time:Timestamp;
 }
 
 const firebaseConfig = {
@@ -35,7 +35,7 @@ const initialTags: TagFields = {
 };
 
 
-const currentTime = new Date().getTime();
+const currentTime = Timestamp.now();
 
 
 export function useFirestoreUpload() {
