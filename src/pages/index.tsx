@@ -14,7 +14,11 @@ export default function Home() {
   return (
     <MainLayout>
       <Head>
-      <div><title>＃コンパスギルドメンバー募集掲示板</title></div>
+      <div>
+      <head>
+        <title>＃コンパスギルドメンバー募集掲示板</title>
+      </head>
+      </div>
         
       </Head>
       
