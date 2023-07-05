@@ -17,7 +17,7 @@ export default function Home() {
         
         
       </Head>
-      
+      <div><title>＃コンパスギルドメンバー募集掲示板</title></div>
        <div className={styles.contents}>
         <div className={styles.nav}>
           <nav>
