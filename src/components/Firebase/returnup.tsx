@@ -17,12 +17,15 @@ interface FirestoreData {
   name: string;
   tag: TagFields;
   detail: string;
-  // time:string;
-  time: Timestamp;
+  strT:number;
+  time: Date;
+  limit:Date;
 }
 
 
-const currentTime = Timestamp.now();
+const currentTime = new Date();
+const limitTime = new Date(currentTime.getTime()+(14 * 24 * 60 * 60 * 1000));
+
 
 const tags: string[] = ["Able", "Bravo", "Charlie", "Delta"]; 
 
@@ -42,7 +45,9 @@ export default function UploadForm() {
     name: '',
     tag:  initialTags,
     detail: '',
+    strT:currentTime.getTime(),
     time: currentTime,
+    limit:limitTime,
     // time: new Date(),
   });
   console.log(formData.time)
@@ -58,7 +63,9 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       name: '',
       tag: {},
       detail: '',
+      strT:currentTime.getTime(),
       time: currentTime,
+      limit:limitTime,
     }));
     
     console.log(formData.time)

@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, Timestamp } from 'firebase/firestore';
 import styles from './index.module.scss';
 import Description from '../detail/description';
-//import { TagDisplay } from './tagsort'
+import firebase from "firebase/compat/app";
 
 // Firebaseの設定と型定義
 
@@ -16,7 +16,9 @@ interface FirestoreData {
   title: string;
   name: string;
   detail: string;
-  time:number;
+  strT:number;
+  time:Timestamp;
+  limit:Date;
   tag: TagFields;
 }
 
@@ -57,12 +59,14 @@ export function useFirestoreData() {
         const fetchedData: FirestoreData[] = [];
 
         querySnapshot.forEach((doc) => {
-          const { title, name,time,detail, tag } = doc.data();
+          const { title, name,strT,time,limit,detail, tag } = doc.data();
           fetchedData.push({
             id: doc.id,
             title,
             name,
+            strT,
             time,
+            limit,
             detail,
             tag,
           });
@@ -109,10 +113,12 @@ export default function DataDisplayPage() {
     });
   };
 
+
+ 
  
 
   const filteredData = data
-  .sort((a, b) => b.time - a.time) // timeプロパティで降順ソート
+  .sort((a, b) =>(b.strT - a.strT)) // timeプロパティで降順ソート
   .filter((item) => {
     
     if (selectedTags.length === 0) {
@@ -128,12 +134,12 @@ export default function DataDisplayPage() {
 
   return (
     <div>
-      <h1>Data Display</h1>
+      <h4>タグ絞り込み</h4>
       
 
-      <div className='Tagsellect'>
+      {/* <div className='Tagsellect'>
         タグ絞り込み: {selectedTags.join(', ')}
-      </div>
+      </div> */}
 
       <div>
         {tagList.map((tag) => (
@@ -183,7 +189,7 @@ export default function DataDisplayPage() {
                 })}
             </div>
 
-            <p>{getStrTime(item.time)}</p>
+            <p>{getStrTime(item.strT)}</p>
 
             <Description  detail={item.detail}/>
 

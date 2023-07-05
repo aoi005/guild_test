@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { useState } from 'react';
-import { getFirestore, doc, setDoc, Timestamp } from 'firebase/firestore';
+import { getFirestore, doc, setDoc, Timestamp, serverTimestamp, limit } from 'firebase/firestore';
 
 
 interface TagFields {
@@ -12,8 +12,10 @@ interface FirestoreData {
   title: string;
   name: string;
   detail: string;
+  strT:number;
   tag: TagFields;
-  time:Timestamp;
+  time:Date;
+  limit:Date;
 }
 
 const firebaseConfig = {
@@ -35,7 +37,9 @@ const initialTags: TagFields = {
 };
 
 
-const currentTime = Timestamp.now();
+const currentTime = new Date();
+const limitTime = new Date(currentTime.getTime()+(14 * 24 * 60 * 60 * 1000));
+
 
 
 export function useFirestoreUpload() {
@@ -46,7 +50,9 @@ export function useFirestoreUpload() {
         title: '',
         name: '',
         detail: '',
+        strT:currentTime.getTime(),
         time:currentTime,
+        limit: limitTime,
         tag: initialTags,
       });
   
@@ -60,7 +66,9 @@ export function useFirestoreUpload() {
             name: formData.name,
             detail: formData.detail,
             tag: formData.tag,
-            time:formData.time
+            strT:formData.strT,
+            time:formData.time,
+            limit:formData.limit,
           });
   
         setUploadStatus('Success');
@@ -71,7 +79,9 @@ export function useFirestoreUpload() {
             title: '',
             name: '',
             detail: '',
+            strT:currentTime.getTime(),
             time:currentTime,
+            limit: limitTime,
             tag: initialTags,
           }));
 

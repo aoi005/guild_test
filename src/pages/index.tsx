@@ -17,6 +17,7 @@ export default function Home() {
         
         
       </Head>
+      
        <div className={styles.contents}>
         <div className={styles.nav}>
           <nav>
