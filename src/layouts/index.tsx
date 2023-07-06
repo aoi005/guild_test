@@ -1,4 +1,4 @@
-import Header from "./header/index"
+import Header from "../layouts/header/index"
 import styles from "./index.module.scss";
 
 
@@ -9,13 +9,10 @@ type LayoutProps = {
 function MainLayout({ children }: LayoutProps): JSX.Element {
   return (
     <>
-    
       <Header />
-
-      
-      
       <div className={styles.background}>
-      {/* <div className={styles.area}>
+        {/*こことここのscssを変更後にHome.module.scssも変更するべし*/}
+        {/* <div className={styles.area}> */}
           <ul className={styles.circles}>
             <li></li>
             <li></li>
@@ -27,16 +24,10 @@ function MainLayout({ children }: LayoutProps): JSX.Element {
             <li></li>
             <li></li>
           </ul>
-        </div> */}
-       
+        {/* </div> */}
         <main className={styles.main}>{children}</main>
         
-        
-
       </div>
-     
-      
-
     </>
   );
 }

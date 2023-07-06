@@ -19,7 +19,7 @@ function Description( { detail }: { detail: string } ) {
   return (
     <div>
       <button onClick={openModal} className={styles.detailbtn}>詳細を表示</button>
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={styles.modalback}>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={styles.detailarea}>
         <h2>詳細</h2>
         <p className={styles.detailbox}>{detail}</p>
         <button onClick={closeModal} className={styles.detailbtn}>閉じる</button>

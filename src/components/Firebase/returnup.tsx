@@ -27,13 +27,25 @@ const currentTime = new Date();
 const limitTime = new Date(currentTime.getTime()+(14 * 24 * 60 * 60 * 1000));
 
 
-const tags: string[] = ["Able", "Bravo", "Charlie", "Delta"]; 
+const tags: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギルミ","Discord","小人数",
+                        "固定多め","カスタム多め","無言加入可",
+                        "朝","昼","夕方","夜","深夜"]; 
 
 const initialTags: TagFields = {
-  Able: false,
-  Bravo: false,
-  Charley: false,
-  Delta: false,
+  初心者歓迎: false,
+  エンジョイ: false,
+  ガチ: false,
+  ギルミ: false,
+  Discord: false,
+  小人数: false,
+  固定多め: false,
+  カスタム多め: false,
+  無言加入可: false,
+  朝: false,
+  昼: false,
+  夕方: false,
+  夜: false,
+  深夜: false,
   // 追加したタグにも初期値を設定してください。
 };
 
@@ -85,22 +97,24 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
   return (
     <div>
-      <h1>Data Upload</h1>
+      <h3>投稿内容</h3>
       <form onSubmit={handleSubmit} className={styles.formlayout}>
       {Object.entries(formData).map(([key, value]) => {
           if (key === "tag") {
             return (
-              <div key={key}>
+              <div key={key} className={styles.tagGrid}>
                 {tags.map((tagName) => (
+                 
                   <label key={tagName}>
-                    {tagName}:
                     <input
                       type="checkbox"
                       name={tagName}
                       checked={formData.tag[tagName] || false}
                       onChange={handleCheckboxChange}
                     />
+                    {tagName}
                   </label>
+                  
                 ))}
               </div>
             );
@@ -126,17 +140,17 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             type="text"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            placeholder="プレイヤー名"
+            placeholder="ギルド名"
           /><br></br>
 
           <textarea
-            style={{ width: '150%', height: '200px', resize: 'vertical' }}
+            style={{ width: '90%', height: '200px', resize: 'vertical' }}
             wrap="hard"
             value={formData.detail}
             onChange={(e) => setFormData({ ...formData, detail: e.target.value })}
             placeholder="詳細文"
           /><br></br> 
-          
+
       </div>
 
 

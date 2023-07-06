@@ -42,7 +42,9 @@ const getStrTime = (time: string | number | Date) => {
 
 
 // タグ名のリスト。ここを編集するだけで数、名前を変更可能。
-const tagList: string[] = ['Able', 'Bravo', 'Charley','Delta','Echo']; 
+const tagList: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギルミ","Discord","小人数",
+                            "固定多め","カスタム多め","無言加入可",
+                            "朝","昼","夕方","夜","深夜"]; 
 
 
 
@@ -149,6 +151,12 @@ export default function DataDisplayPage() {
 
   return (
     <div>
+
+
+      <button className={styles.pagebtn} onClick={() => {PageChange(-1)}}>⇐　前の十件</button>
+      <button  className={styles.pagebtn} onClick={() => PageChange(1)}>次の十件　⇒</button>
+      <h4>ページ{page+1}</h4>
+
       <h4>タグ絞り込み</h4>
       
 
@@ -156,16 +164,19 @@ export default function DataDisplayPage() {
         タグ絞り込み: {selectedTags.join(', ')}
       </div> */}
 
-      <div>
+      <div className={styles.tagGrid2}>
         {tagList.map((tag) => (
+          <div >
           <label key={tag} className='Tagsellect'>
             <input
               type="checkbox"
               checked={selectedTags.includes(tag)}
               onChange={() => handleTagSelect(tag)}
+              className={styles.checkbtn}
             />
-            {tag}
+            <span className={styles.tagnamesize}>{tag}</span>
           </label>
+          </div>
         ))}
       </div>
 
@@ -177,9 +188,7 @@ export default function DataDisplayPage() {
         ))}
       </div> */}
 
-      <button onClick={() => {PageChange(-1)}}>前の十件</button>
-      <button onClick={() => PageChange(1)}>次の十件</button>
-      <h4>ページ{page+1}</h4>
+      
 
     
 
@@ -198,8 +207,8 @@ export default function DataDisplayPage() {
                <p>{item.detail}</p>
               <br></br>
             </div>
-            <div >
-              タグ:
+            <div>
+              タグ：
               {Object.entries(item.tag)
                 .sort(customSort)
                 .map(([tagName, tagValue]) => {
@@ -210,7 +219,7 @@ export default function DataDisplayPage() {
                 })}
             </div>
 
-            <p>{getStrTime(item.strT)}</p>
+            <p>投稿日時：{getStrTime(item.strT)}</p>
 
             <Description  detail={item.detail}/>
 

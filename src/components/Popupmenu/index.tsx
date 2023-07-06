@@ -53,11 +53,11 @@ function Popup() {
         >
        
  
-        <button onClick={closeModal}>×</button>
+        <button onClick={closeModal}>閉じる</button>
 
      
       
-        <h4>メンバー募集</h4>
+        
         <div className={styles.modalContent}> 
 
         <UploadForm />

@@ -29,10 +29,20 @@ const firebaseConfig = {
 };
 
 const initialTags: TagFields = {
-  Able: false,
-  Bravo: false,
-  Charley: false,
-  Delta: false,
+  初心者歓迎: false,
+  エンジョイ: false,
+  ガチ: false,
+  ギルミ: false,
+  Discord: false,
+  小人数: false,
+  固定多め: false,
+  カスタム多め: false,
+  無言加入可: false,
+  朝: false,
+  昼: false,
+  夕方: false,
+  夜: false,
+  深夜: false,
   // 追加したタグにも初期値を設定してください。
 };
 
