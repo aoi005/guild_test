@@ -105,95 +105,41 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
               </div>
             );
           }
-
-
-          return (
-            <input
-              key={key}
-              type={typeof value === "number" ? "number" : "text"}
-              value={value}
-              onChange={(e) => setFormData({ ...formData, [key]: e.target.value })}
-              placeholder={key}
-            />
-          );
-        })}
-
-        
-
-        {/* {*/  
-        //   type="text"
-        //   value={formData.id}
-        //   onChange={(e) => setFormData({ ...formData, id: e.target.value })}
-        //   placeholder="プレイヤーID"
-        // /><br></br>
-
-      /*}
-
-        // <input *
-        //   type="text"
-        //   value={formData.title}
-        //   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-        //   placeholder="タイトル"
-        // /><br></br>
+      })}
   
-        // <input
-        //   type="text"
-        //   value={formData.name}
-        //   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        //   placeholder="プレイヤー名"
-        // /><br></br>
+      <div>
+          <input    
+            type="text"
+            value={formData.id}
+            onChange={(e) => setFormData({ ...formData, id: e.target.value })}
+            placeholder="プレイヤーID"
+          /><br></br>
 
-        // {/* <input
-        //   type="text"
-        //   value={formData.detail}
-        //   onChange={(e) => setFormData({ ...formData, detail: e.target.value })}
-        //   placeholder="詳細文"
-        // /><br></br> *
+          <input
+            type="text"
+            value={formData.title}
+            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            placeholder="タイトル"
+          /><br></br>
 
-        // <textarea
-        //     style={{ width: '150%', height: '200x', resize: 'vertical' }}
-        //     wrap="hard"
-        //     //   type="text"
-        //     value={formData.detail}
-        //     onChange={(e) => setFormData({ ...formData, detail: e.target.value })}
-        //     placeholder="詳細文"
-        // /><br></br>
-   
-        // <label>
-        //   Able:
-        //   <input
-        //     type="checkbox"
-        //     name="Able"
-        //     checked={formData.tag.Able}
-        //     onChange={handleCheckboxChange}
-        //   />
-        // </label>
+          <input
+            type="text"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            placeholder="プレイヤー名"
+          /><br></br>
 
-        // <label>
-        //   Bravo:
-        //   <input
-        //     type="checkbox"
-        //     name="Bravo"
-        //     checked={formData.tag.Bravo}
-        //     onChange={handleCheckboxChange}
-        //   />
-        // </label>
+          <textarea
+            style={{ width: '150%', height: '200px', resize: 'vertical' }}
+            wrap="hard"
+            value={formData.detail}
+            onChange={(e) => setFormData({ ...formData, detail: e.target.value })}
+            placeholder="詳細文"
+          /><br></br> 
+          
+      </div>
 
-        // <label>
-        //   Charley:
-        //   <input
-        //     type="checkbox"
-        //     name="Charley"
-        //     checked={formData.tag.Charley}
-        //     onChange={handleCheckboxChange}
-        //   />
-        // </label>
-        // <br></br>
 
-        // );
-     */}
-       
-        
         <button type="submit">データを追加/更新</button>
       </form>
       

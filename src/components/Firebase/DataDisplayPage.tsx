@@ -114,8 +114,23 @@ export default function DataDisplayPage() {
   };
 
 
- 
- 
+  const [page, setPage] = useState(0);
+
+
+  const PageChange = (count:any) => {
+    setPage((prevPage) => {
+      const newPage = prevPage + count;
+      const maxPage = Math.floor(filteredData.length / 10);
+
+      if (newPage < 0 || newPage > maxPage) {
+        // ページ範囲外なら移動しません！
+        return prevPage;
+      } else {
+        return newPage;
+      }
+    });
+  };
+
 
   const filteredData = data
   .sort((a, b) =>(b.strT - a.strT)) // timeプロパティで降順ソート
@@ -162,7 +177,13 @@ export default function DataDisplayPage() {
         ))}
       </div> */}
 
-      {filteredData.map((item) => (
+      <button onClick={() => {PageChange(-1)}}>前の十件</button>
+      <button onClick={() => PageChange(1)}>次の十件</button>
+      <h4>ページ{page+1}</h4>
+
+    
+
+      {filteredData.slice(page * 10, (page + 1) * 10).map((item) => (
         <ul className="itemflex" key={item.id}>
           <article className={styles.bbs__main}>
             {/* {item.id} */}
