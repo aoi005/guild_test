@@ -150,7 +150,7 @@ export default function DataDisplayPage() {
   
 
   return (
-    <div>
+<div>
 
 
       <button className={styles.pagebtn} onClick={() => {PageChange(-1)}}>⇐　前の十件</button>
@@ -164,21 +164,21 @@ export default function DataDisplayPage() {
         タグ絞り込み: {selectedTags.join(', ')}
       </div> */}
 
-      <div className={styles.tagGrid2}>
+    <div className={styles.tagGrid2}>
         {tagList.map((tag) => (
-          <div >
-          <label key={tag} className='Tagsellect'>
+          <div key={tag}>
+          <label className='Tagsellect'>
             <input
               type="checkbox"
               checked={selectedTags.includes(tag)}
               onChange={() => handleTagSelect(tag)}
               className={styles.checkbtn}
-            />
-            <span className={styles.tagnamesize}>{tag}</span>
+          />
+          <span className={styles.tagnamesize}>{tag}</span>
           </label>
-          </div>
-        ))}
-      </div>
+    </div>
+  ))}
+</div>
 
       {/* <div>
         {tagList.map((tag) => (
