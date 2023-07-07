@@ -42,7 +42,7 @@ const getStrTime = (time: string | number | Date) => {
 
 
 // タグ名のリスト。ここを編集するだけで数、名前を変更可能。
-const tagList: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギルミ","Discord","小人数",
+const tagList: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギルミ","Discord","少人数",
                             "固定多め","カスタム多め","無言加入可",
                             "朝","昼","夕方","夜","深夜"]; 
 
@@ -164,15 +164,18 @@ export default function DataDisplayPage() {
         タグ絞り込み: {selectedTags.join(', ')}
       </div> */}
 
-    <div className={styles.tagGrid2}>
+
+
+
+<div className={styles.tagGrid2}>
         {tagList.map((tag) => (
-          <div key={tag}>
-          <label className='Tagsellect'>
+          <div key={tag} >
+          <label className={styles.tagselectarea2}>
             <input
               type="checkbox"
               checked={selectedTags.includes(tag)}
               onChange={() => handleTagSelect(tag)}
-              className={styles.checkbtn}
+              className={styles.checkbtn3}
           />
           <span className={styles.tagnamesize}>{tag}</span>
           </label>

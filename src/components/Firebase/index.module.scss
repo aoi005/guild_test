@@ -122,47 +122,33 @@
     }
 
     .tagGrid2 {
+      margin-left: 5px;
+      margin-bottom: 5px;
       display: grid;
       grid-template-columns: repeat(4, 1fr); /* 5つのカラムを作成 */
       grid-gap: 1px; /* カラム間のスペースを設定 */
     }
 
+  
 
-    .checkbtn{
-      appearance:none;
-      width:30px;
-      height:16px;
-      border:1px solid #120c0c;
-      border-radius:2px;
-      background:#141414;
-      position:relative;
-      overflow:hidden;
-      vertical-align:middle;
-      transition: background 0.3s;
-      box-sizing:border-box;
+    .tagselectarea2 {
+      margin-right: 5px; /* ボタン同士の間隔 */
     }
-    .checkbtn:after{
-      content:'';
-      position:absolute;
-      top:-1px;
-      left:-1px;
-      width:14px;
-      height:14px;
-      background:white;
-      border:1px solid #aaa;
-      border-radius:2px;
-      transition: left 0.1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    .tagselectarea2 input {
+      display: none; /* デフォルトのinputは非表示にする */
     }
-    .checkbtn:checked{
-      background:#f39511;
-      border-color:#010710;
-    }
-    .checkbtn:checked:after{
-      left:14px;
-      border-color:#8daee5;
-    }
-
-    .tagnamesize{
-      font-size: 13px;
+    .tagselectarea2 span {
+      color: #080101; /* 文字色を黒に */
       font-weight: 500;
+      font-size: 13px; /* 文字サイズ */
+      border: 1px solid #333; /* 淵の線を指定 */
+      border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
+      padding: 2px 15px; /* 上下左右に余白をトル */
+      background: #f0f3d0;
+    }
+    .tagselectarea2 input:checked + span {
+      color: #FFF; /* 文字色を白に */
+      font-weight: 500;
+      background: rgb(246, 146, 23); /* 背景色を薄い赤に */
+      border: 1px solid #FBB; /* 淵の線を薄い赤に */
     }

@@ -34,7 +34,7 @@ const initialTags: TagFields = {
   ガチ: false,
   ギルミ: false,
   Discord: false,
-  小人数: false,
+  少人数: false,
   固定多め: false,
   カスタム多め: false,
   無言加入可: false,

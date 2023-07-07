@@ -27,7 +27,7 @@ const currentTime = new Date();
 const limitTime = new Date(currentTime.getTime()+(14 * 24 * 60 * 60 * 1000));
 
 
-const tags: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギルミ","Discord","小人数",
+const tags: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギルミ","Discord","少人数",
                         "固定多め","カスタム多め","無言加入可",
                         "朝","昼","夕方","夜","深夜"]; 
 
@@ -37,7 +37,7 @@ const initialTags: TagFields = {
   ガチ: false,
   ギルミ: false,
   Discord: false,
-  小人数: false,
+  少人数: false,
   固定多め: false,
   カスタム多め: false,
   無言加入可: false,
