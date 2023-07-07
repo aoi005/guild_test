@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
 import AppData from '@/components/BBS/databox';
 import DataDisplayPage from '@/components/Firebase/DataDisplayPage';
+import AllPosts from '@/components/firedetabox/AllPost';
 
 
 

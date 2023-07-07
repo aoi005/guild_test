@@ -193,18 +193,17 @@ export default function DataDisplayPage() {
     
 
       {filteredData.slice(page * 10, (page + 1) * 10).map((item) => (
-        <ul className="itemflex" key={item.id}>
-          <article className={styles.bbs__main}>
-            {/* {item.id} */}
-            <div className={styles.titlebox}>
-              <h3>
+        // <ul className="itemflex" >
+          <article className={styles.bbs__main} key={item.id}>
+            <div className={styles.titlebox} key={item.id}>
+              <h3 key={item.id}>
                  {item.title} {/*タイトル*/}
               </h3>
             </div>
             <div>
               <h5>Guildname: {item.name}</h5>
               <br></br>
-               <p>{item.detail}</p>
+               <p key={item.id}>{item.detail}</p>
               <br></br>
             </div>
             <div>
@@ -222,10 +221,15 @@ export default function DataDisplayPage() {
             <p>投稿日時：{getStrTime(item.strT)}</p>
 
             <Description  detail={item.detail}/>
-
+  
+            
           </article>
-        </ul>
+        
+        // </ul>
       ))}
     </div>
+
+
+
   );
 }
