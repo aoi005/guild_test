@@ -1,9 +1,9 @@
 // DataDisplayPage.tsx
-
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
-//import { TagDisplay } from './tagsort'
+import { getFirestore, collection, getDocs, doc, setDoc} from 'firebase/firestore';
+
+import 'firebase/firestore';
 
 // Firebaseの設定と型定義
 
@@ -17,7 +17,14 @@ interface FirestoreData {
   author: string;
   price: number;
   tag: TagFields;
+  reply: {[repid: string]:rep};
 }
+
+interface rep{
+  name: string;
+  msg: string;
+}
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDeT3DgOkSe0PsJm8xu9lueT4CQz_EGirE",
@@ -37,6 +44,8 @@ const tagList: string[] = ['Able', 'Bravo', 'Charley','Delta','Echo'];
 
 
 
+
+//メイン分野表示(上位側フィールド内容)
 export function useFirestoreData() {
   const [data, setData] = useState<FirestoreData[]>([]);
 
@@ -48,18 +57,20 @@ export function useFirestoreData() {
       try {
         const querySnapshot = await getDocs(collection(db, 'books'));
         const fetchedData: FirestoreData[] = [];
-
+    
         querySnapshot.forEach((doc) => {
-          const { title, author, price, tag } = doc.data();
+          const { title, author, price, tag, reply } = doc.data();
+          const id = doc.id;
+          const formattedReply = reply ? reply : {}; // nullやundefinedの場合に空オブジェクトに設定する
           fetchedData.push({
-            id: doc.id,
+            id,
             title,
             author,
             price,
             tag,
+            reply:formattedReply,
           });
         });
-
         setData(fetchedData);
       } catch (error) {
         console.error('Error fetching Firestore data:', error);
@@ -72,12 +83,15 @@ export function useFirestoreData() {
   return data;
 }
 
+
+
 const sortPriority: { [key: string]: number } = {
   Able: 1,
   Bravo: 2,
   Charley: 3,
 };
 
+//タグソート
 const customSort = ([a]: [string, boolean], [b]: [string, boolean]) => {
   const priorityA = sortPriority[a] || Infinity;
   const priorityB = sortPriority[b] || Infinity;
@@ -85,6 +99,8 @@ const customSort = ([a]: [string, boolean], [b]: [string, boolean]) => {
   return priorityA - priorityB;
 };
 
+
+//タグ絞り込み検索
 export default function DataDisplayPage() {
   const data = useFirestoreData();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -111,7 +127,49 @@ export default function DataDisplayPage() {
     return selectedTags.every((tag) => item.tag[tag]);
   });
 
-  
+//リプ追加
+
+//replyフォーム内容定義
+const [newReply, setNewReply] = useState({ repid: '', name: '', msg: '' });
+
+const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = e.target;
+  setNewReply((prevReply) => ({
+    ...prevReply,
+    [name]: value,
+  }));
+};
+
+const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
+  e.preventDefault();
+
+  try {
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const docRef = doc(db, 'books', id);
+
+    await setDoc(
+      docRef,
+      {
+        reply: {
+          ...(data.find((item) => item.id === id)?.reply || {}), // 既存の返信を取得し、なければ空オブジェクトに設定
+          [newReply.repid]: {
+            name: newReply.name,
+            msg: newReply.msg,
+          },
+        },
+      },
+      { merge: true } // 既存のデータとマージするために merge オプションを使用
+    );
+
+    setNewReply({ repid: '', name: '', msg: '' });
+  } catch (error) {
+    console.error('Error adding reply:', error);
+  }
+};
+
+
 
   return (
     <div>
@@ -149,10 +207,51 @@ export default function DataDisplayPage() {
                   return null;
                 })}
             </div>
+            <div>
+            Replies:
+              {Object.entries(item.reply).map(([repid, reply]) => (
+                <div key={repid}>
+                  ID: {repid} / Name: {reply.name} / Message: {reply.msg}
+                </div>
+              ))}
+            </div>
+            <form onSubmit={(e) => addReply(e, item.id)}>
+              <input type="hidden" name="itemId" value={item.id} />
+              <label>
+                Reply ID:
+                <input
+                  type="text"
+                  name="repid"
+                  value={newReply.repid}
+                  onChange={handleFormChange}
+                />
+              </label>
+              <br />
+              <label>
+                Name:
+                <input
+                  type="text"
+                  name="name"
+                  value={newReply.name}
+                  onChange={handleFormChange}
+                />
+              </label>
+              <br />
+              <label>
+                Message:
+                <input
+                  type="text"
+                  name="msg"
+                  value={newReply.msg}
+                  onChange={handleFormChange}
+                />
+              </label>
+              <br />
+              <button type="submit">Add Reply</button>
+            </form>
           </li>
         </ul>
       ))}
     </div>
   );
 }
-
