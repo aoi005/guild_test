@@ -146,6 +146,7 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
   try {
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    //appとdbは汎用なのでfunction外で定義するのはアリかも。最悪initとか_app.tsxで定義しといてimportするのが楽？
 
     const docRef = doc(db, 'books', id);
 
@@ -163,7 +164,7 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
       { merge: true } // 既存のデータとマージするために merge オプションを使用
     );
 
-    setNewReply({ repid: '', name: '', msg: '' });
+    setNewReply({ repid: '', name: '', msg: '' });//フォーム内文字削除。
   } catch (error) {
     console.error('Error adding reply:', error);
   }
