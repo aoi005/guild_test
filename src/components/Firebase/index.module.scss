@@ -114,6 +114,25 @@
       box-shadow: 0 2px 0 #aaaaaa;
     }
 
+    .resetbtnarea{
+      display: flex;
+    }
+
+
+    .resetbtn{
+      color: #fff;
+      background-color: #b6bdc0;
+      border-bottom: 5px solid #5e5e5d;
+      font-weight: bold;
+    }
+
+    .resetbtn:hover:hover{
+      margin-top: 3px;
+      color: #fff;
+      background: #f56500;
+      border-bottom: 2px solid #b84c00;
+  }
+
 
     .tagGrid {
       display: grid;

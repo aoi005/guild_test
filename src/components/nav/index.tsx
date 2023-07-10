@@ -52,7 +52,7 @@ const Nav: React.FC = () => {
                 rel="noopener noreferrer">
 
                 {/* <Link href ={`${topic.path}`}> */}
-               
+                
                   <Image
                       src={topic.icon}
                       alt=""
@@ -77,3 +77,5 @@ const Nav: React.FC = () => {
 };
 
 export default Nav;
+
+

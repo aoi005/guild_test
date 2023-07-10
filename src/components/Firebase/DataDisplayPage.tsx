@@ -157,8 +157,12 @@ export default function DataDisplayPage() {
       <button  className={styles.pagebtn} onClick={() => PageChange(1)}>次の十件　⇒</button>
       <h4>ページ{page+1}</h4>
 
+    <div className={styles.resetbtnarea}>
       <h4>タグ絞り込み</h4>
-      
+      <button className={styles.resetbtn} onClick = {()=>{setSelectedTags([]);}}>
+            タグリセット
+        </button>
+    </div>
 
       {/* <div className='Tagsellect'>
         タグ絞り込み: {selectedTags.join(', ')}
