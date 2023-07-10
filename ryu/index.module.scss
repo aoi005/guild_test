@@ -1,0 +1,82 @@
+//src/components/nav/index.module.scss
+.container {
+    margin-top: 0x;/*文字の下s幅*/
+    width: 100%;
+    
+    display: block;
+
+    
+  }
+  
+  .contents {
+    list-style-type: none;
+    height: auto;
+   
+    
+    >li {
+      margin-bottom: 0dvh;/*文字の下s幅*/
+      opacity: 0.7;
+      color: rgb(173, 49, 49);
+      border: double 5px #000;
+      
+      
+  }
+  }
+
+  //ボタンのスタイル
+  .button{
+    width: 100px;
+    color: rgb(15, 36, 36);
+    justify-content: center;
+    font-weight: bold;
+    
+    //タイトルのスタイル
+    .titlesize{
+      font-size: 35px;
+      color: #1b0d0d;
+    }
+
+    // ボタンの文字と文字の背景の帯の部分
+    .namelogo{
+      color: rgb(249, 249, 249);
+      background-color: #0f1112;
+      margin-top: 0;
+      margin-bottom: 0;
+      text-align: center;
+    }
+  }
+
+
+
+
+
+.navbtn{
+    display: flex;
+    color: #fff;
+    background-color: #ffffff;
+    border-bottom: 2px solid #37332e;
+    font-weight: bold;
+
+    //文字の下線を消す
+    a{
+      text-decoration: none;
+    }
+  }
+
+
+// 押したら色変わる
+.navbtn:hover{
+    margin-top: 1px;
+    color: #fff;
+    background: #fb8c3d;
+    border-bottom: 2px solid #b84c00;
+    opacity: 1.0;
+
+
+    .namelogo{
+      color: #0f1112;
+      background-color: #fff;
+    }
+}
+
+  
