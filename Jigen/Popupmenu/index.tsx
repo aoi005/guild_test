@@ -6,6 +6,7 @@ import Select from 'react-select'
 import UploadForm from "../Firebase/returnup";
 
 
+
 // const customStyles = {
 //   content: {
 //     top: '50%',
@@ -16,36 +17,11 @@ import UploadForm from "../Firebase/returnup";
 //     transform: 'translate(-50%, -50%)',
 //   },
 // };
-import { useEffect} from 'react';
-import {GetData} from '@/MyFunction/GetData';
-import {MyType} from '@/MyFunction/GetData';
-
-import { AddData } from '@/MyFunction/AddData';
-import { SetData } from '@/MyFunction/SetData';
-import { SetNewData } from '@/MyFunction/SetNewData';
 
 
-
-const CId = "users";
-const aaa = "newa";
-const bbb = "newb";
-const ccc = "newc";
-const tagString =["tag1","tag2","tag3"] ;
-
+Modal.setAppElement('#__next');////////バグ修正
 
 function Popup() {
-
-  
-  const [data, setData] = useState<MyType[]>([]);
-
-  useEffect(() => {
-    GetData("users","123").then(gotData => {
-      setData(gotData);
-    }).catch(error => {
-      console.error("Error fetching data: ", error);
-    });
-  }, []);
-
   let subtitle ="";
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -64,7 +40,7 @@ function Popup() {
 
   return (
   <div>
-       <div className={styles.formbox}>
+       <div style={{  overflowY: 'auto' }} className={styles.formbox}>
       <button onClick={openModal} className={styles.formbtn}>投稿</button>
     
     
@@ -75,31 +51,20 @@ function Popup() {
           // ariaHideApp={false}
           // style={{ letterSpacing: "20px", textAlign: "center" }}
           contentLabel="Example Modal"
+          className={styles.formarea}
         >
        
  
-        <button onClick={closeModal}>×</button>
+        <button onClick={closeModal}>閉じる</button>
 
      
       
-        <h4>メンバー募集</h4>
+        
+        <div className={styles.modalContent}> 
 
         <UploadForm />
-        <div>
-          
-       
-            <div >
-              <p>{CId}</p>
-              <p>{aaa}</p> 
-              <p>{bbb}</p>
-              <p>{ccc}</p>
-              
-            </div>
-        
+
         </div>
-        <button onClick={async () => {SetNewData("users",aaa,bbb,ccc,tagString)}}>
-            Add Data
-        </button>
         
 
 
