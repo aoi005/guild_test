@@ -4,6 +4,7 @@ import { getFirestore, collection, getDocs, Timestamp } from 'firebase/firestore
 import styles from './index.module.scss';
 import Description from '../detail/description';
 import firebase from "firebase/compat/app";
+import Hensyu from "../detail/hensyu";
 
 // Firebaseの設定と型定義
 
@@ -17,7 +18,7 @@ interface FirestoreData {
   name: string;
   detail: string;
   strT:number;
-  time:Timestamp;
+  time:Date;
   limit:Date;
   tag: TagFields;
 }
@@ -227,7 +228,26 @@ export default function DataDisplayPage() {
 
             <p>投稿日時：{getStrTime(item.strT)}</p>
 
-            <Description  detail={item.detail}/>
+            <div className={styles.bordmenu}>
+
+              <div className={styles.detaillay}>
+                <Description  detail={item.detail}/>
+              </div>
+
+          
+              <Hensyu
+                id={item.id}
+                title={item.title}
+                name={item.name}
+                detail={item.detail}
+                strT={item.strT}
+                time={item.time}
+                limit={item.limit}
+                tag={item.tag}
+              />
+
+            </div>
+          
   
             
           </article>

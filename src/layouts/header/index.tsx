@@ -27,7 +27,7 @@ function Header() {
             <div>
               <span style={{ fontWeight: 250 }}>Guild</span>
               <span style={{ fontWeight: 100 }}>Board</span>
-              <span style={{ fontWeight: 50 }}> </span>
+              <span style={{ fontWeight: 50 }}>  β版</span>
               </div>
            }
         </h1>
@@ -37,6 +37,10 @@ function Header() {
 
 
         <Popupsearch/>
+
+        <div>
+          
+        </div>
       </header>
     </section>
   );

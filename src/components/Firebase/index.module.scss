@@ -144,7 +144,7 @@
       margin-left: 5px;
       margin-bottom: 5px;
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 5つのカラムを作成 */
+      grid-template-columns: repeat(3, 1fr); /* 5つのカラムを作成 */
       grid-gap: 1px; /* カラム間のスペースを設定 */
     }
 
@@ -170,4 +170,15 @@
       font-weight: 500;
       background: rgb(246, 146, 23); /* 背景色を薄い赤に */
       border: 1px solid #FBB; /* 淵の線を薄い赤に */
+    }
+
+    .hidetext{
+      background: #080000;
+    }
+
+    .bordmenu{
+      display: flex;
+    }
+    .detaillay{
+      margin-right: 5px;
     }
