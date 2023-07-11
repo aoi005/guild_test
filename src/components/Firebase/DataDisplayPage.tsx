@@ -192,7 +192,7 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
     const db = getFirestore(app);
     //appとdbは汎用なのでfunction外で定義するのはアリかも。最悪initとか_app.tsxで定義しといてimportするのが楽？
 
-    const docRef = doc(db, 'books', id);
+    const docRef = doc(db, 'posts', id);
 
     await setDoc(
       docRef,
@@ -206,9 +206,11 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
         },
       },
       { merge: true } // 既存のデータとマージするために merge オプションを使用
+      
     );
-
+    
     setNewReply({ repid: '', name: '', msg: '' });//フォーム内文字削除。
+    
   } catch (error) {
     console.error('Error adding reply:', error);
   }
@@ -328,14 +330,14 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
             </div>
 
 
-            <div>
+            {/* <div>
             Replies:
               {Object.entries(item.reply).map(([repid, reply]) => (
                 <div key={repid}>
                   ID: {repid} / Name: {reply.name} / Message: {reply.msg}
                 </div>
               ))}
-            </div>
+            </div> */}
 
             <form onSubmit={(e) => addReply(e, item.id)}>
               <input type="hidden" name="itemId" value={item.id} />

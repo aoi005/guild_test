@@ -107,9 +107,9 @@ function Description({ detail,reply }: DescriptionProps) {
         <p className={styles.detailbox}>{detail}</p>
 
         <h3> リプライ　</h3>
-          <div>
+          <div >
             {Object.entries(reply).map(([repid, rep]) => (
-              <div key={repid}>
+              <div key={repid} className={styles.replen}>
                 <p>Name: {rep.name}</p>
                 <p>Message: {rep.msg}</p>
               </div>
