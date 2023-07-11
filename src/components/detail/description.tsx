@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import styles from "./index.module.scss";
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, Timestamp } from 'firebase/firestore';
+import AddReply from './AddReply';
 
 
 
@@ -10,6 +11,7 @@ import { getFirestore, collection, getDocs, Timestamp } from 'firebase/firestore
 
 interface DescriptionProps {
   detail: string;
+  postid: string;
   reply: { [repid: string]: rep };
 }
 
@@ -85,7 +87,7 @@ export function useFirestoreData() {
   return data;
 }
 
-function Description({ detail,reply }: DescriptionProps) {
+function Description({ detail,reply,postid }: DescriptionProps) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const data = useFirestoreData();
 
@@ -98,11 +100,14 @@ function Description({ detail,reply }: DescriptionProps) {
   }
 
   return (
-    <div>
+    <div style={{  overflowY: 'auto' }} className={styles.formbox}>
       <button onClick={openModal} className={styles.detailbtn}>
         詳細を表示
       </button>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={styles.detailarea}>
+ 
+      <div className={styles.modalContent}> 
+
         <h2>詳細</h2>
         <p className={styles.detailbox}>{detail}</p>
 
@@ -115,12 +120,19 @@ function Description({ detail,reply }: DescriptionProps) {
               </div>
             ))}
           </div>
+
+          <div>
+            <AddReply postId={postid}></AddReply>
+          </div>
        
 
         <button onClick={closeModal} className={styles.detailbtn}>
           閉じる
         </button>
+      </div>  
+
       </Modal>
+
     </div>
   );
 }

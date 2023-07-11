@@ -171,61 +171,7 @@ export default function DataDisplayPage() {
 
 
 
-//      実験エリア
 
-
-const [newReply, setNewReply] = useState({ repid: '', name: '', msg: '' });
-
-const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const { name, value } = e.target;
-  setNewReply((prevReply) => ({
-    ...prevReply,
-    [name]: value,
-  }));
-};
-
-const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
-  e.preventDefault();
-
-  try {
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    //appとdbは汎用なのでfunction外で定義するのはアリかも。最悪initとか_app.tsxで定義しといてimportするのが楽？
-
-    const docRef = doc(db, 'posts', id);
-
-    await setDoc(
-      docRef,
-      {
-        reply: {
-          ...(data.find((item) => item.id === id)?.reply || {}), // 既存の返信を取得し、なければ空オブジェクトに設定
-          [newReply.repid]: {
-            name: newReply.name,
-            msg: newReply.msg,
-          },
-        },
-      },
-      { merge: true } // 既存のデータとマージするために merge オプションを使用
-      
-    );
-    
-    setNewReply({ repid: '', name: '', msg: '' });//フォーム内文字削除。
-    
-  } catch (error) {
-    console.error('Error adding reply:', error);
-  }
-};
-
-
-
-
-
-
-
-  
-
-
-//　　　ここまで
 
 
 
@@ -311,7 +257,7 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
             <div className={styles.bordmenu}>
 
               <div className={styles.detaillay}>
-                <Description  detail={item.detail} reply={item.reply}/>
+                <Description  detail={item.detail} reply={item.reply} postid={item.id}/>
               </div>
 
           
@@ -329,50 +275,6 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
 
             </div>
 
-
-            {/* <div>
-            Replies:
-              {Object.entries(item.reply).map(([repid, reply]) => (
-                <div key={repid}>
-                  ID: {repid} / Name: {reply.name} / Message: {reply.msg}
-                </div>
-              ))}
-            </div> */}
-
-            <form onSubmit={(e) => addReply(e, item.id)}>
-              <input type="hidden" name="itemId" value={item.id} />
-              <label>
-                Reply ID:
-                <input
-                  type="text"
-                  name="repid"
-                  value={newReply.repid}
-                  onChange={handleFormChange}
-                />
-              </label>
-              <br />
-              <label>
-                Name:
-                <input
-                  type="text"
-                  name="name"
-                  value={newReply.name}
-                  onChange={handleFormChange}
-                />
-              </label>
-              <br />
-              <label>
-                Message:
-                <input
-                  type="text"
-                  name="msg"
-                  value={newReply.msg}
-                  onChange={handleFormChange}
-                />
-              </label>
-              <br />
-              <button type="submit">Add Reply</button>
-            </form>
           
   
             
