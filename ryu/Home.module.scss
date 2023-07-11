@@ -1,0 +1,24 @@
+.contents {
+    display: flex;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+  }
+
+.nav{
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+
+  // >button {
+  //   color: rgb(15, 51, 70);
+
+  // }
+}
+  .main {
+    flex: 6;
+  }
+  
+
+  
+  .blank {
+    flex: 2;
+  }
