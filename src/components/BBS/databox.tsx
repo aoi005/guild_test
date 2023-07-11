@@ -110,7 +110,7 @@ function SomeComponent({ posts }: { posts: DocumentData[] }) {
                     )} */}
             </div>
                       
-            <Description  detail={post.detail}/>
+            {/* <Description  detail={post.detail}/> */}
 
           </div>
           <p>{getStrTime(post.time)}</p>

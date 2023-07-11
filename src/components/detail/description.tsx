@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import styles from "./index.module.scss";
-import AddReply from '../Firebase/reply';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, Timestamp } from 'firebase/firestore';
 
