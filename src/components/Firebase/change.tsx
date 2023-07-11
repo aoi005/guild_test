@@ -119,7 +119,7 @@ export default function ChangeForm({
             return (
               <input
                 key={key}
-                type="text"
+                type="hidden" 
                 value={value}
                 readOnly // 読み取り専用に設定
                 placeholder={key}

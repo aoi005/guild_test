@@ -11,6 +11,7 @@ import { getFirestore, collection, getDocs, Timestamp } from 'firebase/firestore
 
 interface DescriptionProps {
   detail: string;
+  reply: { [repid: string]: rep };
 }
 
 interface TagFields {
@@ -85,7 +86,7 @@ export function useFirestoreData() {
   return data;
 }
 
-function Description({ detail }: DescriptionProps) {
+function Description({ detail,reply }: DescriptionProps) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const data = useFirestoreData();
 
@@ -106,9 +107,16 @@ function Description({ detail }: DescriptionProps) {
         <h2>詳細</h2>
         <p className={styles.detailbox}>{detail}</p>
 
-        <div>
-          <AddReply item={data[8]}/>
-        </div>
+        <h3> リプライ　</h3>
+          <div>
+            {Object.entries(reply).map(([repid, rep]) => (
+              <div key={repid}>
+                <p>Name: {rep.name}</p>
+                <p>Message: {rep.msg}</p>
+              </div>
+            ))}
+          </div>
+       
 
         <button onClick={closeModal} className={styles.detailbtn}>
           閉じる

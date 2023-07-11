@@ -49,6 +49,8 @@ const initialTags: TagFields = {
   // 追加したタグにも初期値を設定してください。
 };
 
+
+
 export default function UploadForm() {
   const { uploadData, uploadStatus } = useFirestoreUpload();
   const [formData, setFormData] = useState<FirestoreData>({

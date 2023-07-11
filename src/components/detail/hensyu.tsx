@@ -14,12 +14,19 @@ interface FirestoreData {
   time: Date;
   limit:Date;
   tag: TagFields;
+  reply: { [repid: string]: rep };
 }
+
+interface rep {
+  name: string;
+  msg: string;
+}
+
 interface TagFields {
   [key: string]: boolean;
 }
 
-function Hensyu({ id, title, name, detail, strT, time, limit, tag }: FirestoreData) {
+function Hensyu({ id, title, name, detail, strT, time, limit, tag, reply }: FirestoreData) {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {

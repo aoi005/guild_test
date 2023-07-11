@@ -146,9 +146,9 @@
       display: grid; 
 
       //追加部分
-      max-width: 600px; //タグ一覧が横に伸びすぎないようにする
+      max-width: 1000px; //タグ一覧が横に伸びすぎないようにする
 
-      grid-template-columns: repeat(4, 1fr); /* 5つのカラムを作成 */
+      grid-template-columns: repeat(3, 1fr); /* 5つのカラムを作成 */
       grid-gap: 5px; /* カラム間のスペースを設定 */
     }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, Timestamp } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, doc, setDoc,Timestamp } from 'firebase/firestore';
 import styles from './index.module.scss';
 import Description from '../detail/description';
 import firebase from "firebase/compat/app";
@@ -21,6 +21,13 @@ interface FirestoreData {
   time:Date;
   limit:Date;
   tag: TagFields;
+  reply: {[repid: string]:rep};
+}
+
+
+interface rep{
+  name: string;
+  msg: string;
 }
 
 const firebaseConfig = {
@@ -62,7 +69,9 @@ export function useFirestoreData() {
         const fetchedData: FirestoreData[] = [];
 
         querySnapshot.forEach((doc) => {
-          const { title, name,strT,time,limit,detail, tag } = doc.data();
+          const { title, name,strT,time,limit,detail, tag,reply } = doc.data();
+          const formattedReply = reply ? reply : {}; // nullやundefinedの場合に空オブジェクトに設定する
+          
           fetchedData.push({
             id: doc.id,
             title,
@@ -72,6 +81,7 @@ export function useFirestoreData() {
             limit,
             detail,
             tag,
+            reply:formattedReply
           });
         });
 
@@ -157,7 +167,66 @@ export default function DataDisplayPage() {
     return selectedTags.every((tag) => item.tag[tag]);
   });
 
+
+
+
+
+//      実験エリア
+
+
+const [newReply, setNewReply] = useState({ repid: '', name: '', msg: '' });
+
+const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = e.target;
+  setNewReply((prevReply) => ({
+    ...prevReply,
+    [name]: value,
+  }));
+};
+
+const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
+  e.preventDefault();
+
+  try {
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    //appとdbは汎用なのでfunction外で定義するのはアリかも。最悪initとか_app.tsxで定義しといてimportするのが楽？
+
+    const docRef = doc(db, 'books', id);
+
+    await setDoc(
+      docRef,
+      {
+        reply: {
+          ...(data.find((item) => item.id === id)?.reply || {}), // 既存の返信を取得し、なければ空オブジェクトに設定
+          [newReply.repid]: {
+            name: newReply.name,
+            msg: newReply.msg,
+          },
+        },
+      },
+      { merge: true } // 既存のデータとマージするために merge オプションを使用
+    );
+
+    setNewReply({ repid: '', name: '', msg: '' });//フォーム内文字削除。
+  } catch (error) {
+    console.error('Error adding reply:', error);
+  }
+};
+
+
+
+
+
+
+
   
+
+
+//　　　ここまで
+
+
+
 
   return (
 <div>
@@ -240,7 +309,7 @@ export default function DataDisplayPage() {
             <div className={styles.bordmenu}>
 
               <div className={styles.detaillay}>
-                <Description  detail={item.detail}/>
+                <Description  detail={item.detail} reply={item.reply}/>
               </div>
 
           
@@ -253,9 +322,55 @@ export default function DataDisplayPage() {
                 time={item.time}
                 limit={item.limit}
                 tag={item.tag}
+                reply={item.reply}
               />
 
             </div>
+
+
+            <div>
+            Replies:
+              {Object.entries(item.reply).map(([repid, reply]) => (
+                <div key={repid}>
+                  ID: {repid} / Name: {reply.name} / Message: {reply.msg}
+                </div>
+              ))}
+            </div>
+
+            <form onSubmit={(e) => addReply(e, item.id)}>
+              <input type="hidden" name="itemId" value={item.id} />
+              <label>
+                Reply ID:
+                <input
+                  type="text"
+                  name="repid"
+                  value={newReply.repid}
+                  onChange={handleFormChange}
+                />
+              </label>
+              <br />
+              <label>
+                Name:
+                <input
+                  type="text"
+                  name="name"
+                  value={newReply.name}
+                  onChange={handleFormChange}
+                />
+              </label>
+              <br />
+              <label>
+                Message:
+                <input
+                  type="text"
+                  name="msg"
+                  value={newReply.msg}
+                  onChange={handleFormChange}
+                />
+              </label>
+              <br />
+              <button type="submit">Add Reply</button>
+            </form>
           
   
             
