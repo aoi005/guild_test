@@ -52,6 +52,7 @@ function AddReply({ item }: AddReplyProps) {
       ...prevReply,
       [name]: value,
     }));
+    console.log(item+"あっどしたはず")
   };
 
   const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
@@ -78,6 +79,7 @@ function AddReply({ item }: AddReplyProps) {
       );
 
       setNewReply({ repid: '', name: '', msg: '' });
+      console.log(item);
     } catch (error) {
       console.error('Error adding reply:', error);
     }

@@ -60,24 +60,26 @@
 // }
 
 .circles{
-    position: absolute;
-    top: -50px;
-    bottom: auto;
-    left: 0;
-    width: 90%; //100%にすると動く背景の都合上画面がガタガタする
-    height: 1000px; //上下に動く範囲?
+    background-color: rgb(255, 255, 255);
+    position: fixed;//ウィンドウの画面サイズで背景表示？
+    top: 0;//
+    bottom: 0;//
+    right: 0;//
+    left: 0;//
+    // width: 100%; //100%にすると動く背景の都合上画面がガタガタする
+    // height: 100%; //上下に動く範囲?
     overflow: hidden;
 }
 
 .circles li{
-    position: absolute;
+    position: absolute;//absoluteで.circleに完全に合わせてる？
     display: block; //必須でない
     list-style: none;   //必須でない
     width: 20px;
     height: 20px;
     //background: rgba(255, 255, 0, 0.2);
-    animation: animate 25s linear infinite;  //図形が上に上がりきるまでの時間
-    bottom: -150px;
+    animation: animate 40s linear infinite;  //図形が上に上がりきるまでの時間
+    bottom: -100px;
 }
 
 

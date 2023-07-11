@@ -52,6 +52,8 @@ const Nav: React.FC = () => {
                 rel="noopener noreferrer">
 
                 {/* <Link href ={`${topic.path}`}> */}
+
+                <div className={styles.button}>
                 
                   <Image
                       src={topic.icon}
@@ -67,6 +69,7 @@ const Nav: React.FC = () => {
                 {/* </Link> */}
        
               <p className={styles.namelogo}>{topic.name}</p>
+              </div>
               </a>
             </li>
           );

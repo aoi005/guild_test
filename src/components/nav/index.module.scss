@@ -21,7 +21,7 @@
   }
   }
   .button{
-    width: 50px;
+    width: 100px;
     color: rgb(15, 36, 36);
     justify-content: center;
     font-weight: bold;
@@ -37,6 +37,7 @@
 .namelogo{
   color: rgb(249, 249, 249);
   background-color: #0f1112;
+  text-align: center;
 }
 
 
@@ -48,6 +49,10 @@
     background-color: #f1f2f3;
     border-bottom: 2px solid #37332e;
     font-weight: bold;
+
+    a{
+      text-decoration: none;
+    }
 }
 .navbtn:hover{
     margin-top: 1px;
