@@ -189,7 +189,7 @@ export default function DataDisplaysolicit() {
     <div className={styles.resetbtnarea}>
       <h4>タグ絞り込み</h4>
       <button className={styles.resetbtn} onClick = {()=>{setSelectedTags([]);}}>
-            タグリセット
+            選択リセット
         </button>
     </div>
 

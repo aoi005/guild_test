@@ -22,7 +22,7 @@ export default function Home() {
         <div className={styles.main} >
         
                  
-        {/* <BBS /> */}
+        <h1>現在準備中です</h1>
       
         </div>
       </div>

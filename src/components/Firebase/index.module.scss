@@ -115,13 +115,15 @@
     }
 
     .resetbtnarea{
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3つのカラムを作成 */
+      max-width: 600px; //タグ一覧が横に伸びすぎないようにする
     }
 
 
     .resetbtn{
       color: #fff;
-      background-color: #b6bdc0;
+      background-color: #1c1f20;
       border-bottom: 5px solid #5e5e5d;
       font-weight: bold;
     }
@@ -165,8 +167,8 @@
       font-weight: 500;
       font-size: 13px; /* 文字サイズ */
       border: 1px solid #333; /* 淵の線を指定 */
-      border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
-      padding: 2px 15px; /* 上下左右に余白をトル */
+      border-radius: 8px; /* 角丸を入れて、左右が丸いボタンにする */
+      padding: 2px 12px; /* 上下左右に余白をトル */
       background: #f0f3d0;
     }
     .tagselectarea2 input:checked + span {
