@@ -110,7 +110,7 @@ const customSort = ([a]: [string, boolean], [b]: [string, boolean]) => {
   return priorityA - priorityB;
 };
 
-export default function DataDisplayPage() {
+export default function DataDisplayfight() {
   const data = useFirestoreData();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 

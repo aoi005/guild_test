@@ -4,7 +4,8 @@ import MainLayout from '../layouts'
 import Head from "next/head";
 import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
-import BBSsolicit from '../components/BBSsolicit';
+import DataDisplaysolicit from "@/components/BBSsolicit/DataDisplayPage";
+
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,7 +26,7 @@ export default function Home() {
         <div className={styles.blank} />
         <div className={styles.main} >
         
-        <BBSsolicit />
+          <DataDisplaysolicit />
       
        
         </div>

@@ -41,7 +41,6 @@ const initialTags: TagFields = {
   固定多め: false,
   カスタム多め: false,
   無言加入可: false,
-  無言退出可: false,
   朝: false,
   昼: false,
   夕方: false,
@@ -52,7 +51,7 @@ const initialTags: TagFields = {
 
 
 
-export default function UploadForm() {
+export default function UploadFormsolicit() {
   const { uploadData, uploadStatus } = useFirestoreUpload();
   const [formData, setFormData] = useState<FirestoreData>({
     id: '',
@@ -143,7 +142,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             type="text"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            placeholder="ギルド名"
+            placeholder="プレイヤー名"
           /><br></br>
 
           <textarea

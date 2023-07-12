@@ -65,7 +65,7 @@ export function useFirestoreData() {
 
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'posts'));
+        const querySnapshot = await getDocs(collection(db, 'solicit'));
         const fetchedData: FirestoreData[] = [];
 
         querySnapshot.forEach((doc) => {
@@ -110,7 +110,7 @@ const customSort = ([a]: [string, boolean], [b]: [string, boolean]) => {
   return priorityA - priorityB;
 };
 
-export default function DataDisplayPage() {
+export default function DataDisplaysolicit() {
   const data = useFirestoreData();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 

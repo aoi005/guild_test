@@ -38,7 +38,6 @@ const initialTags: TagFields = {
   固定多め: false,
   カスタム多め: false,
   無言加入可: false,
-  無言退出可:false,
   朝: false,
   昼: false,
   夕方: false,
@@ -72,7 +71,7 @@ export function useFirestoreUpload() {
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
   
-        await setDoc(doc(db, 'posts', formData.id), {
+        await setDoc(doc(db, 'solicit', formData.id), {
             title: formData.title,
             name: formData.name,
             detail: formData.detail,

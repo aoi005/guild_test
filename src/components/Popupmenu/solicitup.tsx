@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useState } from 'react';
 import React from "react";
 import Select from 'react-select'
-import UploadForm from "../Firebase/returnup";
+import UploadFormsolicit from "../BBSsolicit/returnup";
 
 
 // const customStyles = {
@@ -19,7 +19,7 @@ import UploadForm from "../Firebase/returnup";
 
 
 
-function Popup() {
+function Popupsolicit() {
   let subtitle ="";
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -39,7 +39,7 @@ function Popup() {
   return (
   <div>
        <div style={{  overflowY: 'auto' }} className={styles.formbox}>
-      <button onClick={openModal} className={styles.formbtn}>メンバー募集投稿</button>
+      <button onClick={openModal} className={styles.formbtn}>勧誘募集投稿</button>
     
     
         <Modal
@@ -60,7 +60,7 @@ function Popup() {
         
         <div className={styles.modalContent}> 
 
-        <UploadForm />
+        <UploadFormsolicit/>
 
         </div>
         
@@ -75,4 +75,4 @@ function Popup() {
   );
 }
 
-export default Popup;
+export default Popupsolicit;

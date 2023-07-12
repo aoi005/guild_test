@@ -21,7 +21,7 @@ interface FirestoreData {
   }
 
 const tags: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギルミ","Discord","少人数",
-                        "固定","カスタム","無言加入可","無言退出可",
+                        "固定多め","カスタム多め","無言加入可","無言退出可" ,
                         "朝","昼","夕方","夜","深夜"]; 
 
 const initialTags: TagFields = {
@@ -31,8 +31,8 @@ const initialTags: TagFields = {
     ギルミ: false,
     Discord: false,
     少人数: false,
-    固定: false,
-    カスタム: false,
+    固定多め: false,
+    カスタム多め: false,
     無言加入可: false,
     無言退出可: false,
     朝: false,
