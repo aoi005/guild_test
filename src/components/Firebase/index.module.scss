@@ -115,9 +115,7 @@
     }
 
     .resetbtnarea{
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3つのカラムを作成 */
-      max-width: 600px; //タグ一覧が横に伸びすぎないようにする
+      display: flex
     }
 
 
