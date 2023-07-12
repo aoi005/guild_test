@@ -3,7 +3,6 @@ import Image from "next/image";
 import React, { Component } from "react";
 import Link from "next/link";
 import Popup from '../../components/Popupmenu';
-import Popupsolicit from "@/components/Popupmenu/solicitup";
 import Popupsearch from "@/components/Popupserach";
 
 
@@ -35,7 +34,7 @@ function Header() {
   
         <Popup />
 
-        <Popupsolicit />
+   
        
         <Popupsearch/>
 

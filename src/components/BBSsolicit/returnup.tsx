@@ -13,6 +13,7 @@ interface TagFields {
 
 interface FirestoreData {
   id: string;
+  pas: string;
   title: string;
   name: string;
   tag: TagFields;
@@ -28,7 +29,7 @@ const limitTime = new Date(currentTime.getTime()+(14 * 24 * 60 * 60 * 1000));
 
 
 const tags: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギルミ","Discord","少人数",
-                        "固定多め","カスタム多め","無言加入可","無言退出可",
+                        "固定","カスタム","無言加入可","無言退出可",
                         "朝","昼","夕方","夜","深夜"]; 
 
 const initialTags: TagFields = {
@@ -38,8 +39,8 @@ const initialTags: TagFields = {
   ギルミ: false,
   Discord: false,
   少人数: false,
-  固定多め: false,
-  カスタム多め: false,
+  固定: false,
+  カスタム: false,
   無言加入可: false,
   朝: false,
   昼: false,
@@ -55,6 +56,7 @@ export default function UploadFormsolicit() {
   const { uploadData, uploadStatus } = useFirestoreUpload();
   const [formData, setFormData] = useState<FirestoreData>({
     id: '',
+    pas: '',
     title: '',
     name: '',
     tag:  initialTags,
@@ -99,7 +101,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
   return (
     <div>
-      <h3>投稿内容</h3>
+      <h3>勧誘募集・投稿内容</h3>
       <form onSubmit={handleSubmit} className={styles.formlayout}>
       {Object.entries(formData).map(([key, value]) => {
           if (key === "tag") {
@@ -130,6 +132,14 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             onChange={(e) => setFormData({ ...formData, id: e.target.value })}
             placeholder="プレイヤーID"
           /><br></br>
+
+          <input
+            type="text"
+            value={formData.pas}
+            onChange={(e) => setFormData({ ...formData, pas: e.target.value })}
+            placeholder="パスワード"
+          />
+          <br></br>
 
           <input
             type="text"

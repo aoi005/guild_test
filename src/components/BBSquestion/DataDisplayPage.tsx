@@ -51,9 +51,8 @@ const getStrTime = (time: string | number | Date) => {
 
 
 // タグ名のリスト。ここを編集するだけで数、名前を変更可能。
-const tagList: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギルミ","Discord","少人数",
-                            "固定","カスタム","無言加入可","無言退出可",
-                            "朝","昼","夕方","夜","深夜"]; 
+const tagList: string[] = ["初心者", "デッキ","立ち回り",
+                            "アタッカー","ガンナー","タンク","スプリンター",]; 
 
 
 
@@ -66,7 +65,7 @@ export function useFirestoreData() {
 
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'posts'));
+        const querySnapshot = await getDocs(collection(db, 'question'));
         const fetchedData: FirestoreData[] = [];
 
         querySnapshot.forEach((doc) => {
@@ -112,7 +111,7 @@ const customSort = ([a]: [string, boolean], [b]: [string, boolean]) => {
   return priorityA - priorityB;
 };
 
-export default function DataDisplayPage() {
+export default function DataDisplayQuestion() {
   const data = useFirestoreData();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 

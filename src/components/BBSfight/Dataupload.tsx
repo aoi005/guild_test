@@ -9,6 +9,7 @@ interface TagFields {
 
 interface FirestoreData {
   id: string;
+  pas:string;
   title: string;
   name: string;
   detail: string;
@@ -29,21 +30,21 @@ const firebaseConfig = {
 };
 
 const initialTags: TagFields = {
-  初心者歓迎: false,
+  フリバ: false,
+  バトアリ: false,
+  枠埋め: false,
   エンジョイ: false,
   ガチ: false,
   ギルミ: false,
   Discord: false,
-  少人数: false,
-  固定多め: false,
-  カスタム多め: false,
-  無言加入可: false,
-  無言退出可:false,
-  朝: false,
-  昼: false,
-  夕方: false,
-  夜: false,
-  深夜: false,
+  固定: false,
+  カスタム: false,
+  無言参加可: false,
+  無言退出可: false,
+  アタッカー: false,
+  ガンナー: false,
+  タンク: false,
+  スプリンター: false,
   // 追加したタグにも初期値を設定してください。
 };
 
@@ -58,6 +59,7 @@ export function useFirestoreUpload() {
 
     const [formData, setFormData] = useState<FirestoreData>({
         id: '',
+        pas:'',
         title: '',
         name: '',
         detail: '',
@@ -72,8 +74,9 @@ export function useFirestoreUpload() {
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
   
-        await setDoc(doc(db, 'posts', formData.id), {
+        await setDoc(doc(db, 'fight', formData.id), {
             title: formData.title,
+            pas:formData.pas,
             name: formData.name,
             detail: formData.detail,
             tag: formData.tag,
@@ -87,6 +90,7 @@ export function useFirestoreUpload() {
         setFormData((prevData) => ({
             ...prevData,
             id: '',
+            pas:'',
             title: '',
             name: '',
             detail: '',

@@ -13,6 +13,7 @@ interface TagFields {
 
 interface FirestoreData {
   id: string;
+  pas:string;
   title: string;
   name: string;
   tag: TagFields;
@@ -27,35 +28,36 @@ const currentTime = new Date();
 const limitTime = new Date(currentTime.getTime()+(14 * 24 * 60 * 60 * 1000));
 
 
-const tags: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギルミ","Discord","少人数",
-                        "固定多め","カスタム多め","無言加入可","無言退出可",
-                        "朝","昼","夕方","夜","深夜"]; 
+const tags: string[] = ["フリバ","バトアリ","枠埋め", "エンジョイ", "ガチ", "ギルミ","Discord",
+                        "固定","カスタム","無言参加可","無言退出可",
+                        "アタッカー","ガンナー","タンク","スプリンター",]; 
 
 const initialTags: TagFields = {
-  初心者歓迎: false,
+  フリバ: false,
+  バトアリ: false,
+  枠埋め: false,
   エンジョイ: false,
   ガチ: false,
   ギルミ: false,
   Discord: false,
-  少人数: false,
-  固定多め: false,
-  カスタム多め: false,
-  無言加入可: false,
+  固定: false,
+  カスタム: false,
+  無言参加可: false,
   無言退出可: false,
-  朝: false,
-  昼: false,
-  夕方: false,
-  夜: false,
-  深夜: false,
+  アタッカー: false,
+  ガンナー: false,
+  タンク: false,
+  スプリンター: false,
   // 追加したタグにも初期値を設定してください。
 };
 
 
 
-export default function UploadForm() {
+export default function UploadFormFight() {
   const { uploadData, uploadStatus } = useFirestoreUpload();
   const [formData, setFormData] = useState<FirestoreData>({
     id: '',
+    pas:'',
     title: '',
     name: '',
     tag:  initialTags,
@@ -100,7 +102,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
   return (
     <div>
-      <h3>投稿内容</h3>
+      <h3>固定募集・投稿内容</h3>
       <form onSubmit={handleSubmit} className={styles.formlayout}>
       {Object.entries(formData).map(([key, value]) => {
           if (key === "tag") {
@@ -134,6 +136,14 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
           <input
             type="text"
+            value={formData.pas}
+            onChange={(e) => setFormData({ ...formData, pas: e.target.value })}
+            placeholder="パスワード"
+          />＊編集時に必要です
+          <br></br>
+
+          <input
+            type="text"
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             placeholder="タイトル"
@@ -143,7 +153,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             type="text"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            placeholder="ギルド名"
+            placeholder="部屋番号"
           /><br></br>
 
           <textarea

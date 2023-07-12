@@ -30,21 +30,12 @@ const firebaseConfig = {
 };
 
 const initialTags: TagFields = {
-  初心者歓迎: false,
-  エンジョイ: false,
-  ガチ: false,
-  ギルミ: false,
-  Discord: false,
-  少人数: false,
-  固定: false,
-  カスタム: false,
-  無言加入可: false,
-  無言退出可:false,
-  朝: false,
-  昼: false,
-  夕方: false,
-  夜: false,
-  深夜: false,
+  初心者: false,
+  デッキ: false,
+  アタッカー: false,
+  ガンナー: false,
+  タンク: false,
+  スプリンター: false,
   // 追加したタグにも初期値を設定してください。
 };
 
@@ -74,7 +65,7 @@ export function useFirestoreUpload() {
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
   
-        await setDoc(doc(db, 'posts', formData.id), {
+        await setDoc(doc(db, 'question', formData.id), {
             title: formData.title,
             pas:formData.pas,
             name: formData.name,

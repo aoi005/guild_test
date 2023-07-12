@@ -11,6 +11,7 @@ interface TagFields {
 
 interface FirestoreData {
     id: string;
+    pas:string;
     title: string;
     name: string;
     detail: string;
@@ -45,6 +46,7 @@ const initialTags: TagFields = {
 
 export default function ChangeForm({
   id,
+  pas,
   title,
   name,
   detail,
@@ -56,6 +58,7 @@ export default function ChangeForm({
   const { uploadData, uploadStatus } = useFirestoreUpload();
   const [formData, setFormData] = useState<FirestoreData>({
     id: id,
+    pas:pas,
     title: title,
     name: name,
     detail: detail,
@@ -71,6 +74,7 @@ export default function ChangeForm({
     setFormData((prevFormData) => ({
       ...prevFormData,
       id: "",
+      pas:"",
       title: "",
       name: "",
       tag: {},
@@ -116,7 +120,7 @@ export default function ChangeForm({
             );
           }
 
-          if (key === "id" || key === "time" || key === "strT" || key === "limit") {
+          if (key === "id" || key === "time" || key === "strT" || key === "limit" ||key ==="pas") {
             return (
               <input
                 key={key}

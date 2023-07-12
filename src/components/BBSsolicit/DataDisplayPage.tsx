@@ -14,6 +14,7 @@ interface TagFields {
 
 interface FirestoreData {
   id: string;
+  pas:string;
   title: string;
   name: string;
   detail: string;
@@ -51,7 +52,7 @@ const getStrTime = (time: string | number | Date) => {
 
 // タグ名のリスト。ここを編集するだけで数、名前を変更可能。
 const tagList: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギルミ","Discord","少人数",
-                            "固定多め","カスタム多め","無言加入可","無言退出可",
+                            "固定","カスタム","無言加入可","無言退出可",
                             "朝","昼","夕方","夜","深夜"]; 
 
 
@@ -69,11 +70,12 @@ export function useFirestoreData() {
         const fetchedData: FirestoreData[] = [];
 
         querySnapshot.forEach((doc) => {
-          const { title, name,strT,time,limit,detail, tag,reply } = doc.data();
+          const { title, pas,name,strT,time,limit,detail, tag,reply } = doc.data();
           const formattedReply = reply ? reply : {}; // nullやundefinedの場合に空オブジェクトに設定する
           
           fetchedData.push({
             id: doc.id,
+            pas,
             title,
             name,
             strT,
@@ -263,6 +265,7 @@ export default function DataDisplaysolicit() {
           
               <Hensyu
                 id={item.id}
+                pas={item.id}
                 title={item.title}
                 name={item.name}
                 detail={item.detail}

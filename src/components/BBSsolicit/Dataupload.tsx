@@ -9,6 +9,7 @@ interface TagFields {
 
 interface FirestoreData {
   id: string;
+  pas:string;
   title: string;
   name: string;
   detail: string;
@@ -35,8 +36,8 @@ const initialTags: TagFields = {
   ギルミ: false,
   Discord: false,
   少人数: false,
-  固定多め: false,
-  カスタム多め: false,
+  固定: false,
+  カスタム: false,
   無言加入可: false,
   朝: false,
   昼: false,
@@ -57,6 +58,7 @@ export function useFirestoreUpload() {
 
     const [formData, setFormData] = useState<FirestoreData>({
         id: '',
+        pas:'',
         title: '',
         name: '',
         detail: '',
@@ -73,6 +75,7 @@ export function useFirestoreUpload() {
   
         await setDoc(doc(db, 'solicit', formData.id), {
             title: formData.title,
+            pas:formData.pas,
             name: formData.name,
             detail: formData.detail,
             tag: formData.tag,
@@ -86,6 +89,7 @@ export function useFirestoreUpload() {
         setFormData((prevData) => ({
             ...prevData,
             id: '',
+            pas:'',
             title: '',
             name: '',
             detail: '',
