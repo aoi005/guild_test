@@ -1,17 +1,24 @@
-import { runTransaction, doc,getDoc } from "firebase/firestore";
+import { runTransaction, doc,getDoc ,setDoc} from "firebase/firestore";
 import db from '../firebase';
+//import { set } from "mongoose";
+const collectionId = "SetNewData";
+const aaa = "aaa";
+const bbb = "bbb";
+const ccc = "ccc";
 
-export async function SetNewData(collectionId: string ,aaa:string,bbb:string,ccc:string,/*tagString:string[],*/tagMap:Record<string,boolean>){
+
+export async function SetNewData(){
 
     const sfDocRef = doc(db, 'currentId','currentId');
-    //console.log(sfDocRef);tagMap: Record<string, boolean>
     
     const snap = await getDoc(sfDocRef);
     
 
     if (!snap.exists()) {
-                throw "Document does not exist!";
-            }/**/
+                setDoc(sfDocRef, {usersId: 0});
+                
+                throw "Document'currentId' does not exist! Create 'currentId' and set 0.";        
+}/**/
 
     try {
         await runTransaction(db, async (transaction) => {
@@ -23,20 +30,14 @@ export async function SetNewData(collectionId: string ,aaa:string,bbb:string,ccc
                 aaa: "id = " + newId,
                 bbb: bbb,
                 ccc: ccc,
-                tagMap: tagMap,
+                
             });
             
-            if (snap.exists()) {
                 transaction.update(sfDocRef, {
                     usersId: newId,
                 });
-            } else {                        //undefinedの場合
-                transaction.set(sfDocRef, {
-                    usersId: 10000000,
-                });
-            }
             
-            console.log(String(newId).padStart(8, '0'));
+            console.log("Add to "+collectionId+" "+String(newId).padStart(8, '0'));
 
         });
 
