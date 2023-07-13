@@ -188,6 +188,7 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
     );
 
     setNewReply({ repid: '', name: '', msg: '' });//フォーム内文字削除。
+    alert('投稿完了しました。');
   } catch (error) {
     console.error('Error adding reply:', error);
   }
