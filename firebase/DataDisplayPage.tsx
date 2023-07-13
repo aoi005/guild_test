@@ -162,7 +162,7 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
 
   if (emptyFields.length > 0) {
     const fieldsMessage = emptyFields.join(', ');
-    alert(`次の内容は必須項目です。: ${fieldsMessage}`);  //アラートここ
+    alert(`次の内容は必須項目です。: ${fieldsMessage}`);  //エラーアラートここ
     return;
   }
 
@@ -188,7 +188,7 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
     );
 
     setNewReply({ repid: '', name: '', msg: '' });//フォーム内文字削除。
-    alert('投稿完了しました。');
+    alert('投稿完了しました。');//投稿完了アラート
   } catch (error) {
     console.error('Error adding reply:', error);
   }
