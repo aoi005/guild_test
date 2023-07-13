@@ -98,6 +98,22 @@ export default function UploadForm() {  //フォーム入力側関数(onsubmit�
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const requiredFields = ['title', 'author', 'price'];
+    const errors: string[] = [];
+
+    //未記入でalert表示
+    requiredFields.forEach((field) => {
+      if (!formData[field as keyof FirestoreData]) {
+        errors.push(field);
+      }
+    });
+  
+    if (errors.length > 0) {
+      alert(`次の内容は必須項目です。: ${errors.join(', ')}`);
+      return;
+    }
+    
     uploadData(formData);
     setFormData({
       id: '',
