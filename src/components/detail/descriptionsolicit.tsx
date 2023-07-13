@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import styles from "./index.module.scss";
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, Timestamp } from 'firebase/firestore';
-import AddReply from './AddReplypost';
+import AddReplysolicit from './AddReplysolicit';
 
 
 
@@ -90,7 +90,7 @@ export function useFirestoreData() {
 
 
 
-function Description({ detail,reply,postid }: DescriptionProps) {
+function Descriptionsolicit({ detail,reply,postid }: DescriptionProps) {
   const [modalIsOpen, setIsOpen] = useState(false);
   
 
@@ -127,7 +127,7 @@ function Description({ detail,reply,postid }: DescriptionProps) {
           </div>
 
           <div>
-            <AddReply postId={postid}></AddReply>
+            <AddReplysolicit postId={postid}></AddReplysolicit>
           </div>
        
 
@@ -142,4 +142,4 @@ function Description({ detail,reply,postid }: DescriptionProps) {
   );
 }
 
-export default Description;
+export default Descriptionsolicit;

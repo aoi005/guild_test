@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, doc, setDoc,Timestamp } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, doc, setDoc,Timestamp,onSnapshot } from 'firebase/firestore';
 import styles from './index.module.scss';
-import Description from '../detail/description';
 import firebase from "firebase/compat/app";
 import Hensyu from "../detail/hensyu";
+import Descriptionfight from '../detail/descriptionfight';
 
 // Firebaseの設定と型定義
 
@@ -29,6 +29,7 @@ interface FirestoreData {
 interface rep{
   name: string;
   msg: string;
+  strT:number;
 }
 
 const firebaseConfig = {
@@ -59,6 +60,7 @@ const tagList: string[] = ["フリバ","バトアリ","枠埋め", "エンジョ
 
 export function useFirestoreData() {
   const [data, setData] = useState<FirestoreData[]>([]);
+  const [documentCount, setDocumentCount] = useState<number>(0);
 
   useEffect(() => {
     const APP = initializeApp(firebaseConfig);
@@ -66,7 +68,7 @@ export function useFirestoreData() {
 
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'fight'));
+        const querySnapshot = await getDocs(collection(db, 'posts'));
         const fetchedData: FirestoreData[] = [];
 
         querySnapshot.forEach((doc) => {
@@ -88,12 +90,17 @@ export function useFirestoreData() {
         });
 
         setData(fetchedData);
+        setDocumentCount(querySnapshot.size);//リプライカウンターのアウトプットはここ
       } catch (error) {
         console.error('Error fetching Firestore data:', error);
       }
     };
 
-    fetchData();
+    const unsubscribe = onSnapshot(collection(db, "fight"), (snapshot) => {
+      fetchData();
+    });
+
+    return () => unsubscribe();
   }, []);
 
   return data;
@@ -184,7 +191,7 @@ export default function DataDisplayfight() {
 
       <button className={styles.pagebtn} onClick={() => {PageChange(-1)}}>⇐　前の十件</button>
       <button  className={styles.pagebtn} onClick={() => PageChange(1)}>次の十件　⇒</button>
-      <h4>ページ{page+1}</h4>
+      <h4>固定募集・ページ{page+1}</h4>
 
     <div className={styles.resetbtnarea}>
       <h4>タグ絞り込み</h4>
@@ -239,7 +246,7 @@ export default function DataDisplayfight() {
             <div>
               <h5>部屋番号: {item.name}</h5>
               <br></br>
-               <p key={item.id}>{item.detail}</p>
+              <p key={item.id} className={styles.detailarea}>{item.detail}</p>
               <br></br>
             </div>
             <div>
@@ -259,7 +266,7 @@ export default function DataDisplayfight() {
             <div className={styles.bordmenu}>
 
               <div className={styles.detaillay}>
-                <Description  detail={item.detail} reply={item.reply} postid={item.id}/>
+                <Descriptionfight  detail={item.detail} reply={item.reply} postid={item.id}/>
               </div>
 
           
@@ -276,10 +283,12 @@ export default function DataDisplayfight() {
                 reply={item.reply}
               />
 
+              <div>リプライ数：{Object.keys(item.reply).length}</div>
+
             </div>
 
           
-  
+            
             
           </article>
         

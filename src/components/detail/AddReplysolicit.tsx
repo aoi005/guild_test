@@ -17,7 +17,9 @@ const firebaseConfig = {
   measurementId: "G-5JSSYVBJR0"
 };
 
-function AddReply({ postId }: AddReplyProps) {
+const currentTime = new Date();
+
+function AddReplysolicit({ postId }: AddReplyProps) {
   const [newReply, setNewReply] = useState({ repid: '', name: '', msg: '' });
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,11 +33,31 @@ function AddReply({ postId }: AddReplyProps) {
   const addReply = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const emptyFields = [];
+
+  if (newReply.repid === '') {
+    emptyFields.push('Reply ID');
+  }
+
+  if (newReply.name === '') {
+    emptyFields.push('Name');
+  }
+
+  if (newReply.msg === '') {
+    emptyFields.push('Message');
+  }
+
+  if (emptyFields.length > 0) {
+    const fieldsMessage = emptyFields.join(', ');
+    alert(`次の内容は必須項目です。: ${fieldsMessage}`);  //エラーアラートここ
+    return;
+  }
+
     try {
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
 
-      const docRef = doc(db, 'posts', postId);
+      const docRef = doc(db, 'solicit', postId);
 
       await setDoc(
         docRef,
@@ -44,6 +66,7 @@ function AddReply({ postId }: AddReplyProps) {
             [newReply.repid]: {
               name: newReply.name,
               msg: newReply.msg,
+              strT:currentTime.getTime(),
             },
           },
         },
@@ -84,4 +107,4 @@ function AddReply({ postId }: AddReplyProps) {
   );
 }
 
-export default AddReply;
+export default AddReplysolicit;

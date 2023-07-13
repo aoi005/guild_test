@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, doc, setDoc,Timestamp } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, doc, setDoc,Timestamp,onSnapshot } from 'firebase/firestore';
 import styles from './index.module.scss';
 import Description from '../detail/description';
 import firebase from "firebase/compat/app";
@@ -29,6 +29,7 @@ interface FirestoreData {
 interface rep{
   name: string;
   msg: string;
+  strT:number;
 }
 
 const firebaseConfig = {
@@ -59,6 +60,7 @@ const tagList: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギ�
 
 export function useFirestoreData() {
   const [data, setData] = useState<FirestoreData[]>([]);
+  const [documentCount, setDocumentCount] = useState<number>(0);
 
   useEffect(() => {
     const APP = initializeApp(firebaseConfig);
@@ -88,12 +90,17 @@ export function useFirestoreData() {
         });
 
         setData(fetchedData);
+        setDocumentCount(querySnapshot.size);//リプライカウンターのアウトプットはここ
       } catch (error) {
         console.error('Error fetching Firestore data:', error);
       }
     };
 
-    fetchData();
+    const unsubscribe = onSnapshot(collection(db, "posts"), (snapshot) => {
+      fetchData();
+    });
+
+    return () => unsubscribe();
   }, []);
 
   return data;
@@ -184,7 +191,7 @@ export default function DataDisplayPage() {
 
       <button className={styles.pagebtn} onClick={() => {PageChange(-1)}}>⇐　前の十件</button>
       <button  className={styles.pagebtn} onClick={() => PageChange(1)}>次の十件　⇒</button>
-      <h4>ページ{page+1}</h4>
+      <h4>メンバー募集・ページ{page+1}</h4>
 
     <div className={styles.resetbtnarea}>
       <h4>タグ絞り込み</h4>
@@ -239,7 +246,7 @@ export default function DataDisplayPage() {
             <div>
               <h5>Guildname: {item.name}</h5>
               <br></br>
-               <p key={item.id}>{item.detail}</p>
+               <p key={item.id} className={styles.detailarea}>{item.detail}</p>
               <br></br>
             </div>
             <div>
@@ -275,6 +282,8 @@ export default function DataDisplayPage() {
                 tag={item.tag}
                 reply={item.reply}
               />
+
+              <div>リプライ数：{Object.keys(item.reply).length}</div>
 
             </div>
 

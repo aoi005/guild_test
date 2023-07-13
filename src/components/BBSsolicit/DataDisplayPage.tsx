@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, doc, setDoc,Timestamp } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, doc, setDoc,Timestamp,onSnapshot } from 'firebase/firestore';
 import styles from './index.module.scss';
-import Description from '../detail/description';
 import firebase from "firebase/compat/app";
 import Hensyu from "../detail/hensyu";
+import Descriptionsolicit from '../detail/descriptionsolicit';
 
 // Firebaseの設定と型定義
 
@@ -29,6 +29,7 @@ interface FirestoreData {
 interface rep{
   name: string;
   msg: string;
+  strT:number;
 }
 
 const firebaseConfig = {
@@ -59,6 +60,7 @@ const tagList: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギ�
 
 export function useFirestoreData() {
   const [data, setData] = useState<FirestoreData[]>([]);
+  const [documentCount, setDocumentCount] = useState<number>(0);
 
   useEffect(() => {
     const APP = initializeApp(firebaseConfig);
@@ -70,7 +72,7 @@ export function useFirestoreData() {
         const fetchedData: FirestoreData[] = [];
 
         querySnapshot.forEach((doc) => {
-          const { title, pas,name,strT,time,limit,detail, tag,reply } = doc.data();
+          const { title,pas, name,strT,time,limit,detail, tag,reply } = doc.data();
           const formattedReply = reply ? reply : {}; // nullやundefinedの場合に空オブジェクトに設定する
           
           fetchedData.push({
@@ -88,12 +90,17 @@ export function useFirestoreData() {
         });
 
         setData(fetchedData);
+        setDocumentCount(querySnapshot.size);//リプライカウンターのアウトプットはここ
       } catch (error) {
         console.error('Error fetching Firestore data:', error);
       }
     };
 
-    fetchData();
+    const unsubscribe = onSnapshot(collection(db, "solicit"), (snapshot) => {
+      fetchData();
+    });
+
+    return () => unsubscribe();
   }, []);
 
   return data;
@@ -184,7 +191,7 @@ export default function DataDisplaysolicit() {
 
       <button className={styles.pagebtn} onClick={() => {PageChange(-1)}}>⇐　前の十件</button>
       <button  className={styles.pagebtn} onClick={() => PageChange(1)}>次の十件　⇒</button>
-      <h4>ページ{page+1}</h4>
+      <h4>勧誘募集・ページ{page+1}</h4>
 
     <div className={styles.resetbtnarea}>
       <h4>タグ絞り込み</h4>
@@ -239,7 +246,7 @@ export default function DataDisplaysolicit() {
             <div>
               <h5>Guildname: {item.name}</h5>
               <br></br>
-               <p key={item.id}>{item.detail}</p>
+              <p key={item.id} className={styles.detailarea}>{item.detail}</p>
               <br></br>
             </div>
             <div>
@@ -259,7 +266,7 @@ export default function DataDisplaysolicit() {
             <div className={styles.bordmenu}>
 
               <div className={styles.detaillay}>
-                <Description  detail={item.detail} reply={item.reply} postid={item.id}/>
+                <Descriptionsolicit  detail={item.detail} reply={item.reply} postid={item.id}/>
               </div>
 
           
@@ -275,11 +282,12 @@ export default function DataDisplaysolicit() {
                 tag={item.tag}
                 reply={item.reply}
               />
+               <div>リプライ数：{Object.keys(item.reply).length}</div>
 
             </div>
 
           
-  
+           
             
           </article>
         

@@ -69,8 +69,25 @@ export default function UploadForm() {
   });
   console.log(formData.time)
 
+  const [formErrors, setFormErrors] = useState<string[]>([]); //ここでエラー内容の配列定義。
+
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const requiredFields = ['pas', 'title', 'name','detail'];
+    const errors: string[] = [];
+
+    requiredFields.forEach((field) => {
+      if (!formData[field as keyof FirestoreData]) {
+        errors.push(field);
+      }
+    });
+  
+    if (errors.length > 0) {
+      alert(`次の内容は必須項目です。: ${errors.join(', ')}`);
+      return;
+    }
+
     uploadData(formData);
     // const currentTime = new Date().toLocaleString();
     setFormData((prevFormData) => ({
@@ -85,8 +102,8 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       time: currentTime,
       limit:limitTime,
     }));
-    
-    console.log(formData.time)
+    alert('投稿完了しました。パスワードはお忘れないようにお願いします。');
+    setFormErrors([]);
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -140,7 +157,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             value={formData.pas}
             onChange={(e) => setFormData({ ...formData, pas: e.target.value })}
             placeholder="パスワード"
-          />
+          />＊編集時に必要です
           <br></br>
 
           <input
