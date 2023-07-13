@@ -48,6 +48,7 @@ const tagList: string[] = ['Able', 'Bravo', 'Charley','Delta','Echo'];
 //メイン分野表示(上位側フィールド内容)
 export function useFirestoreData() {
   const [data, setData] = useState<FirestoreData[]>([]);
+  const [documentCount, setDocumentCount] = useState<number>(0); // ドキュメント数の状態を追加
 
   useEffect(() => {
     const app = initializeApp(firebaseConfig);
@@ -161,7 +162,7 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
 
   if (emptyFields.length > 0) {
     const fieldsMessage = emptyFields.join(', ');
-    alert(`次の内容は必須項目です。: ${fieldsMessage}`);
+    alert(`次の内容は必須項目です。: ${fieldsMessage}`);  //アラートここ
     return;
   }
 
