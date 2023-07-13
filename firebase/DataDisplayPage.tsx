@@ -72,6 +72,7 @@ export function useFirestoreData() {
           });
         });
         setData(fetchedData);
+        setDocumentCount(querySnapshot.size);//リプライカウンターのアウトプットはここ
       } catch (error) {
         console.error('Error fetching Firestore data:', error);
       }
@@ -143,6 +144,27 @@ const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
   e.preventDefault();
 
+  //未記入でalert表示。ちょっと煩雑だけどこうするしかないっぽいので改善策分かる場合は任せます。
+  const emptyFields = [];
+
+  if (newReply.repid === '') {
+    emptyFields.push('Reply ID');
+  }
+
+  if (newReply.name === '') {
+    emptyFields.push('Name');
+  }
+
+  if (newReply.msg === '') {
+    emptyFields.push('Message');
+  }
+
+  if (emptyFields.length > 0) {
+    const fieldsMessage = emptyFields.join(', ');
+    alert(`次の内容は必須項目です。: ${fieldsMessage}`);
+    return;
+  }
+
   try {
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
@@ -210,6 +232,7 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
             </div>
             <div>
             Replies:
+              <div>Reply Count: {Object.keys(item.reply).length}</div> //リプライカウンター
               {Object.entries(item.reply).map(([repid, reply]) => (
                 <div key={repid}>
                   ID: {repid} / Name: {reply.name} / Message: {reply.msg}
@@ -217,7 +240,6 @@ const addReply = async (e: React.FormEvent<HTMLFormElement>, id: string) => {
               ))}
             </div>
             <form onSubmit={(e) => addReply(e, item.id)}>
-              <input type="hidden" name="itemId" value={item.id} />
               <label>
                 Reply ID:
                 <input
