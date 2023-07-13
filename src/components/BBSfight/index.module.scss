@@ -190,3 +190,15 @@
     .detailarea{
       white-space: pre-line;
     }
+    .formbtn{
+      color: #fff;
+      background-color: #0a0c0d;
+      border-bottom: 5px solid #858483;
+      font-weight: bold;
+  }
+  .formbtn:hover{
+      margin-top: 3px;
+      color: #fff;
+      background: #f56500;
+      border-bottom: 2px solid #b84c00;
+  }

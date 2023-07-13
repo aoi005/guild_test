@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,ChangeEventHandler } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import styles from "./index.module.scss";
 
 
 interface AddReplyProps {
@@ -19,10 +20,21 @@ const firebaseConfig = {
 
 const currentTime = new Date();
 
-function AddReply({ postId }: AddReplyProps) {
-  const [newReply, setNewReply] = useState({ repid: '', name: '', msg: '' });
+function generateReplyId() {
 
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0,
+      v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+
+  return uuid;
+}
+
+function AddReply({ postId }: AddReplyProps) {
+  const [newReply, setNewReply] = useState({ repid: generateReplyId(), name: '', msg: '' });
+
+  const handleFormChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     const { name, value } = e.target;
     setNewReply((prevReply) => ({
       ...prevReply,
@@ -35,9 +47,6 @@ function AddReply({ postId }: AddReplyProps) {
 
     const emptyFields = [];
 
-  if (newReply.repid === '') {
-    emptyFields.push('Reply ID');
-  }
 
   if (newReply.name === '') {
     emptyFields.push('Name');
@@ -81,28 +90,23 @@ function AddReply({ postId }: AddReplyProps) {
 
   return (
     <form onSubmit={addReply} >
-      <input
-        type="text"
-        name="repid"
-        value={newReply.repid}
-        onChange={handleFormChange}
-        placeholder="Reply ID"
-      />
-      <input
-        type="text"
+     
+      <textarea
         name="name"
         value={newReply.name}
         onChange={handleFormChange}
         placeholder="Name"
       />
-      <input
-        type="text"
+      <textarea
         name="msg"
+        wrap='hard'
+        style={{ width: '90%', height: '200px', resize: 'vertical' }}
         value={newReply.msg}
         onChange={handleFormChange}
         placeholder="Message"
       />
-      <button type="submit">Add Reply</button>
+          
+      <button type="submit" className={styles.addrepbtn}>Add Reply</button>
     </form>
   );
 }

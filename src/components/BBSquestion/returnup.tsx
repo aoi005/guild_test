@@ -179,7 +179,7 @@ export default function UploadFormquestion() {
       </div>
 
 
-        <button type="submit">データを追加/更新</button>
+      <button type="submit" className={styles.formbtn}>投稿送信</button>
       </form>
       
       {uploadStatus === 'Success' && <p>{} formed!</p>}

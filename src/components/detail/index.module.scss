@@ -10,6 +10,19 @@
     background: #f56500;
     border-bottom: 2px solid #b84c00;
 }
+.closebtn{
+    color: #fff;
+    background-color: #0f1112;
+    border-bottom: 5px solid #858483;
+    font-weight: bold;
+    margin: 0 20px 0px 20px;
+}
+.closebtn:hover{
+    margin-top: 3px;
+    color: #fff;
+    background: #f56500;
+    border-bottom: 2px solid #b84c00;
+}
 
 
 
@@ -46,7 +59,11 @@
 .replen{
     display: block;
     border: 3px solid rgba(62, 46, 46, 0.5);
-    margin-bottom: 5px;
+    margin: 0 20px 0px 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+    background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
 }
 
 .modalContent {
@@ -64,3 +81,30 @@
     box-shadow: 0px 0px 0px 10px #d6ebff;
     border: dashed 2px white;
 }
+
+.namearea{
+    border-bottom: 1px solid #190909;
+}
+
+.msgarea{
+    white-space: pre-line;
+}
+
+.repinputarea{
+    margin: 0 20px 0px 20px;
+    display: block;
+}
+
+.addrepbtn{
+    color: #fff;
+    background-color: #0f1112;
+    border-bottom: 5px solid #858483;
+    font-weight: bold;
+}
+.addrepbtnbtn:hover{
+    margin-top: 3px;
+    color: #fff;
+    background: #f56500;
+    border-bottom: 2px solid #b84c00;
+}
+

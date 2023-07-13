@@ -102,6 +102,10 @@ function Description({ detail,reply,postid }: DescriptionProps) {
     setIsOpen(false);
   }
 
+  const sortedReply = Object.entries(reply).sort(
+    ([_, repA], [__, repB]) =>repA.strT - repB.strT
+  );
+
   
 
   return (
@@ -118,22 +122,25 @@ function Description({ detail,reply,postid }: DescriptionProps) {
 
         <h3> リプライ　</h3>
           <div >
-            {Object.entries(reply).map(([repid, rep]) => (
+          {sortedReply.map(([repid, rep]) => (
               <div key={repid} className={styles.replen}>
-                <p>Name: {rep.name}</p>
-                <p>Message: {rep.msg}</p>
+                <div className={styles.namearea}>
+                  <p className={styles.namearea}>Name: {rep.name}</p>
+                </div>
+                <p　className={styles.msgarea}>{rep.msg}</p>
               </div>
             ))}
           </div>
-
-          <div>
+    
+          <div className={styles.repinputarea}>
             <AddReply postId={postid}></AddReply>
           </div>
        
 
-        <button onClick={closeModal} className={styles.detailbtn}>
+        <button onClick={closeModal} className={styles.closebtn}>
           閉じる
         </button>
+ 
       </div>  
 
       </Modal>

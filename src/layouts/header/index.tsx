@@ -31,12 +31,12 @@ function Header() {
               </div>
            }
         </h1>
-  
+        
         <Popup />
 
    
        
-        <Popupsearch/>
+        {/* <Popupsearch/> */}
 
         <div>
           

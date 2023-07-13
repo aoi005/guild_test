@@ -92,13 +92,13 @@ function Popup() {
         >
        
  
-        <button onClick={closeModal}>閉じる</button>
+        <button onClick={closeModal} className={styles.detailbtn}>閉じる</button>
         
         <div>
-          <button onClick={MemberOpen}>メンバー募集投稿</button>
-          <button onClick={SolicitOpen}>勧誘募集投稿</button>
-          <button onClick={FightOpen}>固定募集投稿</button>
-          <button onClick={QuestionOpen}>質問募集投稿</button>
+          <button onClick={MemberOpen} className={styles.detailbtn}>メンバー募集投稿</button>
+          <button onClick={SolicitOpen} className={styles.detailbtn}>勧誘募集投稿</button>
+          <button onClick={FightOpen} className={styles.detailbtn}>固定募集投稿</button>
+          <button onClick={QuestionOpen} className={styles.detailbtn}>質問募集投稿</button>
         </div>
 
         <div>
@@ -144,9 +144,9 @@ function Popup() {
         </div>
 
 
-        <button onClick={closeModal} className={styles.detailbtn}>
+        {/* <button onClick={closeModal} className={styles.detailbtn}>
           閉じる
-        </button>
+        </button> */}
 
      
       
