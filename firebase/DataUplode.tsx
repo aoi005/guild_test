@@ -154,6 +154,7 @@ export default function UploadForm() {  //フォーム入力側関数(onsubmit�
                       onChange={handleCheckboxChange}
                     />
                   </label>
+              {formErrors.includes(key) && <span>Please enter {key}</span>}
                 ))}
               </div>
             );
