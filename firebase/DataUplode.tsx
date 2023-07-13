@@ -114,7 +114,7 @@ export default function UploadForm() {  //フォーム入力側関数(onsubmit�
       return;
     }
     
-    uploadData(formData);
+    uploadData(formData);    
     setFormData({
       id: '',
       title: '',
@@ -122,11 +122,22 @@ export default function UploadForm() {  //フォーム入力側関数(onsubmit�
       price: 0,
       tag: {},
     });
+    alert('投稿完了しました。パスワードはお忘れないようにお願いします。');
+    setFormErrors([]);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
-
+  
     setFormData((prevData) => ({
       ...prevData,
       tag: {
