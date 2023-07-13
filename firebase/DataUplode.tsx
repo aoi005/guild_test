@@ -94,7 +94,7 @@ export default function UploadForm() {  //フォーム入力側関数(onsubmit�
     tag: initialTags,
   });
 
-  
+  const [formErrors, setFormErrors] = useState<string[]>([]); //ここでエラー内容の配列定義。
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
