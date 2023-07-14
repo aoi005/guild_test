@@ -59,9 +59,11 @@ export function useFirestoreData() {
       try {
         const querySnapshot = await getDocs(collection(db, 'posts'));
         const fetchedData: FirestoreData[] = [];
+        
     
         querySnapshot.forEach((doc) => {
           const { title, name, strT, time, limit, detail, tag, reply } = doc.data();
+          const formattedReply = reply ? reply : {}; // nullやundefinedの場合に空オブジェクトに設定する
           fetchedData.push({
             id: doc.id,
             title,
@@ -71,7 +73,7 @@ export function useFirestoreData() {
             limit,
             detail,
             tag,
-            reply,
+            reply: formattedReply
           });
         });
     

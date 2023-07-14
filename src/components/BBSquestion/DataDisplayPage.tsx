@@ -88,6 +88,11 @@ export function useFirestoreData() {
           });
         });
 
+        if (fetchedData.length === 0) {
+          // データが存在しない場合の処理
+          setData([]); // 空のデータ配列を設定
+        }
+
         setData(fetchedData);
         setDocumentCount(querySnapshot.size);//リプライカウンターのアウトプットはここ
       } catch (error) {
