@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import styles from "./index.module.scss";
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, Timestamp } from 'firebase/firestore';
-import AddReplyfight from './AddReplypost';
+import AddReplyfight from './AddReplyfight';
 
 
 
