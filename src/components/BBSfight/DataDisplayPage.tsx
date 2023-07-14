@@ -68,7 +68,7 @@ export function useFirestoreData() {
 
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'posts'));
+        const querySnapshot = await getDocs(collection(db, 'fight'));
         const fetchedData: FirestoreData[] = [];
 
         querySnapshot.forEach((doc) => {

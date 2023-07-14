@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import styles from "./index.module.scss";
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, Timestamp } from 'firebase/firestore';
-import AddReplyquestion from './AddReplypost';
+import AddReplyquestion from './AddReplyfquestion';
 
 
 
@@ -57,7 +57,7 @@ export function useFirestoreData() {
 
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'posts'));
+        const querySnapshot = await getDocs(collection(db, 'question'));
         const fetchedData: FirestoreData[] = [];
     
         querySnapshot.forEach((doc) => {
