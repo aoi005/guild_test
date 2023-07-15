@@ -1,44 +1,57 @@
-.formbtn{
+.formbtn {
     color: #fff;
     background-color: #0a0c0d;
     border-bottom: 5px solid #858483;
     font-weight: bold;
-}
-.formbtn:hover{
+  }
+  
+  .formbtn:hover {
     margin-top: 3px;
     color: #fff;
     background: #f56500;
     border-bottom: 2px solid #b84c00;
-}
-
-
-
-.formarea{
-   
-    padding-top: 3%;
-    margin-top: 10%;
+  }
+  
+  .formarea {
+    // padding-top: 3%;
+    margin-top: 5%;
     margin-left: 10%;
     margin-right: 10%;
     background: #cee3f4;
     box-shadow: 0px 0px 0px 10px #d6ebff;
     border: dashed 2px white;
-}
-
+  }
+  
   .modalContent {
-    
-    max-height: 350px; 
+    max-height: 350px;
     overflow-y: auto;
   }
-
-  .detailbtn{
+  
+  .detailbtn {
     color: #fff;
     background-color: #0f1112;
     border-bottom: 5px solid #858483;
     font-weight: bold;
-}
-.detailbtn:hover{
+  }
+  
+  .detailbtn:hover {
     margin-top: 3px;
     color: #fff;
     background: #f56500;
     border-bottom: 2px solid #b84c00;
-}
+  }
+  
+  @media (max-width: 768px) {
+    .formarea {
+      margin: 10% auto;
+      max-width: 80%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .formarea {
+      margin: 10% auto;
+      max-width: 90%;
+    }
+  }
+  

@@ -8,20 +8,6 @@ import UploadFormsolicit from "../BBSsolicit/returnup";
 import UploadFormFight from "../BBSfight/returnup";
 import UploadFormquestion from "../BBSquestion/returnup";
 
-
-// const customStyles = {
-//   content: {
-//     top: '50%',
-//     left: '50%',
-//     right: 'auto',
-//     bottom: 'auto',
-//     marginRight: '-50%',
-//     transform: 'translate(-50%, -50%)',
-//   },
-// };
-
-
-
 function Popup() {
   let subtitle ="";
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -73,28 +59,23 @@ function Popup() {
     setQuestionform(true);
   }
 
-  
-
   return (
-  <div>
-       <div style={{  overflowY: 'auto' }} className={styles.formbox}>
-      <button onClick={openModal} className={styles.formbtn}>投稿</button>
-    
-    
-        <Modal
-          isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          // ariaHideApp={false}
-          // style={{ letterSpacing: "20px", textAlign: "center" }}
-          contentLabel="Example Modal"
-          className={styles.formarea}
-        >
-       
- 
+    <div>
+      <div className={styles.formbox}>
+        <button onClick={openModal} className={styles.formbtn}>投稿</button>
+      </div>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        className={styles.formarea}
+        overlayClassName={styles.modalOverlay} // 追加
+        contentLabel="Example Modal"
+      >
         <button onClick={closeModal} className={styles.detailbtn}>閉じる</button>
-        
-        <div>
+
+        <div className={styles.buttonGroup}>
           <button onClick={MemberOpen} className={styles.detailbtn}>メンバー募集投稿</button>
           <button onClick={SolicitOpen} className={styles.detailbtn}>勧誘募集投稿</button>
           <button onClick={FightOpen} className={styles.detailbtn}>固定募集投稿</button>
@@ -102,64 +83,32 @@ function Popup() {
         </div>
 
         <div>
-
           {Memberform ? (
-            <div className={styles.modalContent}> 
+            <div className={styles.modalContent}>
               <UploadForm />
-
             </div>
-
           ) : null}
 
           {solicitform ? (
-
-            <div className={styles.modalContent}> 
-
-            <UploadFormsolicit/>
-
+            <div className={styles.modalContent}>
+              <UploadFormsolicit/>
             </div>
-            
           ) : null}
 
           {fihgtform ? (
-
-            <div className={styles.modalContent}> 
-
+            <div className={styles.modalContent}>
               <UploadFormFight/>
-
             </div>
-  
           ) : null}
 
           {questionform ? (
-
-            <div className={styles.modalContent}> 
-
+            <div className={styles.modalContent}>
               <UploadFormquestion/>
-
             </div>
-  
           ) : null}
-
         </div>
-
-
-        {/* <button onClick={closeModal} className={styles.detailbtn}>
-          閉じる
-        </button> */}
-
-     
-      
-        
-    
-
-
       </Modal>
-      </div>
-
     </div>
-
- 
   );
 }
 
