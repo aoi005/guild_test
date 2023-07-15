@@ -46,6 +46,10 @@
       margin: 10% auto;
       max-width: 90%;
     }
+    .modalContent {
+        max-height: 450px;
+        overflow-y: auto;
+      }
   }
   
   @media (max-width: 480px) {
@@ -53,5 +57,9 @@
       margin: 10% auto;
       max-width: 90%;
     }
+    .modalContent {
+        max-height: 450px;
+        overflow-y: auto;
+      }
   }
   
