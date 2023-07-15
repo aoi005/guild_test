@@ -163,7 +163,7 @@ display: none; /* デフォルトのinputは非表示にする */
 .tagselectarea2 span {
 color: #080101; /* 文字色を黒に */
 font-weight: 500;
-font-size: 15px; /* 文字サイズ */
+font-size: 13px; /* 文字サイズ */
 border: 1px solid #333; /* 淵の線を指定 */
 border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
 padding: 3px 15px; /* 上下左右に余白をトル */
@@ -212,7 +212,17 @@ max-width: 80%;
 }
 .tagGrid2{
 margin: 10% auto;
-max-width: 90%;
+max-width: 100%;
+
+}
+.tagselectarea2 span {
+color: #080101; /* 文字色を黒に */
+font-weight: 500;
+font-size: 10px; /* 文字サイズ */
+border: 1px solid #333; /* 淵の線を指定 */
+border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
+padding: 3px 15px; /* 上下左右に余白をトル */
+background: #f0f3d0;
 }
 }
 
@@ -223,6 +233,16 @@ max-width: 90%;
 }
 .tagGrid2{
 margin: 10% auto;
-max-width: 90%;
+max-width: 100%;
+grid-template-columns: repeat(2, 1fr); /* 5つのカラムを作成 */
+}
+.tagselectarea2 span {
+color: #080101; /* 文字色を黒に */
+font-weight: 500;
+font-size: 10px; /* 文字サイズ */
+border: 1px solid #333; /* 淵の線を指定 */
+border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
+padding: 3px 15px; /* 上下左右に余白をトル */
+background: #f0f3d0;
 }
 }
