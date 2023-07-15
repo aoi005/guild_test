@@ -23,6 +23,7 @@ export default function Home() {
         
                  
         <h1>現在準備中です</h1>
+        <span></span>恐れ入りますが<a　href='https://twitter.com/conpasguildbord'>こちら</a><span>のTwitterアカウントからご確認ください。</span>
       
         </div>
       </div>

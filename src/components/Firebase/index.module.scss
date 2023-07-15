@@ -146,10 +146,10 @@
       display: grid; 
 
       //追加部分
-      max-width: 600px; //タグ一覧が横に伸びすぎないようにする
+      max-width: 1000px; //タグ一覧が横に伸びすぎないようにする
 
       grid-template-columns: repeat(3, 1fr); /* 5つのカラムを作成 */
-      grid-gap: 5px; /* カラム間のスペースを設定 */
+      grid-gap: 10px; /* カラム間のスペースを設定 */
     }
 
   
@@ -163,10 +163,10 @@
     .tagselectarea2 span {
       color: #080101; /* 文字色を黒に */
       font-weight: 500;
-      font-size: 10px; /* 文字サイズ */
+      font-size: 15px; /* 文字サイズ */
       border: 1px solid #333; /* 淵の線を指定 */
-      border-radius: 8px; /* 角丸を入れて、左右が丸いボタンにする */
-      padding: 2px 10px; /* 上下左右に余白をトル */
+      border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
+      padding: 3px 15px; /* 上下左右に余白をトル */
       background: #f0f3d0;
     }
     .tagselectarea2 input:checked + span {
@@ -203,4 +203,26 @@
       color: #fff;
       background: #f56500;
       border-bottom: 2px solid #b84c00;
+  }
+
+  @media (max-width: 768px) {
+    .formlayout {
+      margin: 10% auto;
+      max-width: 80%;
+    }
+    .tagGrid2{
+      margin: 10% auto;
+      max-width: 90%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .formlayout {
+      margin: 10% auto;
+      max-width: 90%;
+    }
+    .tagGrid2{
+      margin: 10% auto;
+      max-width: 90%;
+    }
   }
