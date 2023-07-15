@@ -156,7 +156,7 @@ export default function UploadFormsolicit() {
             value={formData.pas}
             onChange={(e) => setFormData({ ...formData, pas: e.target.value })}
             placeholder="パスワード"
-          />＊編集時に必要です
+          />＊編集時必要
           <br></br>
 
           <input

@@ -150,14 +150,15 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             value={formData.id}
             onChange={(e) => setFormData({ ...formData, id: e.target.value })}
             placeholder="プレイヤーID"
-          /><br></br>
+          />
+          <br></br>
 
           <input
             type="text"
             value={formData.pas}
             onChange={(e) => setFormData({ ...formData, pas: e.target.value })}
             placeholder="パスワード"
-          />＊編集時に必要です
+          />＊編集時必要
           <br></br>
 
           <input
