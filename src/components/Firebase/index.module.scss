@@ -1,248 +1,248 @@
 .formlayout{
    
-        // padding: 1em 2em;
-        margin-left: 10%;
-        margin-right: 10%;
-        // background: #41505d;
-        // box-shadow: 0px 0px 0px 10px #d6ebff;
-        // border: dashed 2px white;
- 
-    
+  // padding: 1em 2em;
+  margin-left: 10%;
+  margin-right: 10%;
+  // background: #41505d;
+  // box-shadow: 0px 0px 0px 10px #d6ebff;
+  // border: dashed 2px white;
+
+
 }
 
 
 
 
 .bbs {
-        width: 100%;
-        margin: 10px auto;
-      }
-      
-      .bbs__heading {
-        display: block;
-        justify-content:center;
-        margin: 0px;
-      }
-      
-      .bbs__main {
-        display: block;
-        border: 3px solid rgba(62, 46, 46, 0.5);
-        margin: 0 20px 20px 0px;
-        padding: 15px;
-        border-radius: 10px;
-        background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
-        background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
-    
-      }
-      .bbs__title {
-        flex: 4;
-        margin-right: 1px;
-       
-      }
-      
-      .bbs__tag {
-        opacity: 0.5;
-      }
-      
-      .bbs__img {
-        object-fit: contain;
-        width: 100%;
-        border-radius: 5px;
-        max-height: 100px;
-        margin-right: 10px;
-        flex: 1;
-      }
-    
-    
-      .span  p{
-        padding: 0.5em 1em;
-        margin: 2em 0;
-        border: double 5px #4ec4d3;
-    
-        margin: 0; 
-        padding: 0;
-    }
-    
-    
-    .tagbox {
-        padding: 0em 0em;
-        width: fit-content;
-        margin-right: 8px;
-        margin-bottom: 8px;
-        color: #080000;//文字色
-        background: #fff8e8;//タグ背景（右側の部分）
-        border-left: solid 5px #ffc06e;//タグのボーダー線
-        font-weight: bold;
-    }
-    
-    .titlebox{
-      border-bottom: 1px solid #190909;
-    }
-    
-    
-    .tagContainer {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    
-    
-    .pagebtn{
-      // display: block;
-      // justify-content: space-between;
-      // align-items: center;
-      margin: 0 auto;
-      padding: 1em 0em;
-      width: 100px;
-      color: #333;
-      font-size: 9px;
-      font-weight: 900;
-      background-color: #f5eded;
-      box-shadow: 0 3px 0 #c9c7c7;
-      transition: 0.3s;
-    }
-    .pagebtn a::after {
-      content: '';
-      width: 5px;
-      height: 5px;
-      border-top: 3px solid #333333;
-      border-right: 3px solid #333333;
-      transform: rotate(45deg);
-    }
-    .pagebtn a:hover {
-      transform: translateY(2px);
-      text-decoration: none;
-      box-shadow: 0 2px 0 #aaaaaa;
-    }
+  width: 100%;
+  margin: 10px auto;
+}
 
-    .resetbtnarea{
-      display: flex
-    }
+.bbs__heading {
+  display: block;
+  justify-content:center;
+  margin: 0px;
+}
+
+.bbs__main {
+  display: block;
+  border: 3px solid rgba(62, 46, 46, 0.5);
+  margin: 0 20px 20px 0px;
+  padding: 15px;
+  border-radius: 10px;
+  background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+  background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+
+}
+.bbs__title {
+  flex: 4;
+  margin-right: 1px;
+ 
+}
+
+.bbs__tag {
+  opacity: 0.5;
+}
+
+.bbs__img {
+  object-fit: contain;
+  width: 100%;
+  border-radius: 5px;
+  max-height: 100px;
+  margin-right: 10px;
+  flex: 1;
+}
 
 
-    .resetbtn{
-      color: #fff;
-      background-color: #1c1f20;
-      border-bottom: 5px solid #5e5e5d;
-      font-weight: bold;
-    }
+.span  p{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  border: double 5px #4ec4d3;
 
-    .resetbtn:hover:hover{
-      margin-top: 3px;
-      color: #fff;
-      background: #f56500;
-      border-bottom: 2px solid #b84c00;
-  }
+  margin: 0; 
+  padding: 0;
+}
 
 
-    .tagGrid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3つのカラムを作成 */
-      grid-gap: 1px; /* カラム間のスペースを設定 */
-    }
+.tagbox {
+  padding: 0em 0em;
+  width: fit-content;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #080000;//文字色
+  background: #fff8e8;//タグ背景（右側の部分）
+  border-left: solid 5px #ffc06e;//タグのボーダー線
+  font-weight: bold;
+}
 
-    .tagGrid2 {
-      margin-left: 0px;
-      margin-bottom: 10px;
-      display: grid; 
+.titlebox{
+border-bottom: 1px solid #190909;
+}
 
-      //追加部分
-      max-width: 1000px; //タグ一覧が横に伸びすぎないようにする
 
-      grid-template-columns: repeat(3, 1fr); /* 5つのカラムを作成 */
-      grid-gap: 10px; /* カラム間のスペースを設定 */
-    }
+.tagContainer {
+display: flex;
+flex-wrap: wrap;
+}
 
-  
 
-    .tagselectarea2 {
-      margin-right: 5px; /* ボタン同士の間隔 */
-    }
-    .tagselectarea2 input {
-      display: none; /* デフォルトのinputは非表示にする */
-    }
-    .tagselectarea2 span {
-      color: #080101; /* 文字色を黒に */
-      font-weight: 500;
-      font-size: 13px; /* 文字サイズ */
-      border: 1px solid #333; /* 淵の線を指定 */
-      border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
-      padding: 3px 15px; /* 上下左右に余白をトル */
-      background: #f0f3d0;
-    }
-    .tagselectarea2 input:checked + span {
-      color: #FFF; /* 文字色を白に */
-      font-weight: 500;
-      background: rgb(246, 146, 23); /* 背景色を薄い赤に */
-      border: 1px solid #FBB; /* 淵の線を薄い赤に */
-    }
+.pagebtn{
+// display: block;
+// justify-content: space-between;
+// align-items: center;
+margin: 0 auto;
+padding: 1em 0em;
+width: 100px;
+color: #333;
+font-size: 9px;
+font-weight: 900;
+background-color: #f5eded;
+box-shadow: 0 3px 0 #c9c7c7;
+transition: 0.3s;
+}
+.pagebtn a::after {
+content: '';
+width: 5px;
+height: 5px;
+border-top: 3px solid #333333;
+border-right: 3px solid #333333;
+transform: rotate(45deg);
+}
+.pagebtn a:hover {
+transform: translateY(2px);
+text-decoration: none;
+box-shadow: 0 2px 0 #aaaaaa;
+}
 
-    .hidetext{
-      background: #080000;
-    }
+.resetbtnarea{
+display: flex
+}
 
-    .bordmenu{
-      display: flex;
-    }
-    .detaillay{
-      margin-right: 5px;
-    }
 
-    .detailarea{
-      white-space: pre-line;
-    }
+.resetbtn{
+color: #fff;
+background-color: #1c1f20;
+border-bottom: 5px solid #5e5e5d;
+font-weight: bold;
+}
 
-   
-    .formbtn{
-      color: #fff;
-      background-color: #0a0c0d;
-      border-bottom: 5px solid #858483;
-      font-weight: bold;
-  }
-  .formbtn:hover{
-      margin-top: 3px;
-      color: #fff;
-      background: #f56500;
-      border-bottom: 2px solid #b84c00;
-  }
+.resetbtn:hover:hover{
+margin-top: 3px;
+color: #fff;
+background: #f56500;
+border-bottom: 2px solid #b84c00;
+}
 
-  @media (max-width: 768px) {
-    .formlayout {
-      margin: 10% auto;
-      max-width: 80%;
-    }
-    .tagGrid2{
-      margin: 10% auto;
-      max-width: 100%;
-      
-    }
-    .tagselectarea2 span {
-      color: #080101; /* 文字色を黒に */
-      font-weight: 500;
-      font-size: 10px; /* 文字サイズ */
-      border: 1px solid #333; /* 淵の線を指定 */
-      border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
-      padding: 3px 15px; /* 上下左右に余白をトル */
-      background: #f0f3d0;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .formlayout {
-      margin: 10% auto;
-      max-width: 90%;
-    }
-    .tagGrid2{
-      margin: 10% auto;
-      max-width: 100%;
-      grid-template-columns: repeat(2, 1fr); /* 5つのカラムを作成 */
-    }
-    .tagselectarea2 span {
-      color: #080101; /* 文字色を黒に */
-      font-weight: 500;
-      font-size: 10px; /* 文字サイズ */
-      border: 1px solid #333; /* 淵の線を指定 */
-      border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
-      padding: 2px 10px; /* 上下左右に余白をトル */
-      background: #f0f3d0;
-    }
-  }
+
+.tagGrid {
+display: grid;
+grid-template-columns: repeat(3, 1fr); /* 3つのカラムを作成 */
+grid-gap: 1px; /* カラム間のスペースを設定 */
+}
+
+.tagGrid2 {
+margin-left: 0px;
+margin-bottom: 10px;
+display: grid; 
+
+//追加部分
+max-width: 1000px; //タグ一覧が横に伸びすぎないようにする
+
+grid-template-columns: repeat(3, 1fr); /* 5つのカラムを作成 */
+grid-gap: 10px; /* カラム間のスペースを設定 */
+}
+
+
+
+.tagselectarea2 {
+margin-right: 5px; /* ボタン同士の間隔 */
+}
+.tagselectarea2 input {
+display: none; /* デフォルトのinputは非表示にする */
+}
+.tagselectarea2 span {
+color: #080101; /* 文字色を黒に */
+font-weight: 500;
+font-size: 13px; /* 文字サイズ */
+border: 1px solid #333; /* 淵の線を指定 */
+border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
+padding: 3px 15px; /* 上下左右に余白をトル */
+background: #f0f3d0;
+}
+.tagselectarea2 input:checked + span {
+color: #FFF; /* 文字色を白に */
+font-weight: 500;
+background: rgb(246, 146, 23); /* 背景色を薄い赤に */
+border: 1px solid #FBB; /* 淵の線を薄い赤に */
+}
+
+.hidetext{
+background: #080000;
+}
+
+.bordmenu{
+display: flex;
+}
+.detaillay{
+margin-right: 5px;
+}
+
+.detailarea{
+white-space: pre-line;
+}
+
+
+.formbtn{
+color: #fff;
+background-color: #0a0c0d;
+border-bottom: 5px solid #858483;
+font-weight: bold;
+}
+.formbtn:hover{
+margin-top: 3px;
+color: #fff;
+background: #f56500;
+border-bottom: 2px solid #b84c00;
+}
+
+@media (max-width: 768px) {
+.formlayout {
+margin: 10% auto;
+max-width: 80%;
+}
+.tagGrid2{
+margin: 10% auto;
+max-width: 100%;
+
+}
+.tagselectarea2 span {
+color: #080101; /* 文字色を黒に */
+font-weight: 500;
+font-size: 10px; /* 文字サイズ */
+border: 1px solid #333; /* 淵の線を指定 */
+border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
+padding: 3px 15px; /* 上下左右に余白をトル */
+background: #f0f3d0;
+}
+}
+
+@media (max-width: 480px) {
+.formlayout {
+margin: 10% auto;
+max-width: 90%;
+}
+.tagGrid2{
+margin: 10% auto;
+max-width: 100%;
+grid-template-columns: repeat(2, 1fr); /* 5つのカラムを作成 */
+}
+.tagselectarea2 span {
+color: #080101; /* 文字色を黒に */
+font-weight: 500;
+font-size: 12px; /* 文字サイズ */
+border: 1px solid #333; /* 淵の線を指定 */
+border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
+padding: 2px 10px; /* 上下左右に余白をトル */
+background: #f0f3d0;
+}
+}
