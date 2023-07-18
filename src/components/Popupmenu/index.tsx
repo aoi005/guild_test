@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useState } from 'react';
 import React from "react";
 import Select from 'react-select'
-import UploadForm from "../Firebase/returnup";
+import UploadForm from "../BBSbase/returnup";
 import UploadFormsolicit from "../BBSsolicit/returnup";
 import UploadFormFight from "../BBSfight/returnup";
 import UploadFormquestion from "../BBSquestion/returnup";
@@ -85,25 +85,25 @@ function Popup() {
         <div>
           {Memberform ? (
             <div className={styles.modalContent}>
-              <UploadForm />
+              <UploadForm collectionId='posts' />
             </div>
           ) : null}
 
           {solicitform ? (
             <div className={styles.modalContent}>
-              <UploadFormsolicit/>
+              <UploadForm collectionId='solicit'/>
             </div>
           ) : null}
 
           {fihgtform ? (
             <div className={styles.modalContent}>
-              <UploadFormFight/>
+              <UploadForm collectionId = 'fight'/>
             </div>
           ) : null}
 
           {questionform ? (
             <div className={styles.modalContent}>
-              <UploadFormquestion/>
+              <UploadForm collectionId="question"/>
             </div>
           ) : null}
         </div>
