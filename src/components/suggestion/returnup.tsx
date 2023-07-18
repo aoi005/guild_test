@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useFirestoreUpload } from './Dataupload';
+import { useFirestoreUpload } from './DataUplod';
 import styles from "./index.module.scss";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
