@@ -54,20 +54,31 @@ const Nav: React.FC = () => {
 
 
   return (
-    <section className={styles.container}>
-      <ul className={styles.contents}>
+
+    //ナビゲーションバーの非表示
+    // <>
+    // {!isNavClose && (
+    //     <button  onClick={handleNavClose}>{'⋙'}</button>
+    //   )}  
+    // {isNavClose && (
+      
+    <section className={styles.container} >
+      <ul className={styles.contents} >      
         {TOPICS.map((topic, index) => {
+
+          const isActive = currentPath === topic.path;//追加：現在のパスとボタンのパスが同じときisActiveとする。
+          
           return (
-            <li key={index} className={styles.navbtn}>
             
-                <a
-                 href={`${topic.path}`}
-                rel="noopener noreferrer">
+            <li key={index} className={`${styles.navbtn}    ${isActive ? styles.navbtn_after:""}`}>
+                      {/*変更：↑通常時はnavbtnスタイルを適用    ↑isActiveがtrueの時はボタンのスタイルをnavbtn_afterに変更 */}
 
-                {/* <Link href ={`${topic.path}`}> */}
+              <Link legacyBehavior href={topic.path} >
+          {/*変更：　↑aタグをLinkタグにするとページ遷移時にブラウザのロードなくなってスムーズになる */}
 
-                <div className={styles.button}>
-                
+                <div className={`${styles.button}      ${isActive ? styles.button_after : ""}`}>
+              {/*変更： ↑通常時はbuttonスタイルを適用     ↑isActiveがtrueの時ボタンのスタイルをbutton_afterに変更 */}
+
                   <Image
                       src={topic.icon}
                       alt=""
@@ -75,23 +86,29 @@ const Nav: React.FC = () => {
                       width={33}
                       height={33}
                       priority
-                    />
-                    <span className={styles.titlesize}>{topic.title}</span>
-                  
-                
-                {/* </Link> */}
-       
-              <p className={styles.namelogo}>{topic.name}</p>
-              </div>
-              </a>
+                  />
+
+                  <span className={styles.titlesize}>{topic.title}</span>
+
+                  <p className={styles.namelogo}>{topic.name}</p>  
+                </div>
+              </Link>
+             
             </li>
-          );
+               
+          );  
         })}
-      </ul>
+
+      {/* ナビゲーションバーの非表示ボタン */}
+     {/* <button  onClick={handleNavClose}>{'⋘'}</button> */}
+      </ul>    
     </section>
-  );
-};
+
+    )}
+
+//ナビゲーションバーの非表示
+//     </>     
+//   );
+// };
 
 export default Nav;
-
-
