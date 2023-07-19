@@ -1,0 +1,115 @@
+//src/components/nav/index.modules.scss
+//選択されているナビゲーションバーのボタンのデザインを変更
+
+.container {
+    margin-top: 0x;
+    width: 100%;
+    display: block;
+  }
+
+  .contents {
+    list-style-type: none;
+    height: auto;
+   
+    
+    >li {
+      margin-bottom: 0dvh;
+      opacity: 0.7;
+      color: rgb(173, 49, 49);
+      border: double 5px #000;
+      
+      
+  }
+  }
+
+
+
+
+  //変更：ボタン外枠のデザイン
+  .navbtn{
+    width: 95px; //変更：ボタン外枠の幅
+    
+    color: #fff;
+    border-bottom: 2px solid #37332e;
+    font-weight: bold;
+    
+  }
+
+  //追加：選択時のボタン外枠のデザイン
+  .navbtn_after{
+    width: 100%;//選択時のボタン幅
+    background-color: rgb(255, 255, 255);
+    animation-name: slide-in;//アニメーション追加
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;//アニメーション最後の状態を維持
+  }
+
+
+  //ボタン内枠のデザイン
+  .button{
+    width: 100%; //ボタン内枠の幅
+    color: rgb(15, 36, 36);
+    justify-content: center;
+    font-weight: bold;
+    background-color: #ffffff;
+    cursor: pointer;//追加：ボタン上でのpointer出す用
+
+    .titlesize{
+    font-size: 35px;
+    color: #1b0d0d;
+    }
+
+    .namelogo{
+    color: rgb(249, 249, 249);
+    background-color: black;
+    text-align: center;
+    font-size: 14px;//メンバー募集が2行にならない用
+    }   
+  }
+
+  //追加：選択時のボタン内枠のデザイン
+  .button_after {
+    width: 100%; //選択時のボタン内枠の幅
+    color: rgb(15, 36, 36);
+    justify-content: center;
+    font-weight: bold;
+    background-color: #00ffea;
+    
+        .titlesize{
+        font-size: 35px;
+        color: #1b0d0d;
+        }
+    
+        .namelogo{
+        color: rgb(249, 249, 249);
+        background-color: black;
+        text-align: center;
+        }   
+  }
+ 
+  .navbtn:hover{
+      margin-top: 1px;
+      color: #fff;
+      background: #ff9900;
+      border-bottom: 2px solid #b84c00;
+      opacity: 1.0;
+
+      .namelogo{
+        color: #ffffff;
+        background-color: #0f1112;
+      }
+  }
+
+  
+
+  //追加：ボタンを押したときに幅が広がるアニメーション
+  @keyframes slide-in{
+    from {
+      width:100%;
+    }
+    to{
+      width: 113%;
+    }
+  }
+
+ 
