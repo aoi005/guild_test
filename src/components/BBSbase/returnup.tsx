@@ -210,12 +210,12 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       })}
   
       <div>
-          <input    
+          {/* <input    
             type="text"
             value={formData.id}
             onChange={(e) => setFormData({ ...formData, id: e.target.value })}
             placeholder="プレイヤーID"
-          /><br></br>
+          /><br></br> */}
 
           <input
             type="text"
@@ -236,7 +236,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             type="text"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            placeholder="部屋番号"
+            placeholder="名前"
           /><br></br>
 
           <textarea

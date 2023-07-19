@@ -135,12 +135,12 @@ export default function UploadFormquestion() {
       })}
   
       <div>
-          <input    
+          {/* <input    
             type="text"
             value={formData.id}
             onChange={(e) => setFormData({ ...formData, id: e.target.value })}
             placeholder="プレイヤーID"
-          /><br></br>
+          /><br></br> */}
 
           <input
             type="text"
