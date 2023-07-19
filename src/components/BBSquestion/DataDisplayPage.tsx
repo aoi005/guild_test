@@ -186,54 +186,47 @@ export default function DataDisplayQuestion() {
 
 
 
+  const maximumPage = Math.floor(filteredData.length / 10)  +1  ;//追加：最大ページ数。投稿34件なら4ページ
 
 
 
   return (
-<div>
+    // ここからメンバー募集の画面
+     <div>      
+                                                                                            {/*ページ1のとき'　．．．'ボタンを表示、そうでなければ`⇐ 前の十件`ボタンを表示*/}
+          <button className={styles.pagebtn} onClick={() => {PageChange(-1); scrollToTop()}}>{page === 0 ? '　．．．' : `⇐ 前の十件`}</button>     
+    
+          {/* ページが最大のとき、"次の十件"ボタンを非表示にする */}
+          {page !==maximumPage-1 && (<button  className={styles.pagebtn} onClick={() =>{PageChange(1); scrollToTop()}}>次の十件　⇒</button>)}
+    
+          {/* 現在のページ/最大ページを表示。　　　投稿件数の総数を表示。 */}
+          <h4>ページ{page+1}/{maximumPage}　　　{filteredData.length}件表示</h4>
 
-
-      <button className={styles.pagebtn} onClick={() => {PageChange(-1)}}>⇐　前の十件</button>
-      <button  className={styles.pagebtn} onClick={() => PageChange(1)}>次の十件　⇒</button>
-      <h4>質問募集・ページ{page+1}</h4>
-
-    <div className={styles.resetbtnarea}>
-      <h4>タグ絞り込み</h4>
-      <button className={styles.resetbtn} onClick = {()=>{setSelectedTags([]);}}>
+        <div className={styles.resetbtnarea}>
+          <h4>タグ絞り込み</h4>
+          <button className={styles.resetbtn} onClick = {()=>{setSelectedTags([]);}}>
             タグリセット
-        </button>
-    </div>
-
-      {/* <div className='Tagsellect'>
-        タグ絞り込み: {selectedTags.join(', ')}
-      </div> */}
-
-
-
-
-<div className={styles.tagGrid2}>
-        {tagList.map((tag) => (
-          <div key={tag} >
-          <label className={styles.tagselectarea2}>
-            <input
-              type="checkbox"
-              checked={selectedTags.includes(tag)}
-              onChange={() => handleTagSelect(tag)}
-              className={styles.checkbtn3}
-          />
-          <span className={styles.tagnamesize}>{tag}</span>
-          </label>
-    </div>
-  ))}
-</div>
-
-      {/* <div>
-        {tagList.map((tag) => (
-          <button key={tag} onClick={() => handleTagSelect(tag)}  className='Tagsellect'>
-            Toggle {tag}
           </button>
-        ))}
-      </div> */}
+        </div>
+ 
+          <div className={styles.tagGrid2}>
+                  {tagList.map((tag) => (
+                    <div key={tag} >
+                      <label className={styles.tagselectarea2}>
+                          <input
+                            type="checkbox"
+                            checked={selectedTags.includes(tag)}
+                            onChange={() => {
+                              handleTagSelect(tag);
+                              setPage(0);//追加：タグ選択するたびに1ページ目に戻す
+                            }}
+                            className={styles.checkbtn3}
+                        />
+                        <span className={styles.tagnamesize}>{tag}</span>
+                      </label>
+                    </div>
+                  ))}
+          </div>
 
       
 
@@ -250,7 +243,7 @@ export default function DataDisplayQuestion() {
             <div>
               <h5>Guildname: {item.name}</h5>
               <br></br>
-              <p key={item.id} className={styles.detailarea}>{item.detail}</p>
+               <p key={item.id} className={styles.detailarea}>{item.detail}</p>
               <br></br>
             </div>
             <div>
@@ -270,7 +263,7 @@ export default function DataDisplayQuestion() {
             <div className={styles.bordmenu}>
 
               <div className={styles.detaillay}>
-                <Descriptionquestion  detail={item.detail} reply={item.reply} postid={item.id}/>
+                <Descriptionquestion detail={item.detail} reply={item.reply} postid={item.id}/>
               </div>
 
           
@@ -286,13 +279,10 @@ export default function DataDisplayQuestion() {
                 tag={item.tag}
                 reply={item.reply}
               />
-               <div>リプライ数：{Object.keys(item.reply).length}</div>
-  
+               </div>
 
-            </div>
-
-           
-            
+              <div>リプライ数：{Object.keys(item.reply).length}</div>
+              
           </article>
         
         // </ul>
@@ -300,12 +290,15 @@ export default function DataDisplayQuestion() {
 
 
 
-      <h4>ページ{page+1}</h4>
+     <h4>ページ{page+1}/{maximumPage}</h4>
+                                                                                        {/*ページ1のとき'　．．．'ボタンを表示、そうでなければ`⇐ 前の十件`ボタンを表示*/}
+      <button className={styles.pagebtn} onClick={() => {PageChange(-1); scrollToTop()}}>{page === 0 ? '　．．．' : `⇐ 前の十件`}</button>
 
-      {/* ボタンでpagechange関数と一緒にscrolltotop関数も動く */}
-      <button className={styles.pagebtn} onClick={() => {PageChange(-1); scrollToTop()}}>⇐　前の十件</button>
-      <button  className={styles.pagebtn} onClick={() =>{PageChange(1); scrollToTop()}}>次の十件　⇒</button>  
-      </div>
+      {/* ページが最大のとき、"次の十件"ボタンを非表示にする */}
+      {page !==maximumPage-1 && (<button  className={styles.pagebtn} onClick={() =>{PageChange(1); scrollToTop()}}>次の十件　⇒</button>)}     
+  </div>
+
+
 
 
 

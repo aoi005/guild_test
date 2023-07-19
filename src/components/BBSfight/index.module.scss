@@ -1,8 +1,12 @@
+//src/components/Firebase/indexmodule.scss 
+//このプログラムの一番下にアルファベットの文字列の折り返されないバグの修正いれた
+
 .formlayout{
-   
+
   // padding: 1em 2em;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+
   // background: #41505d;
   // box-shadow: 0px 0px 0px 10px #d6ebff;
   // border: dashed 2px white;
@@ -14,6 +18,7 @@
 
 
 .bbs {
+  margin-top: 0px;
   width: 100%;
   margin: 10px auto;
 }
@@ -37,7 +42,7 @@
 .bbs__title {
   flex: 4;
   margin-right: 1px;
- 
+
 }
 
 .bbs__tag {
@@ -87,9 +92,8 @@ flex-wrap: wrap;
 
 
 .pagebtn{
-// display: block;
-// justify-content: space-between;
-// align-items: center;
+position: relative;
+bottom: 0px;
 margin: 0 auto;
 padding: 1em 0em;
 width: 100px;
@@ -114,30 +118,28 @@ text-decoration: none;
 box-shadow: 0 2px 0 #aaaaaa;
 }
 
-.resetbtnarea{
-display: flex
+.portalbtn{
+position: relative;
+bottom: 0px;
+margin: 0 auto;
+padding: 1em 0em;
+width: 100px;
+color: #333;
+font-size: 9px;
+font-weight: 900;
+background-color: #f5eded;
+box-shadow: 0 3px 0 #c9c7c7;
+transition: 0.3s;
 }
 
 
-.resetbtn{
-color: #fff;
-background-color: #1c1f20;
-border-bottom: 5px solid #5e5e5d;
-font-weight: bold;
-}
 
-.resetbtn:hover:hover{
-margin-top: 3px;
-color: #fff;
-background: #f56500;
-border-bottom: 2px solid #b84c00;
-}
 
 
 .tagGrid {
-display: grid;
-grid-template-columns: repeat(3, 1fr); /* 3つのカラムを作成 */
-grid-gap: 1px; /* カラム間のスペースを設定 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3つのカラムを作成 */
+  grid-gap: 5px; /* カラム間のスペースを設定 */
 }
 
 .tagGrid2 {
@@ -146,10 +148,10 @@ margin-bottom: 10px;
 display: grid; 
 
 //追加部分
-max-width: 1000px; //タグ一覧が横に伸びすぎないようにする
+max-width: 600px; //タグ一覧が横に伸びすぎないようにする
 
-grid-template-columns: repeat(3, 1fr); /* 5つのカラムを作成 */
-grid-gap: 10px; /* カラム間のスペースを設定 */
+grid-template-columns: repeat(4, 1fr); /* 5つのカラムを作成 */
+grid-gap: 5px; /* カラム間のスペースを設定 */
 }
 
 
@@ -165,8 +167,8 @@ color: #080101; /* 文字色を黒に */
 font-weight: 500;
 font-size: 13px; /* 文字サイズ */
 border: 1px solid #333; /* 淵の線を指定 */
-border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
-padding: 3px 15px; /* 上下左右に余白をトル */
+border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */ 
+padding: 2px 10px; /* 上下左右に余白をトル */ //←10pxに変更
 background: #f0f3d0;
 }
 .tagselectarea2 input:checked + span {
@@ -176,73 +178,119 @@ background: rgb(246, 146, 23); /* 背景色を薄い赤に */
 border: 1px solid #FBB; /* 淵の線を薄い赤に */
 }
 
-.hidetext{
-background: #080000;
+//↓追加部分
+@media (max-width: 650px) { /*投稿一覧の横幅が650pxより小さいときの処理。*/
+.tagGrid2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3列にする */
+  grid-gap: 5px;
 }
-
-.bordmenu{
-display: flex;
-}
-.detaillay{
-margin-right: 5px;
-}
-
-.detailarea{
-white-space: pre-line;
 }
 
 
-.formbtn{
-color: #fff;
-background-color: #0a0c0d;
-border-bottom: 5px solid #858483;
-font-weight: bold;
+@media (max-width: 550px) { /*投稿一覧の横幅が550pxより小さいときの処理。*/
+.tagGrid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列にする */
+  grid-gap: 5px;
 }
-.formbtn:hover{
+}
+
+//多分使わない
+// @media (max-width: 450px) { /*投稿一覧の横幅が450pxより小さいときの処理。*/
+//   .tagGrid2 {
+//     display: grid;
+//     grid-template-columns: repeat(1, 1fr); /* 1列にする */
+//     grid-gap: 5px;
+//   }
+// }
+
+
+//プレイヤーidその他用
+.textbox {
+display: block;
+width: 150px;
+padding: 2px;
+border: none;
+border-radius: 4px;
+background:  #ffffff;
+font-size: 14px;
+
+&:focus {
+  outline: none;
+  border:double 2px #61ff83;
+  // border-color: #007bff;
+  box-shadow: 0 0 0 2px rgb(0, 255, 247);
+}
+}
+
+
+
+//詳細文用
+.textarea{
+display: block;
+width: 100%;
+line-height: 1.5rem;// 1行の高さ
+padding: 2px;
+border: none ;
+border-radius: 4px;
+background:  #ffffff;
+font-size: 14px;
+max-height: calc(1.5rem*12); //最大行数12
+overflow-y: auto;
+
+&:focus {
+  outline: none;
+  border:double 2px #61ff83;
+  box-shadow: 0 0 0 2px rgb(0, 255, 247);
+}
+}
+
+//追加
+.resize{
+    resize: none;
+  }
+
+//追加
+.label{
+padding-left: 5px;
+font-size: 12px;
+}
+
+.button{
+border: 4px black;
+font-size: 12px;
 margin-top: 3px;
-color: #fff;
-background: #f56500;
-border-bottom: 2px solid #b84c00;
+margin-bottom: 3px;
 }
 
-@media (max-width: 768px) {
-.formlayout {
-margin: 10% auto;
-max-width: 80%;
-}
-.tagGrid2{
-margin: 10% auto;
-max-width: 100%;
 
-}
-.tagselectarea2 span {
-color: #080101; /* 文字色を黒に */
-font-weight: 500;
-font-size: 10px; /* 文字サイズ */
-border: 1px solid #333; /* 淵の線を指定 */
-border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
-padding: 3px 15px; /* 上下左右に余白をトル */
-background: #f0f3d0;
-}
+//↓改行用
+.text{
+white-space: pre-wrap;
+word-break: break-all;//追加：アルファベットの文字列を折り返して表示
 }
 
-@media (max-width: 480px) {
-.formlayout {
-margin: 10% auto;
-max-width: 90%;
-}
-.tagGrid2{
-margin: 10% auto;
-max-width: 100%;
-grid-template-columns: repeat(2, 1fr); /* 5つのカラムを作成 */
-}
-.tagselectarea2 span {
-color: #080101; /* 文字色を黒に */
-font-weight: 500;
-font-size: 12px; /* 文字サイズ */
-border: 1px solid #333; /* 淵の線を指定 */
-border-radius: 10px; /* 角丸を入れて、左右が丸いボタンにする */
-padding: 2px 10px; /* 上下左右に余白をトル */
-background: #f0f3d0;
-}
-}
+
+//選択リセットデザイン
+.resetbtnarea{
+  display: flex
+  }  
+  .resetbtn{
+  color: #fff;
+  background-color: #1c1f20;
+  border-bottom: 5px solid #5e5e5d;
+  font-weight: bold;
+  }
+  
+  .resetbtn:hover:hover{
+  margin-top: 3px;
+  color: #fff;
+  background: #f56500;
+  border-bottom: 2px solid #b84c00;
+  }
+  
+
+  .bordmenu{
+    display: block;
+  }

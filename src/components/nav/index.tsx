@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./index.module.scss";
 import Image from "next/image";
 import React from "react";
-
+import {useRouter} from "next/router";//追加：現在のpathを取得するやつ
 
 
 
@@ -39,7 +39,20 @@ const TOPICS = [
   },
 ];
 
+
+//追加：現在のページのパスを取得
+
+//
+
+
+
 const Nav: React.FC = () => {
+
+
+  const router = useRouter();
+  const currentPath = router.pathname;
+
+
   return (
     <section className={styles.container}>
       <ul className={styles.contents}>
