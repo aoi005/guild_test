@@ -41,6 +41,15 @@ const fightTags: string[] = ["フリバ","バトアリ","枠埋め", "エンジ�
 const questionTags:  string[] = ["初心者", "デッキ","立ち回り",
                             "アタッカー","ガンナー","タンク","スプリンター",];  
 
+      
+  const plaseholderText ={
+    id: "プレイヤーID",
+    pas: "パスワード",
+    title: "タイトル",
+    name: "名前",
+    detail: "詳細",
+  };                       
+
                         
 
 /*console.log(initialTags);
@@ -82,21 +91,29 @@ export default function UploadForm({ collectionId }: UploadFormProps) {//引数�
   if (collectionId === "member" || collectionId === "posts") {
      title = "メンバー募集・投稿内容" 
      tags = memberTags;
-  }
-  else if (collectionId === "fight") {
-     title = "フレンド募集・投稿内容" 
-     tags = fightTags;
+     plaseholderText.name = "ギルド名";
   }
   else if (collectionId === "solicit") {
      title = "勧誘・投稿内容" 
-    tags = memberTags;
-  }
-  else if (collectionId === "question") {
+     tags = memberTags;
+     plaseholderText.name = "プレイヤー名";
 
+  }  
+  else if (collectionId === "fight") {
+    title = "フレンド募集・投稿内容" 
+    tags = fightTags;
+    plaseholderText.name = "部屋番号"
+    
+ }
+  else if (collectionId === "question") {
      title = "質問・投稿内容" 
-    tags = questionTags;
+     tags = questionTags;
+     plaseholderText.name = "プレイヤー名";
+
   }
   
+ 
+
 
   const initialTags: TagFields = {}
 
@@ -178,8 +195,8 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     }));
   };
 
-  
 
+  
 
 
 
@@ -210,12 +227,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       })}
   
       <div>
-          {/* <input    
-            type="text"
-            value={formData.id}
-            onChange={(e) => setFormData({ ...formData, id: e.target.value })}
-            placeholder="プレイヤーID"
-          /><br></br> */}
+          
 
           <input
             type="text"
@@ -236,7 +248,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             type="text"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            placeholder="名前"
+            placeholder = {plaseholderText.name}
           /><br></br>
 
           <textarea
