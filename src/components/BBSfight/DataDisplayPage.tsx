@@ -245,7 +245,7 @@ export default function DataDisplayfight() {
             <div>
               <h5>Guildname: {item.name}</h5>
               <br></br>
-               <p key={item.id} className={styles.detailarea}>{item.detail}</p>
+               <p key={item.id} className={styles.text}>{item.detail}</p>
               <br></br>
             </div>
             <div>
