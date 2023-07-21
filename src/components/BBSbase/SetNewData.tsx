@@ -26,17 +26,21 @@ export async function SetNewData(firestoreData: FirestoreData,collectionId :stri
         await runTransaction(db, async (transaction) => {
             
             const newId:number = Number(snap.data()[storageDocId]) + 1;//snap.data().storageDocId
+            const paddedId = String(newId).padStart(8, '0');
+
+            firestoreData.id = paddedId;
             
-            const newDocRef = doc(db, collectionId,String(newId).padStart(8, '0'));
+            const newDocRef = doc(db, collectionId,paddedId);
             transaction.set(newDocRef,  firestoreData );
             
-                transaction.update(storageDocRef, {
-                    [storageDocId]: newId,
-                });
-            
-            console.log("Add to "+collectionId+" "+String(newId).padStart(8, '0'));
+            transaction.update(storageDocRef, {
+                [storageDocId]: newId,
+            });
+        
+            console.log("Add to "+collectionId+" "+paddedId);
 
         });
+
 
         console.log("Transaction completed successfully.");
     } catch (e) {
