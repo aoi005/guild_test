@@ -32,7 +32,8 @@ function generateReplyId() {
 }
 
 function AddReplyquestion({ postId }: AddReplyProps) {
-  const [newReply, setNewReply] = useState({ repid: generateReplyId(), name: '', msg: '' });
+ 
+  const [newReply, setNewReply] = useState({repid: '', name: '', msg: '' });
 
   const handleFormChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     const { name, value } = e.target;
@@ -63,10 +64,15 @@ function AddReplyquestion({ postId }: AddReplyProps) {
   }
 
     try {
+      
+      
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
+      
 
       const docRef = doc(db, 'question', postId);
+
+    
 
       await setDoc(
         docRef,
@@ -82,7 +88,8 @@ function AddReplyquestion({ postId }: AddReplyProps) {
         { merge: true }
       );
 
-      setNewReply({ repid: '', name: '', msg: '' });
+
+      setNewReply({ repid:generateReplyId(), name: '', msg: '' });
     } catch (error) {
       console.error('Error adding reply:', error);
     }

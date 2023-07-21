@@ -82,7 +82,7 @@ function AddReplyfight({ postId }: AddReplyProps) {
         { merge: true }
       );
 
-      setNewReply({ repid: '', name: '', msg: '' });
+      setNewReply({ repid: generateReplyId(), name: '', msg: '' });
     } catch (error) {
       console.error('Error adding reply:', error);
     }

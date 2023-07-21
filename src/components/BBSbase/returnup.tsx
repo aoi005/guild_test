@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { useFirestoreUpload } from './useFirestoreUpload';
 import styles from "./index.module.scss";
 import firebase from 'firebase/app';
@@ -179,7 +179,15 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   };
 
   
+  const textareaRef = useRef<HTMLTextAreaElement |null>(null);
 
+  const TextareaHeight = () => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  };
+  //ここまで
 
 
 
@@ -219,14 +227,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
           <input
             type="text"
-            value={formData.pas}
-            onChange={(e) => setFormData({ ...formData, pas: e.target.value })}
-            placeholder="パスワード"
-          />＊編集時に必要です
-          <br></br>
-
-          <input
-            type="text"
+            className={styles.textbox}
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             placeholder="タイトル"
@@ -234,23 +235,39 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
           <input
             type="text"
+            className={styles.textbox}
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             placeholder="名前"
           /><br></br>
 
+          <input
+            type="text"
+            className={styles.textbox}
+            value={formData.pas}
+            onChange={(e) => setFormData({ ...formData, pas: e.target.value })}
+            placeholder="パスワード(要編集時)"
+          /><br/>
+
           <textarea
-            style={{ width: '90%', height: '200px', resize: 'vertical' }}
+            className={`${styles.textarea} ${styles.resize}`}
             wrap="hard"
+            ref={textareaRef}
             value={formData.detail}
-            onChange={(e) => setFormData({ ...formData, detail: e.target.value })}
+            // maxLength={100}//文字数制限されない
+            onChange={(e) => {
+            setFormData({ ...formData, detail: e.target.value });
+            TextareaHeight();}} //
             placeholder="詳細文"
-          /><br></br> 
+          /> 
+          {/* <p>{formData.detail.length}/100</p> */}
+          {/* 文字数カウント 改行までカウントされる */}
+          <br/>
 
       </div>
 
 
-        <button type="submit">データを追加/更新</button>
+        <button type="submit" className={styles.formbtn}>データを追加/更新</button>
       </form>
       
       {uploadStatus === 'Success' && <p>{} formed!</p>}
