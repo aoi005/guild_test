@@ -135,7 +135,7 @@ export default function ChangeForm({
 
           if (key === "detail") {
             return (
-              <div>
+              <div　key = {key}>
               <span>{key}</span>
               <textarea
                 key={key}
@@ -151,7 +151,7 @@ export default function ChangeForm({
           }
 
           return (
-            <div>
+            <div key= {key}>
             <span>{key}</span>
             <input
               key={key}
