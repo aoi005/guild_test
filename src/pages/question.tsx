@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
 import DataDisplayQuestion from '@/components/BBSquestion/DataDisplayPage';
 import React from 'react';
+import Load from '@/components/loadicon/loading';
 
 
 export default function Home() {
@@ -28,7 +29,7 @@ export default function Home() {
         </div>
       </div>
       
-  
+    <Load/>
     </MainLayout>
   )
 }

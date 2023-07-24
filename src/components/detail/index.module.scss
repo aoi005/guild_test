@@ -54,6 +54,8 @@
     background: #cee3f4;
     box-shadow: 0px 0px 0px 10px #d6ebff;
     border: dashed 2px white;
+    max-height: 400px; 
+    overflow-y: auto;
 }
 
 .replen{
@@ -67,7 +69,7 @@
 }
 
 .modalContent {
-    max-height: 350px; 
+    max-height: 300px; 
     overflow-y: auto;
   }
 
@@ -108,3 +110,26 @@
     border-bottom: 2px solid #b84c00;
 }
 
+
+@media (max-width: 768px) {
+    .formarea {
+      margin: 10% auto;
+      max-width: 90%;
+    }
+    .modalContent {
+        max-height: 450px;
+        overflow-y: auto;
+      }
+  }
+  
+  @media (max-width: 480px) {
+    .formarea {
+      margin: 10% auto;
+      max-width: 90%;
+    }
+    .modalContent {
+        max-height: 450px;
+        overflow-y: auto;
+      }
+  }
+  

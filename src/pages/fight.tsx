@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
 import React from 'react';
 import DataDisplayfight from '@/components/BBSfight/DataDisplayPage';
+import Load from '@/components/loadicon/loading';
 
 
 
@@ -31,6 +32,7 @@ export default function Home() {
         </div>
       </div>
       
+      <Load/>
       </MainLayout>
     )
   }

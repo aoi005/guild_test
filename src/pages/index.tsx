@@ -5,6 +5,7 @@ import Nav from "../components/nav";
 import AppData from '@/components/BBS/databox';
 import DataDisplayPage from '../components/Firebase/DataDisplayPage';
 import AllPosts from '@/components/firedetabox/AllPost';
+import Load from '@/components/loadicon/loading';
 
 
 
@@ -43,7 +44,7 @@ export default function Home() {
         </div>
       </div>
       
-  
+    <Load/>
     </MainLayout>
   )
 }

@@ -99,12 +99,12 @@ export default function ChangeForm({
 
   return (
     <div>
-      <h1>Data Change</h1>
+      <h1>編集</h1>
       <form onSubmit={handleSubmit} className={styles.formlayout}>
         {Object.entries(formData).map(([key, value]) => {
           if (key === "tag") {
             return (
-              <div key={key}>
+              <div key={key} className={styles.tagGrid}>
                 {tags.map((tagName) => (
                   <label key={tagName}>
                     {tagName}:
@@ -133,9 +133,29 @@ export default function ChangeForm({
             );
           }
 
+          if (key === "detail") {
+            return (
+              <div>
+              <span>{key}</span>
+              <textarea
+                key={key}
+                className={styles.textarea}
+                value={value}
+                placeholder={key}
+                onChange={(e) =>
+                  setFormData({ ...formData, [key]: e.target.value })
+                }
+              />
+              </div>
+            );
+          }
+
           return (
+            <div>
+            <span>{key}</span>
             <input
               key={key}
+              className={styles.textbox}
               type={typeof value === "number" ? "number" : "text"}
               value={value}
               onChange={(e) =>
@@ -143,7 +163,11 @@ export default function ChangeForm({
               }
               placeholder={key}
             />
+             </div>
           );
+
+          
+         
 
     //       <div>
     //       <input    
@@ -177,11 +201,11 @@ export default function ChangeForm({
 
     //   </div>
 
-        })}
+            })}
 
         
 
-        <button type="submit">編集を適用</button>
+        <button type="submit" className={styles.resetbtn}>編集を適用</button>
       </form>
 
       {uploadStatus === "Success" && <p>{} formed!</p>}

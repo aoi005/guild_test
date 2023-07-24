@@ -84,7 +84,7 @@ function Hensyu({ id,pas, title, name, detail, strT, time, limit, tag, reply }: 
                   onChange={handlePasswordChange}
                 />
               </label>
-              <button onClick={handleAuthentication}>認証</button>
+              <button onClick={handleAuthentication} className={styles.detailbtn}>認証</button>
             </>
           ) : null}
 

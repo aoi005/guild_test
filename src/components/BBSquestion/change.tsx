@@ -21,28 +21,18 @@ interface FirestoreData {
     tag: TagFields;
   }
 
-const tags: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギルミ","Discord","少人数",
-                        "固定","カスタム","無言加入可","無言退出可",
-                        "朝","昼","夕方","夜","深夜"]; 
+const tags: string[] = ["初心者", "デッキ","立ち回り",
+"アタッカー","ガンナー","タンク","スプリンター",]; 
 
-const initialTags: TagFields = {
-    初心者歓迎: false,
-    エンジョイ: false,
-    ガチ: false,
-    ギルミ: false,
-    Discord: false,
-    少人数: false,
-    固定: false,
-    カスタム: false,
-    無言加入可: false,
-    無言退出可: false,
-    朝: false,
-    昼: false,
-    夕方: false,
-    夜: false,
-    深夜: false,
- // 追加したタグにも初期値を設定してください。
-     };
+const initialTags: TagFields ={
+  初心者: false,
+  デッキ: false,
+  アタッカー: false,
+  ガンナー: false,
+  タンク: false,
+  スプリンター: false,
+  // 追加したタグにも初期値を設定してください。
+};
 
 export default function ChangeForm({
   id,
@@ -99,12 +89,12 @@ export default function ChangeForm({
 
   return (
     <div>
-      <h1>Data Change</h1>
+      <h1>Data </h1>
       <form onSubmit={handleSubmit} className={styles.formlayout}>
         {Object.entries(formData).map(([key, value]) => {
           if (key === "tag") {
             return (
-              <div key={key}>
+              <div key={key} className={styles.tagGrid}>
                 {tags.map((tagName) => (
                   <label key={tagName}>
                     {tagName}:

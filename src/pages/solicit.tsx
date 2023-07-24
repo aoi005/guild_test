@@ -5,6 +5,7 @@ import Head from "next/head";
 import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
 import DataDisplaysolicit from "@/components/BBSsolicit/DataDisplayPage";
+import Load from "@/components/loadicon/loading";
 
 
 
@@ -32,7 +33,7 @@ export default function Home() {
         </div>
       </div>
       
-  
+    <Load/>
     </MainLayout>
   )
 }

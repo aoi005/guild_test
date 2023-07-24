@@ -238,6 +238,8 @@ background:  #ffffff;
 font-size: 14px;
 max-height: calc(1.5rem*12); //最大行数12
 overflow-y: auto;
+white-space: pre-wrap;
+word-break: break-all;//追加：アルファベットの文字列を折り返して表示
 
 &:focus {
   outline: none;
@@ -294,3 +296,5 @@ word-break: break-all;//追加：アルファベットの文字列を折り返�
   .bordmenu{
     display: block;
   }
+
+  

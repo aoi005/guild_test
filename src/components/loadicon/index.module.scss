@@ -1,0 +1,129 @@
+//ローディング画面
+.loading {
+    background-color: white;
+    background-image: linear-gradient(0deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px)),
+    linear-gradient(90deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px));
+    background-size: 100px 100px;
+    background-repeat: repeat;
+    background-position: center center;
+    //opacity: 0.6;
+    background-attachment: fixed;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    -moz-animation: cssAnimation 0s ease-in 2s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 2s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 2s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 2s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    z-index: 2;
+  }
+
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}
+
+.loading_text{
+   position: relative;
+   width: 100%; height: 100vh;
+   display: flex;
+   align-items: center; justify-content: center;
+}
+
+$time: 1s;
+.loading_img {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  left: 50%;
+  top: 40%;
+  margin: -24px 0 0 -24px;
+  span {
+    animation-name: loading;
+    animation-duration: $time;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    display: block;
+    margin: 2px;
+    width: 20px;
+    height: 20px;
+    float: left;
+    &:nth-child(1) {
+      animation-delay: 0s;
+      background-color: #3BAED4;
+    }
+    &:nth-child(2) {
+      animation-delay: $time * .25;
+      background-color: #2BAB66;
+    }
+    &:nth-child(3) {
+      clear: both;
+      float: right;
+      animation-delay: $time * .5;
+      background-color: #EAAC39;
+    }
+    &:nth-child(4) {
+      animation-delay: $time * .75;
+      background-color: #DB4D48;
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+
+//関係なし
+.circle{
+    width:100px;
+    height:100px;
+    border-radius:150px;
+    border:15px solid #fff;
+    border-top-color:rgba(0,0,0,0.3);
+    box-sizing:border-box;
+    position:absolute;
+    top:20%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    animation:circle 1s linear infinite;
+    -webkit-animation:circle 1s linear infinite;
+  }
+
+@keyframes circle{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+  }
+
+@-webkit-keyframes circle{
+    0%{-webkit-transform:rotate(0deg)}
+    100%{-webkit-transform:rotate(360deg)}
+  }
