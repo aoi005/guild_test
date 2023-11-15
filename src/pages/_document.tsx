@@ -6,7 +6,7 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <body>
-         <Script src="https://adm.shinobi.jp/s/b1b001aede425ac55f0ae62cf18e18f6"></Script>
+      
         <Main />
         <NextScript />
       </body>

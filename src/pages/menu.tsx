@@ -12,6 +12,7 @@ export default function Home() {
         
         
       </Head>
+      <body>
        <div className={styles.contents}>
         <div className={styles.nav}>
           <nav>
@@ -27,7 +28,7 @@ export default function Home() {
       
         </div>
       </div>
-      
+      </body>
   
     </MainLayout>
   )

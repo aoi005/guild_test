@@ -6,7 +6,7 @@ import AppData from '@/components/BBS/databox';
 import DataDisplayPage from '../components/Firebase/DataDisplayPage';
 import AllPosts from '@/components/firedetabox/AllPost';
 import Load from '@/components/loadicon/loading';
-
+import Script from 'next/script';
 
 
 
@@ -15,10 +15,11 @@ export default function Home() {
  
   return (
     <MainLayout>
+      
       <Head>
         
       </Head>
-
+      
        <div className={styles.contents}>
         <div className={styles.nav}>
           <nav>
