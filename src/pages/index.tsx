@@ -15,38 +15,26 @@ export default function Home() {
  
   return (
     <MainLayout>
-      
-      <Head>
-        
-      </Head>
-      
-       <div className={styles.contents}>
-        <div className={styles.nav}>
-          <nav>
-            <Nav />
-          </nav>
-        </div>
-        <div className={styles.blank} />
-      
-        <div className={styles.main} >
-
-
-       
-        <DataDisplayPage/>
-
-        
-        {/* <AllPosts/> */}
-        {/* <AppData /> */}
-        
-        
-        {/* <BBS /> */}
-   
-       
-        </div>
+    <Head>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2205391985510668"
+        crossOrigin="anonymous"
+      />
+    </Head>
+    <div className={styles.contents}>
+      <div className={styles.nav}>
+        <nav>
+          <Nav />
+        </nav>
       </div>
-      
+      <div className={styles.blank} />
+      <div className={styles.main}>
+        <DataDisplayPage/>
+      </div>
+    </div>
     <Load/>
-    </MainLayout>
+  </MainLayout>
   )
 }
 
