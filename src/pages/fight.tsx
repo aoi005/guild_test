@@ -13,13 +13,13 @@ export default function Home() {
  
   return (
     <MainLayout>
-      <Head>
+    <head>  
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2205391985510668"
         crossOrigin="anonymous"
       />
-    </Head>
+      </head>
        <div className={styles.contents}>
         <div className={styles.nav}>
           <nav>
