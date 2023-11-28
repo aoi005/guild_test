@@ -133,3 +133,11 @@
       }
   }
   
+
+  @media (max-width: 550px) { /*投稿一覧の横幅が550pxより小さいときの処理。*/
+    .detailbtn{
+      font-size: 10px;
+    
+    }
+    
+    }

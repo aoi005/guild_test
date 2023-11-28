@@ -194,7 +194,14 @@ border: 1px solid #FBB; /* 淵の線を薄い赤に */
   grid-template-columns: repeat(2, 1fr); /* 2列にする */
   grid-gap: 5px;
 }
+
+.bbs__main {
+  font-size: 12px;
+
 }
+
+}
+
 
 //多分使わない
 // @media (max-width: 450px) { /*投稿一覧の横幅が450pxより小さいときの処理。*/
@@ -294,7 +301,10 @@ word-break: break-all;//追加：アルファベットの文字列を折り返�
   
 
   .bordmenu{
-    display: block;
+    display:flex;
+  }
+  .detaillay{
+    margin-right: 10px;
   }
 
   
