@@ -124,7 +124,7 @@
   
   @media (max-width: 480px) {
     .formarea {
-      margin: 10% auto;
+      margin-top: 20%;
       max-width: 90%;
     }
     .modalContent {
@@ -137,7 +137,12 @@
   @media (max-width: 550px) { /*投稿一覧の横幅が550pxより小さいときの処理。*/
     .detailbtn{
       font-size: 10px;
-    
     }
+
+    .detailarea {
+        margin-top: 20%;
+        max-width: 90%;
+        font-size: 85%;
+      }
     
     }
