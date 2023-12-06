@@ -239,7 +239,7 @@ export default function DataDisplayPage() {
               </h3>
             </div>
             <div>
-              <h5>Guildname: {item.name}</h5>
+              <h5>name: {item.name}</h5>
               <br></br>
                <p key={item.id} className={styles.text}>{item.detail}</p>
               <br></br>
