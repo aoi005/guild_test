@@ -100,7 +100,7 @@ export default function UploadForm({ collectionId }: UploadFormProps) {//引数�
 
   }  
   else if (collectionId === "fight") {
-    title = "フレンド募集・投稿内容" 
+    title = "固定募集・投稿内容" 
     tags = fightTags;
     plaseholderText.name = "部屋番号"
     
