@@ -57,10 +57,12 @@ const tagList: string[] = ["初心者歓迎", "エンジョイ", "ガチ", "ギ�
                             "朝","昼","夕方","夜","深夜"]; 
 
 
-
 export function useFirestoreData() {
   const [data, setData] = useState<FirestoreData[]>([]);
   const [documentCount, setDocumentCount] = useState<number>(0);
+
+
+  
 
   useEffect(() => {
     const APP = initializeApp(firebaseConfig);
@@ -186,6 +188,14 @@ export default function DataDisplayPage() {
 
   const maximumPage = Math.floor(filteredData.length / 10)  +1  ;//追加：最大ページ数。投稿34件なら4ページ
 
+  const cp = (content: string) => {
+    const txt = document.createElement('textarea');
+    txt.value = content;
+    document.body.appendChild(txt);
+    txt.select();
+    document.execCommand('copy');
+    document.body.removeChild(txt);
+  };
 
 
   return (
@@ -239,7 +249,10 @@ export default function DataDisplayPage() {
               </h3>
             </div>
             <div>
-              <h5>Name: {item.name}</h5>
+              <div className={styles.articletitle}>
+                <h5 >Name: {item.name}</h5>
+                <button className={styles.detailbtn} onClick={() => cp(item.name)}>Copy</button >
+              </div>
               <br></br>
                <p key={item.id} className={styles.text}>{item.detail}</p>
               <br></br>
