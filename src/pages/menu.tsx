@@ -9,14 +9,14 @@ export default function Home() {
  
   return (
     <MainLayout>
-      <head>  
+      {/* <head>  
       <meta name="google-adsense-account" content="ca-pub-2205391985510668"/>
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2205391985510668"
         crossOrigin="anonymous"
       />
-      </head>
+      </head> */}
       <body>
        <div className={styles.contents}>
         <div className={styles.nav}>

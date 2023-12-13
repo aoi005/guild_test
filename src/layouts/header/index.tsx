@@ -38,10 +38,9 @@ function Header() {
        
         {/* <Popupsearch/> */}
 
-        <div>
+        <div className={styles.wantformbtn}>
 
-           
-         
+        <a　 href='https://forms.gle/qZpFuNix9nzbYKXeA'>匿名要望フォーム</a><span></span>
         
           
         </div>
