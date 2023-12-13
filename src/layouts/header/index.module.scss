@@ -93,7 +93,8 @@
 
 @media (max-width: 550px) { /*投稿一覧の横幅が550pxより小さいときの処理。*/ 
   .wantformbtn {
-    font-size: 12px;
+    font-size: 8px;
+    max-width: 200px;
   
   }
   
