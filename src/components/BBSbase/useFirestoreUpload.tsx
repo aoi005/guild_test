@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { useState } from 'react';
 import { getFirestore, doc, setDoc, Timestamp, serverTimestamp, limit } from 'firebase/firestore';
-
+import Twitter from 'twitter-lite';
 
 interface TagFields {
   [tagName: string]: boolean;
@@ -28,6 +28,29 @@ const firebaseConfig = {
     appId: "1:989467913511:web:30efac48507ccec4768d02",
     measurementId: "G-5JSSYVBJR0"
 };
+
+
+// const tweetData = async (text:string) => {
+//   const twitterClient = new Twitter({
+//     subdomain: "api", // "api" for tweet posting
+//     consumer_key: '6vHU83FmWr7lPumzWObgkd7I1',
+//     consumer_secret: '0Au9wsJ1lFeaZw9lwIHmu7IQu60l5fyC7EEbIw3ANr6J1s3IoO',
+//     access_token_key: '1678327012904292352-s8NlBmpgmiuZjSnY7mMJkcmaMAL0zD',
+//     access_token_secret: 'j4zMCW0MsGBbFoutu62qJMCyicLrmZdH0X7zB3FunJiq4',
+//   });
+
+//   try {
+//     const tweet = await twitterClient.post('statuses/update', {
+//       status: text,
+//     });
+//     console.log('Tweet posted:', tweet.text);
+//   } catch (error) {
+//     console.error('Error posting tweet:', error);
+//   }
+// };
+
+// export { tweetData };
+
 
 const initialTags: TagFields = {
   フリバ: false,
@@ -88,6 +111,9 @@ export function useFirestoreUpload(collectionId:string) {
           });
   
         setUploadStatus('Success');
+
+        // const tweetText = `#コンパス\nギルド名：${formData.name}\n${formData.detail}`;
+        // await tweetData(tweetText);
 
         setFormData((prevData) => ({
             ...prevData,

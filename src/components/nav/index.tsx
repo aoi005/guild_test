@@ -1,8 +1,9 @@
 import Link from "next/link";
 import styles from "./index.module.scss";
 import Image from "next/image";
-import React from "react";
+// import React from "react";
 import {useRouter} from "next/router";//追加：現在のpathを取得するやつ
+import React, { useEffect, useState } from 'react';
 
 
 
@@ -49,6 +50,13 @@ const TOPICS = [
 const Nav: React.FC = () => {
 
 
+  // ナビゲーションバーの非表示　
+  const [isNavClose, setIsNavClose] = useState(true);
+  const handleNavClose = () => {
+    setIsNavClose(!isNavClose);//
+  };
+
+
   const router = useRouter();
   const currentPath = router.pathname;
 
@@ -56,13 +64,13 @@ const Nav: React.FC = () => {
   return (
 
     //ナビゲーションバーの非表示
-    // <>
-    // {!isNavClose && (
-    //     <button  onClick={handleNavClose}>{'⋙'}</button>
-    //   )}  
-    // {isNavClose && (
+    <>
+    {!isNavClose && (
+        <button  onClick={handleNavClose}>{'⋙'}</button>
+      )}  
+    {isNavClose && (
       
-    <section className={styles.container} >
+      <section className={`${styles.container} ${isNavClose ? styles.navClosed : ""}`}>
       <ul className={styles.contents} >      
         {TOPICS.map((topic, index) => {
 
@@ -99,16 +107,16 @@ const Nav: React.FC = () => {
           );  
         })}
 
-      {/* ナビゲーションバーの非表示ボタン */}
-     {/* <button  onClick={handleNavClose}>{'⋘'}</button> */}
+       
+     <button  onClick={handleNavClose}>{'⋘'}</button>
       </ul>    
     </section>
 
     )}
 
-//ナビゲーションバーの非表示
-//     </>     
-//   );
-// };
+
+     </>     
+   );
+};
 
 export default Nav;

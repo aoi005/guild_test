@@ -5,6 +5,8 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { Timestamp } from 'firebase/firestore';
 import { SetNewData } from './SetNewData';
+import Twitter from 'twitter-lite';
+// import { tweetData } from './useFirestoreUpload';
 
 
 
@@ -135,7 +137,7 @@ for (let i = 0; i < tags.length; i++) {
     limit:limitTime,
     // time: new Date(),
   });
-  console.log(formData.time)
+  // console.log(formData.time)
 
 /*const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -159,10 +161,23 @@ for (let i = 0; i < tags.length; i++) {
  */
 
   
-const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   SetNewData(formData,collectionId,"IdStorage");//（共）fight （メ）posts （勧）solicit （疑）question
   // const currentTime = new Date().toLocaleString();
+
+  const tweetText = `#コンパス\nギルド名：${formData.name}\n${formData.detail}`;
+  fetch('/api/tweet', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ text: tweetText }),
+  })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+    
 
   
   setFormData((prevFormData) => ({

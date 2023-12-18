@@ -1,9 +1,10 @@
 .container {
     margin-top: 0x;/*文字の下幅*/
     width: 100%;
-    display: block;
-
-    
+    display: block; 
+  }
+   .container.navClosed + .contents .main {
+    width: calc(100% - 90%);
   }
   
   .contents {

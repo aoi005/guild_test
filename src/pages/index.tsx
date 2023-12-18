@@ -1,12 +1,12 @@
-import Head from 'next/head'/* header で動いてる　よく分からん*/
+import Head from 'next/head'
 import MainLayout from '../layouts'
 import styles from '../styles/Home.module.scss'
 import Nav from "../components/nav";
-import AppData from '@/components/BBS/databox';
+// import AppData from '@/components/BBS/databox';
 import DataDisplayPage from '../components/Firebase/DataDisplayPage';
-import AllPosts from '@/components/firedetabox/AllPost';
+// import AllPosts from '@/components/firedetabox/AllPost';
 import Load from '@/components/loadicon/loading';
-import Script from 'next/script';
+// import Script from 'next/script';
 
 
 

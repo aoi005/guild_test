@@ -250,7 +250,7 @@ export default function DataDisplayPage() {
             </div>
             <div>
               <div className={styles.articletitle}>
-                <h5 >Name: {item.name}</h5>
+                <h5 >GuildName: {item.name}</h5>
                 <button className={styles.detailbtn} onClick={() => cp(item.name)}>Copy</button >
               </div>
               <br></br>
