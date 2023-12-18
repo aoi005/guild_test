@@ -243,7 +243,7 @@ export default function DataDisplayfight() {
               </h3>
             </div>
             <div>
-              <h5>Guildname: {item.name}</h5>
+              <h5>部屋番号: {item.name}</h5>
               <br></br>
                <p key={item.id} className={styles.text}>{item.detail}</p>
               <br></br>
