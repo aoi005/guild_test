@@ -61,8 +61,8 @@ function Popup() {
 
   return (
     <div>
-      <div className={styles.formbox}>
-        <button onClick={openModal} className={styles.formbtn}>投稿</button>
+      <div className={styles.wantformbtn}>
+        <button onClick={openModal} >投稿</button>
       </div>
 
       <Modal
